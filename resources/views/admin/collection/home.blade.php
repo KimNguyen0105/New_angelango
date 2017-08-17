@@ -2,8 +2,8 @@
 @section('content')
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <a href="{{url('/admin/news/create-collection')}}" class="btn btn-sm btn-success addlink"><span
-                        class="glyphicon glyphicon-new-window"></span> Create News</a>
+            <a href="{{url('/admin/collection/create-collection')}}" class="btn btn-sm btn-success addlink"><span
+                        class="glyphicon glyphicon-new-window"></span> Thêm bộ sưu tập</a>
             <div class="dashboard_graph">
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">
@@ -33,12 +33,12 @@
                                     <td>{{$collection->title_vi}}</td>
                                     <td>{{$collection->title_en}}</td>
                                     <td>
-                                        <a href="{{url('/admin/news/edit-collection')}}/{{$collection->id}}"
+                                        <a href="{{url('/admin/collection/edit-collection')}}/{{$collection->id}}"
                                            class="btn btn-xs btn-primary editlink"><span
                                                     class="glyphicon glyphicon-pencil"></span>
                                             Edit</a>
                                         @if($loop->count > 2)
-                                            <a href="{{url('admin/news/delete-collection')}}/{{$collection->id}}"
+                                            <a onclick="ftDelete('{{url('admin/collection/delete-collection')}}/{{$collection->id}}')"
                                                class="btn btn-xs btn-danger deletelink"><span
                                                         class="glyphicon glyphicon-trash"></span> Delete</a>
                                         @else
@@ -57,5 +57,7 @@
             </div>
 
         </div>
+
     </div>
+
 @endsection

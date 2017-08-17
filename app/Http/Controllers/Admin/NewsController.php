@@ -13,7 +13,7 @@ class NewsController extends Controller
     //
     public function getNews()
     {
-        $news = AglNews::orderBy('updated_at', 'desc')->get();
+        $news = AglNews::where('status',1)->orderBy('updated_at', 'desc')->get();
         return view('admin.news.home', [
             'news' => $news
         ]);
@@ -55,18 +55,25 @@ class NewsController extends Controller
         }
         catch (\Exception $e)
         {
-            return view('admin.news.detail_news')->with('failed', 'Thêm tin tức thất bại');
+            return view('admin.news.create_news')->with('failed', 'Thêm tin tức thất bại');
         }
     }
     public function getEditNews($id)
     {
         try{
             $news=AglNews::find($id);
-            return view('admin.news.edit_news',['news'=>$news]);
+
+            if($news)
+            {
+                return view('admin.news.edit_news',['news'=>$news]);
+            }
+            else{
+                return view('admin.news.home');
+            }
         }
         catch (\Exception $e)
         {
-            return view('admin.news.home')->with('failed', 'Thêm tin tức thất bại');
+            return view('admin.news.home');
         }
     }
     public function postEditNews($id, Request $request)

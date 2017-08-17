@@ -45,7 +45,7 @@
                                                     class="glyphicon glyphicon-pencil"></span>
                                             Edit</a>
                                         @if($loop->count > 2)
-                                            <a href="{{url('admin/news/delete-news')}}/{{$new->id}}"
+                                            <a onclick="ftDelete('{{url('admin/news/delete-news')}}/{{$new->id}}')"
                                                class="btn btn-xs btn-danger deletelink"><span
                                                         class="glyphicon glyphicon-trash"></span> Delete</a>
                                         @else

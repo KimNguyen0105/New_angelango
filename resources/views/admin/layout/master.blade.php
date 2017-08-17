@@ -14,7 +14,9 @@
     <!-- Font Awesome -->
     <link href="{{URL::asset('')}}css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
+    <link rel="stylesheet" href="{{asset('fileinput/css/fileinput.min.css')}}">
     <link href="{{URL::asset('')}}css/nprogress.css" rel="stylesheet">
+
 {{--<!-- iCheck -->--}}
 {{--<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">--}}
 
@@ -55,6 +57,26 @@
         </footer>
         <!-- /footer content -->
     </div>
+    <div id="myDelete" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận xóa</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc muốn xóa</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a href="#" id="btnXoa" class="btn btn-danger">Xóa</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 <!-- jQuery -->
@@ -65,10 +87,12 @@
 
 <!-- Custom Theme Scripts -->
 <script src="{{URL::asset('')}}js/custom.min.js"></script>
+<script type="text/javascript" src="{{asset('fileinput/js/fileinput.min.js')}}"></script>
 <script>
-    $(".language_tab li:first").addClass("active");
-    $(".tab-content .tab-pane:first").addClass("in");
-    $(".tab-content .tab-pane:first").addClass("active");
+    function ftDelete(link) {
+        $("#btnXoa").attr("href", link);
+        $("#myDelete").modal('show');
+    }
 </script>
 @yield('scripts')
 </body>

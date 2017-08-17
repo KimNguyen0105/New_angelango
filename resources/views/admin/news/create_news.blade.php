@@ -89,7 +89,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label class="control-label">Hình ảnh(300 x 200)</label>
-                        <input id="file" accept="image/*" name="file" required type="file" style="padding-bottom: 20px" onchange="readURL(this);" class="file-loading">
+                        <input id="file" accept="image/*" name="file" required type="file" style="padding-bottom: 20px" onchange="readURL(this);">
                         <img id="imgF" src="{{asset('images/news')}}" class="img-responsive" style="height: 200px;">
                     </div>
                 </div>
