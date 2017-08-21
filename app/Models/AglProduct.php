@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 16 Aug 2017 08:19:23 +0000.
+ * Date: Mon, 21 Aug 2017 02:42:56 +0000.
  */
 
 namespace App\Models;
@@ -20,10 +20,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $content_en
  * @property bool $is_discount
  * @property string $price
- * @property string $size
  * @property int $view
  * @property int $rating
- * @property int $collection_id
+ * @property int $menu_product_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property bool $status
@@ -42,7 +41,7 @@ class AglProduct extends Eloquent
 		'is_discount' => 'bool',
 		'view' => 'int',
 		'rating' => 'int',
-		'collection_id' => 'int',
+		'menu_product_id' => 'int',
 		'status' => 'bool'
 	];
 
@@ -54,10 +53,9 @@ class AglProduct extends Eloquent
 		'content_en',
 		'is_discount',
 		'price',
-		'size',
 		'view',
 		'rating',
-		'collection_id',
+		'menu_product_id',
 		'status',
 		'seo_title',
 		'seo_keyword',

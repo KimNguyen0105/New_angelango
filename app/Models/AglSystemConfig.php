@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 16 Aug 2017 08:19:23 +0000.
+ * Date: Mon, 21 Aug 2017 02:42:57 +0000.
  */
 
 namespace App\Models;
@@ -14,6 +14,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property int $id
  * @property string $logo
+ * @property string $address_vi
+ * @property string $address_en
+ * @property string $google_map
  * @property string $facebook_link
  * @property string $twitter_link
  * @property string $instagram_link
@@ -40,6 +43,9 @@ class AglSystemConfig extends Eloquent
 	protected $fillable = [
 		'id',
 		'logo',
+		'address_vi',
+		'address_en',
+		'google_map',
 		'facebook_link',
 		'twitter_link',
 		'instagram_link',

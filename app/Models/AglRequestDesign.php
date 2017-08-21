@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 16 Aug 2017 08:19:23 +0000.
+ * Date: Mon, 21 Aug 2017 02:42:56 +0000.
  */
 
 namespace App\Models;
@@ -15,9 +15,10 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $id
  * @property int $order_id
  * @property int $product_id
- * @property string $message
- * @property int $created_at
- * @property int $updated_at
+ * @property int $account_id
+ * @property bool $status
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
  *
  * @package App\Models
  */
@@ -28,13 +29,14 @@ class AglRequestDesign extends Eloquent
 	protected $casts = [
 		'order_id' => 'int',
 		'product_id' => 'int',
-		'created_at' => 'int',
-		'updated_at' => 'int'
+		'account_id' => 'int',
+		'status' => 'bool'
 	];
 
 	protected $fillable = [
 		'order_id',
 		'product_id',
-		'message'
+		'account_id',
+		'status'
 	];
 }

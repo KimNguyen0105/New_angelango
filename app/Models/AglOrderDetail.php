@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 16 Aug 2017 08:19:23 +0000.
+ * Date: Mon, 21 Aug 2017 02:42:56 +0000.
  */
 
 namespace App\Models;
@@ -17,7 +17,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $product_id
  * @property int $quantity
  * @property string $price
- * @property string $size
+ * @property int $product_size_id
  * @property string $color
  *
  * @package App\Models
@@ -30,7 +30,8 @@ class AglOrderDetail extends Eloquent
 	protected $casts = [
 		'order_id' => 'int',
 		'product_id' => 'int',
-		'quantity' => 'int'
+		'quantity' => 'int',
+		'product_size_id' => 'int'
 	];
 
 	protected $fillable = [
@@ -38,7 +39,7 @@ class AglOrderDetail extends Eloquent
 		'product_id',
 		'quantity',
 		'price',
-		'size',
+		'product_size_id',
 		'color'
 	];
 }
