@@ -43,6 +43,45 @@ Route::post('/admin/collection/create-collection','Admin\CollectionController@po
 Route::get('/admin/collection/edit-collection/{id}','Admin\CollectionController@getEditCollection')->middleware('not.login');
 Route::post('/admin/collection/edit-collection/{id}','Admin\CollectionController@postEditCollection')->middleware('not.login');
 
+//danh mục sản phẩm
+Route::get('/admin/menu-product','Admin\MenuProductController@getMenuProduct')->middleware('not.login');
+Route::get('/admin/menu-product/create-menu-product','Admin\MenuProductController@getCreateMenuProduct')->middleware('not.login');
+Route::post('/admin/menu-product/create-menu-product','Admin\MenuProductController@postCreateMenuProduct')->middleware('not.login');
+Route::get('/admin/menu-product/edit-menu-product/{id}','Admin\MenuProductController@getEditMenuProduct')->middleware('not.login');
+Route::post('/admin/menu-product/edit-menu-product/{id}','Admin\MenuProductController@postEditMenuProduct')->middleware('not.login');
+Route::get('/admin/menu-product/delete-menu-product/{id}','Admin\MenuProductController@DeleteMenuProduct')->middleware('not.login');
+
+//Sản phẩm
+Route::get('/admin/product','Admin\ProductController@getProduct')->middleware('not.login');
+Route::get('/admin/product/create-product','Admin\ProductController@getCreateProduct')->middleware('not.login');
+Route::post('/admin/product/create-product','Admin\ProductController@postCreateProduct')->middleware('not.login');
+Route::get('/admin/product/edit-product/{id}','Admin\ProductController@getEditProduct')->middleware('not.login');
+Route::post('/admin/product/edit-product/{id}','Admin\ProductController@postEditProduct')->middleware('not.login');
+Route::get('/admin/product/delete-product/{id}','Admin\ProductController@DeleteProduct')->middleware('not.login');
+Route::get('/admin/remove-img/{id_img}','Admin\ProductController@removeimg')->middleware('not.login');
+Route::get('/admin/remove-color/{id_color}/{id_product}','Admin\ProductController@removecolor')->middleware('not.login');
+Route::get('/admin/add-color/{id}','Admin\ProductController@addcolor')->middleware('not.login');
+
+//Khuyến mãi
+Route::get('/admin/discount','Admin\DiscountController@getDiscount')->middleware('not.login');
+Route::get('/admin/discount/edit-discount/{id}','Admin\DiscountController@getEditDiscount')->middleware('not.login');
+Route::post('/admin/discount/edit-discount/{id}','Admin\DiscountController@postEditDiscount')->middleware('not.login');
+Route::get('/admin/discount/delete-discount/{id}','Admin\DiscountController@DeleteDiscount')->middleware('not.login');
+
+//Đăng ký nhận ưu đãi
+Route::get('/admin/subscribe','Admin\SubscribeController@getSubscribe')->middleware('not.login');
+// Route::get('/admin/subscribe/edit-subscribe/{id}','Admin\SubscribeController@getEditSubscribe')->middleware('not.login');
+Route::post('/admin/subscribe/edit-subscribe-doc/{id}','Admin\SubscribeController@postEditSubscribeDoc')->name('admin.doc')->middleware('not.login');
+Route::post('/admin/subscribe/edit-subscribe-chua-doc/{id}','Admin\SubscribeController@postEditSubscribeChuaDoc')->name('admin.chuadoc')->middleware('not.login');
+Route::get('/admin/subscribe/delete-subscribe/{id}','Admin\SubscribeController@DeleteSubscribe')->middleware('not.login');
+
+//Banner
+Route::get('/admin/banner','Admin\BannerController@getBanner')->middleware('not.login');
+Route::get('/admin/banner/create-banner','Admin\NewsController@getCreateBanner')->middleware('not.login');
+Route::post('/admin/banner/create-banner','Admin\BannerController@postCreateBanner')->middleware('not.login');
+Route::get('/admin/banner/edit-banner/{id}','Admin\BannerController@getEditBanner')->middleware('not.login');
+Route::post('/admin/banner/edit-banner/{id}','Admin\BannerController@postEditBanner')->middleware('not.login');
+Route::get('/admin/banner/delete-banner/{id}','Admin\BannerController@DeleteBanner')->middleware('not.login');
 
 
 //system permission
