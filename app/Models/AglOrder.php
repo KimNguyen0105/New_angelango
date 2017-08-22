@@ -11,7 +11,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
  * Class AglOrder
- * 
+ *
  * @property int $id
  * @property string $name
  * @property string $fullname
