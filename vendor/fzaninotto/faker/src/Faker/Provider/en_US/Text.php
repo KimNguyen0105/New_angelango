@@ -235,7 +235,11 @@ growing, and she was quite surprised to find that she remained the same
 size: to be sure, this generally happens when one eats cake, but Alice
 had got so much into the way of expecting nothing but out-of-the-way
 things to happen, that it seemed quite dull and stupid for life to go on
+<<<<<<< HEAD
 in the common_icon way.
+=======
+in the common way.
+>>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
 
 So she set to work, and very soon finished off the cake.
 

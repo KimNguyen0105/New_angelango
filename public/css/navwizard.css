@@ -1,0 +1,170 @@
+.nav-wizard > li {
+  float: left;
+}
+.nav-wizard > li > a {
+  position: relative;
+  background-color: #500833;
+    color: white;
+}
+.nav-wizard > li > a .badge {
+  margin-left: 3px;
+  color: #eeeeee;
+  background-color: #428bca;
+}
+.nav-wizard > li:not(:first-child) > a {
+  padding-left: 34px;
+}
+.nav-wizard > li:not(:first-child) > a:before {
+  width: 0px;
+  height: 0px;
+  border-top: 40px inset transparent;
+  border-bottom: 40px inset transparent;
+  border-left: 20px solid #ffffff;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+}
+.nav-wizard > li:not(:last-child) > a {
+  margin-right: 6px;
+}
+.nav-wizard > li:not(:last-child) > a:after {
+  width: 0px;
+  height: 80px;
+  border-top: 40px inset transparent;
+  border-bottom: 40px inset transparent;
+  border-left: 20px solid #500833;
+  position: absolute;
+  content: "";
+  top: 0;
+  right: -20px;
+  z-index: 2;
+}
+.nav-wizard > li:first-child > a {
+      width: 420px;
+    height: 80px;
+  /*border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;*/
+}
+.nav-wizard > li:last-child > a {
+  width: 420px;
+    height: 80px;
+ /* border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;*/
+}
+.nav-wizard > li:last-child > a:hover{
+  background: #360321;
+}
+.nav-wizard > li:last-child > a:active{
+  background: #360321;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+
+    background-color: #360321;
+}
+.nav-wizard > li.done:hover > a,
+.nav-wizard > li:hover > a {
+  background-color: #360321;
+}
+.nav-wizard > li.done:hover > a:before,
+.nav-wizard > li:hover > a:before {
+  border-right-color: #d5d5d5;
+}
+.nav-wizard > li.done:hover > a:after,
+.nav-wizard > li:hover > a:after {
+  border-left-color: #360321;
+}
+.nav-wizard > li.done > a {
+  background-color: #e2e2e2;
+}
+.nav-wizard > li.done > a:before {
+  border-right-color: #e2e2e2;
+}
+.nav-wizard > li.done > a:after {
+  border-left-color: #e2e2e2;
+}
+.nav-wizard > li.active > a,
+.nav-wizard > li.active > a:hover,
+.nav-wizard > li.active > a:focus {
+  color: #ffffff;
+  background-color: #360321;
+}
+.nav-wizard > li.active > a:after {
+  border-left-color: #360321;
+}
+.nav-wizard > li.active > a .badge {
+  color: #428bca;
+  background-color: #ffffff;
+}
+.nav-wizard > li.disabled > a {
+  color: #777777;
+}
+.nav-wizard > li.disabled > a:hover,
+.nav-wizard > li.disabled > a:focus {
+  color: #777777;
+  text-decoration: none;
+  background-color: #eeeeee;
+  cursor: default;
+}
+.nav-wizard > li.disabled > a:before {
+  border-right-color: #eeeeee;
+}
+.nav-wizard > li.disabled > a:after {
+  border-left-color: #eeeeee;
+}
+.nav-wizard.nav-justified > li {
+  float: none;
+}
+.nav-wizard.nav-justified > li > a {
+  padding: 10px 15px;
+}
+@media (max-width: 768px) {
+  .nav-wizard.nav-justified > li > a {
+    border-radius: 4px;
+    margin-right: 0;
+  }
+  .nav-wizard.nav-justified > li > a:before,
+  .nav-wizard.nav-justified > li > a:after {
+    border: none !important;
+  }
+}
+
+#shipping, #payment{
+  padding: 30px;
+    text-align: center;
+}
+/*.nav-wizard {
+      margin-top: -80px;
+    margin-left: 20%;
+}*/
+@media (max-width: 768px) and (min-width: 481px) {
+  .nav-wizard > li:first-child > a {
+    width: 300px;
+    }
+    .nav-wizard > li:last-child > a {
+    width: 300px;
+  }
+}
+@media (max-width: 410px) and (min-width: 320px){
+  .nav-wizard > li:first-child > a {
+    width: auto;
+    font-size: 10px;
+    }
+    .nav-wizard > li:last-child > a {
+    width: auto;
+    font-size: 10px;
+  }
+}
+@media (max-width: 480px) and (min-width: 411px){
+    .nav-wizard > li:first-child > a,  .nav-wizard > li:last-child > a {
+      width: 145px;
+    }
+  }
+@media (min-width: 1024px){
+  .nav-wizard > li:first-child > a {
+    width: 400px;
+    }
+    .nav-wizard > li:last-child > a {
+    width: 400px;
+  }
+}

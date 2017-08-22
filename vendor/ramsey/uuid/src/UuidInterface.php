@@ -18,7 +18,11 @@ use Ramsey\Uuid\Converter\NumberConverterInterface;
 use Ramsey\Uuid\Exception\UnsupportedOperationException;
 
 /**
+<<<<<<< HEAD
  * UuidInterface defines common_icon functionality for all universally unique
+=======
+ * UuidInterface defines common functionality for all universally unique
+>>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
  * identifiers (UUIDs)
  */
 interface UuidInterface extends \JsonSerializable, \Serializable

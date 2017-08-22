@@ -5,7 +5,11 @@ namespace Faker\Provider\en_UG;
 class Person extends \Faker\Provider\Person
 {
     /**
+<<<<<<< HEAD
      * It is very common_icon in Uganda for people to arrange their names as
+=======
+     * It is very common in Uganda for people to arrange their names as
+>>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      * lastname(surname) firstname
      */
     protected static $maleNameFormats = array(
@@ -16,7 +20,11 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
+<<<<<<< HEAD
      * It is very common_icon in Uganda for people to arrange their names as
+=======
+     * It is very common in Uganda for people to arrange their names as
+>>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      * lastname(surname) firstname
      */
     protected static $femaleNameFormats = array(

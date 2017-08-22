@@ -827,7 +827,11 @@ abstract class Swift_Transport_AbstractSmtpTest extends \SwiftMailerTestCase
 
      Addresses that do not appear in the message headers may appear in the
      RCPT commands to an SMTP server for a number of reasons.  The two
+<<<<<<< HEAD
      most common_icon involve the use of a mailing address as a "list exploder"
+=======
+     most common involve the use of a mailing address as a "list exploder"
+>>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      (a single address that resolves into multiple addresses) and the
      appearance of "blind copies".  Especially when more than one RCPT
      command is present, and in order to avoid defeating some of the

@@ -14,9 +14,38 @@ class DiscountController extends Controller
     //
     public function getDiscount()
     {
+        $date = date('Y/m/d');
         $discount = DB::table('agl_product_discount')->join('agl_product','agl_product_discount.product_id','=','agl_product.id')->select('agl_product_discount.id as discount_id','agl_product_discount.product_id as product_id','agl_product_discount.price_discount as price_discount','agl_product_discount.date as date','agl_product.*')->get();
+
+        $dem_tat_ca = count($discount);
+        $dem_het_han = count(DB::table('agl_product_discount')->where('date','<',$date)->get());
+        $dem_con_han = count(DB::table('agl_product_discount')->where('date','>',$date)->get());
         return view('admin.discount.home', [
-            'discount' => $discount
+            'discount' => $discount,'dem_tat_ca'=>$dem_tat_ca,'date'=>$date,'dem_het_han'=>$dem_het_han,'dem_con_han'=>$dem_con_han
+        ]);
+    }
+     public function hethan()
+    {
+         $date = date('Y/m/d');
+        $discount = DB::table('agl_product_discount')->where('date','<',$date)->join('agl_product','agl_product_discount.product_id','=','agl_product.id')->select('agl_product_discount.id as discount_id','agl_product_discount.product_id as product_id','agl_product_discount.price_discount as price_discount','agl_product_discount.date as date','agl_product.*')->get();
+      
+         $dem_tat_ca = count(DB::table('agl_product_discount')->get());
+        $dem_het_han = count(DB::table('agl_product_discount')->where('date','<',$date)->get());
+        $dem_con_han = count(DB::table('agl_product_discount')->where('date','>',$date)->get());
+        return view('admin.discount.home', [
+            'discount' => $discount,'dem_tat_ca'=>$dem_tat_ca,'date'=>$date,'dem_het_han'=>$dem_het_han,'dem_con_han'=>$dem_con_han
+        ]);
+    }
+     public function conhan()
+    {
+       $date = date('Y/m/d');
+        $discount = DB::table('agl_product_discount')->where('date','>',$date)->join('agl_product','agl_product_discount.product_id','=','agl_product.id')->select('agl_product_discount.id as discount_id','agl_product_discount.product_id as product_id','agl_product_discount.price_discount as price_discount','agl_product_discount.date as date','agl_product.*')->get();
+
+         $dem_tat_ca = count(DB::table('agl_product_discount')->get());
+        $dem_het_han = count(DB::table('agl_product_discount')->where('date','<',$date)->get());
+        $dem_con_han = count(DB::table('agl_product_discount')->where('date','>',$date)->get());
+        return view('admin.discount.home', [
+            'discount' => $discount,'dem_tat_ca'=>$dem_tat_ca,'date'=>$date,'dem_het_han'=>$dem_het_han,'dem_con_han'=>$dem_con_han
         ]);
     }
      public function getEditDiscount($id)

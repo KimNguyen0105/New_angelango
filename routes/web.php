@@ -11,9 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','Controller@getHome');
+Route::get('language/{locale}','Controller@SetLanguage');
+Route::get('/bo-suu-tap.html','Controller@getPageCollection');
+Route::get('/chi-tiet-bo-suu-tap-{id}.html','Controller@getPageCollectionDetail');
+Route::get('/san-pham.html','Controller@getPageProduct');
+Route::get('/chi-tiet-san-pham.html','Controller@getPageProductDetail');
+Route::get('/tin-tuc.html','Controller@getPageNews');
+Route::get('/chi-tiet-tin-tuc-{id}.html','Controller@getPageNewsDetail');
+Route::get('/gioi-thieu.html','Controller@getPageAbout');
+Route::get('/lien-he.html','Controller@getPageContact');
+Route::get('/gio-hang.html','Controller@getPagePaycart');
+Route::get('/thanh-toan.html','Controller@getPaymentOption');
+Route::get('/dang-nhap.html','Controller@getPageLogin');
+Route::get('/dang-ky.html','Controller@getPageSignup');
+Route::get('/thong-tin-ca-nhan.html','Controller@getPagePersonal');
+Route::get('/hop-thu.html','Controller@getPageChatbox');
+Route::get('/quan-ly-hoa-don.html','Controller@getPageOrderDetail');
+Route::get('/huong-dan-mua-hang.html','Controller@getPageShopGuide');
+
+
+
+
 //================== Admin routes ================================
 Route::get('/admin','Admin\AdminController@Home')->middleware('not.login');
 Route::get('/admin/log-in','Admin\UserController@getLogin');
@@ -137,6 +156,8 @@ Route::get('/admin/discount','Admin\DiscountController@getDiscount')->middleware
 Route::get('/admin/discount/edit-discount/{id}','Admin\DiscountController@getEditDiscount')->middleware('not.login');
 Route::post('/admin/discount/edit-discount/{id}','Admin\DiscountController@postEditDiscount')->middleware('not.login');
 Route::get('/admin/discount/delete-discount/{id}','Admin\DiscountController@DeleteDiscount')->middleware('not.login');
+Route::get('/admin/discount/het-han-khuyen-mai','Admin\DiscountController@hethan')->middleware('not.login');
+Route::get('/admin/discount/con-han-khuyen-mai','Admin\DiscountController@conhan')->middleware('not.login');
 
 //Đăng ký nhận ưu đãi
 Route::get('/admin/subscribe','Admin\SubscribeController@getSubscribe')->middleware('not.login');
