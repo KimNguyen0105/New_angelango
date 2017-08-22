@@ -28,7 +28,6 @@
                                     <th width="10%">Hình ảnh</th>
                                     <th width="10%">Tên sản phẩm</th>
                                     <th width="10%">Tên người hỏi</th>
-                                    <th width="15%">Email người hỏi</th>
                                     <th width="30%">Nội dung</th>
                                     <th width="15%">Action</th>
                                 </tr>
@@ -41,7 +40,6 @@
                                                  style="height:150px; width:100%"/></td>
                                         <td>{{$qa->title_vi}}</td>
                                         <td>{{$qa->name}}</td>
-                                        <td>{{$qa->email}}</td>
                                         <td>{{$qa->content}}</td>
                                         <td>
                                             {{--<a href="{{url('/admin/qa/edit-news')}}/{{$qa->id}}"--}}
