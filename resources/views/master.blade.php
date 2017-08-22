@@ -22,7 +22,7 @@
     <link href="{{asset('css/contactus.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/demo.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}"/>
-    <link href="{{asset('css/star-rating.css')}}" media="all" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('')}}css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/navwizard.css')}}" rel="stylesheet">
     <link href="{{asset('css/chatbox.css')}}" rel="stylesheet" type="text/css" media="all">
     <link href="{{asset('css/wizard_orderdetail.css')}}" rel="stylesheet">
@@ -62,7 +62,7 @@
 <!--Navbar script-->
 
 <!-- Swiper JS -->
-<script type="text/javascript" src="js/swiper.js"></script>
+<script type="text/javascript" src="{{URL::asset('')}}js/swiper.js"></script>
 <!-- Initialize Swiper -->
 <script>
     var swiper = new Swiper('.swiper-container', {
@@ -78,8 +78,9 @@
 </script>
 
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jquery.montage.min.js"></script>
+<script src="{{URL::asset('')}}js/jquery.js"></script>
+@yield('scripts')
+<script type="text/javascript" src="{{URL::asset('')}}js/jquery.montage.min.js"></script>
 <script type="text/javascript">
     $(function () {
         /*
@@ -136,7 +137,7 @@
 </script>
 <script src="{{asset('js/guide.js')}}"></script>
 <script src="{{asset('js/navbar_scrolling.js')}}"></script>
-<script src="{{asset('js/star-rating.js')}}" type="text/javascript"></script>
+
 <script src="{{asset('js/wizard_order.js')}}"></script>
 
 <!--animate-->
