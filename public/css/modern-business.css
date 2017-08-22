@@ -137,7 +137,7 @@ img.zoom-img:hover {
     }
 }
 /*end hover shine*/
-.img-logo >img {
+.img-logo >a>img {
     width: 4%;
     position: absolute;
     margin-left: -30px;

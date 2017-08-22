@@ -596,4 +596,5 @@
             $input.removeClass('rating-loading').addClass('rating-loading').rating();
         }
     });
+
 }));

@@ -8,7 +8,7 @@
             <div class="swiper-wrapper">
                 @foreach($slides as $slide)
                     <div class="item active swiper-slide">
-                        <div class="fill" style="background-image:url('images/{{$slide->avatar}}');">
+                        <div class="fill" style="background-image:url('images/slide/{{$slide->avatar}}');">
 
                         </div>
                     </div>
@@ -24,39 +24,46 @@
 
     </header>
     <div class="text-center news-title">
-        <h1>BỘ SƯU TẬP</h1>
+        <h1>{{trans('home.collection_r')}}</h1>
     </div>
     <!--Middle content 1-->
     @foreach($collections as $key => $collection)
         @if($loop->iteration%2!=0)
             <?php
             $hinh = explode(';',$collection->images);
-//            var_dump($hinh[3]);die()
             ?>
             <section class="top-collects font-txt">
                 <div class="container-fluid top-news-a">
                     <div class="col-lg-12">
                         <div class="col-md-6 all-pic-collect">
-                            <div class="col-md-12"><h2 class="collects-title">{{$collection->title_vi}}</h2></div>
+                            <div class="col-md-12"><h2 class="collects-title">
+                                    @if(Session::get('locale')=='vi'){{$collection->title_vi}}
+                                        @else {{$collection->title_en}}
+                                        @endif
+                                </h2></div>
                             <div class="col-md-12">
-                                <img class="img-responsive" src="{{URL::asset('images/colection')}}/{{$collection->avatar}}">
+                                <img class="img-responsive" src="{{URL::asset('images/collection')}}/{{$collection->avatar}}">
                             </div>
                         </div>
                         <div class="col-md-6 all-pic-collect-1">
                             <div class="col-md-12 pic-collect-top">
-                                <img class="img-responsive" src="{{URL::asset('images/colection')}}/{{array_shift($hinh)}}">
+                                <img class="img-responsive" src="{{URL::asset('images/collection')}}/{{array_shift($hinh)}}">
                             </div>
                             <div class="col-md-12">
                                 <div class="col-md-12 pic-collect-1">
-                                    <img class="img-responsive" src="{{URL::asset('images/colection')}}/{{array_shift($hinh)}}">
+                                    <img class="img-responsive" src="{{URL::asset('images/collection')}}/{{array_shift($hinh)}}">
                                 </div>
                                 <div class="col-md-8 pic-collect-2">
                                     <div class="col-md-8">
-                                        <img class="img-responsive" src="{{URL::asset('images/colection')}}/{{array_shift($hinh)}}">
+                                        <img class="img-responsive" src="{{URL::asset('images/collection')}}/{{array_shift($hinh)}}">
                                     </div>
 
                                     <div class="col-md-4 txt-pic-2">
-                                        <a href="{{asset('/')}}chi-tiet-bo-suu-tap-{{$collection->id}}.html">Chi tiết</a>
+                                        @if(Session::get('locale')=='vi')
+                                        <a href="{{asset('/')}}chi-tiet-bo-suu-tap-{{$collection->id}}-{{$collection->slug_vi}}.html">{{trans('home.detail')}}</a>
+                                    @else
+                                            <a href="{{asset('/')}}chi-tiet-bo-suu-tap-{{$collection->id}}-{{$collection->slug_en}}.html">{{trans('home.detail')}}</a>
+                                            @endif
                                     </div>
 
 
@@ -69,33 +76,36 @@
         @else
             <?php
             $hinh = explode(';',$collection->images);
-            //            var_dump($hinh[3]);die()
             ?>
             <section class="middle-collect font-txt">
                 <div class="container-fluid all-colls-title">
                     <div class="col-lg-12 all-pic-cont">
                         <div class="col-md-6">
                             <div class="col-md-12 collect-a">
-                                <img class="img-responsive" src="{{URL::asset('images/colection')}}/{{array_shift($hinh)}}">
+                                <img class="img-responsive" src="{{URL::asset('images/collection')}}/{{array_shift($hinh)}}">
                             </div>
                             <div class="col-md-12">
                                 <div class="col-md-12 collect-b">
-                                    <img class="img-responsive" src="{{URL::asset('images/colection')}}/{{array_shift($hinh)}}">
+                                    <img class="img-responsive" src="{{URL::asset('images/collection')}}/{{array_shift($hinh)}}">
                                 </div>
                                 <div class="col-md-8 collect-c">
                                     <div class="col-md-4 txt-pic-2">
-                                        <a href="{{asset('/')}}chi-tiet-bo-suu-tap-{{$collection->id}}.html">Chi tiết</a>
+                                        @if(Session::get('locale')=='vi')
+                                        <a href="{{asset('/')}}chi-tiet-bo-suu-tap-{{$collection->id}}-{{$collection->slug_vi}}.html">{{trans('home.detail')}}</a>
+                                    @else
+                                            <a href="{{asset('/')}}chi-tiet-bo-suu-tap-{{$collection->id}}-{{$collection->slug_en}}.html">{{trans('home.detail')}}</a>
+                                            @endif
                                     </div>
                                     <div class="col-md-8">
-                                        <img class="img-responsive" src="{{URL::asset('images/colection')}}/{{array_shift($hinh)}}">
+                                        <img class="img-responsive" src="{{URL::asset('images/collection')}}/{{array_shift($hinh)}}">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="col-md-12"><h2 class="collects-title-2">{{$collection->title_vi}}</h2></div>
+                            <div class="col-md-12"><h2 class="collects-title-2">@if(Session::get('locale')=='vi'){{$collection->title_vi}}@else {{$collection->title_en}}@endif</h2></div>
                             <div class="col-md-12">
-                                <img class="img-responsive collects-title-2" src="{{URL::asset('images/colection')}}/{{$collection->avatar}}">
+                                <img class="img-responsive collects-title-2" src="{{URL::asset('images/collection')}}/{{$collection->avatar}}">
                             </div>
                         </div>
                     </div>

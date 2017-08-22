@@ -8,7 +8,7 @@
             <div class="swiper-wrapper">
                 @foreach($slides as $slide)
                     <div class="item active swiper-slide">
-                        <div class="fill" style="background-image:url('images/{{$slide->avatar}}');">
+                        <div class="fill" style="background-image:url('images/slide/{{$slide->avatar}}');">
 
                         </div>
                     </div>
@@ -28,13 +28,17 @@
     <section class="middle-collect-detail font-txt">
         <div class="container-fluid all-detail-title">
             <div class="col-lg-12 txt-head-1">
-                <h1 class="text-center font-txt">{{$collections_detail->title_vi}}</h1>
+                <h1 class="text-center font-txt">@if(Session::get('locale')=='vi'){{$collections_detail->title_vi}}@else{{$collections_detail->title_en}}@endif</h1>
             </div>
             <div class="col-md-8 col-md-offset-2 txt-head-2">
 
             </div>
             <div class=" text-center col-md-12 txt-detail-a font-txt">
+                @if(Session::get('locale')=='vi')
                 <p>{!! $collections_detail->content_vi !!}</p>
+                    @else
+                    <p>{!! $collections_detail->content_en !!}</p>
+                    @endif
 
             </div>
         </div>

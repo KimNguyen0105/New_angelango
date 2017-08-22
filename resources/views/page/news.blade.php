@@ -2,7 +2,7 @@
 @section('main')
     <!--Header Banner-->
     <section class="banner-contactus">
-        <img style="width: 100%; height: auto;" src="images/news/News_banner.jpg" class="img-responsive">
+        <img style="width: 100%; height: auto;" src="{{URL::asset('')}}images/banner/{{$banner->image}}" class="img-responsive">
 
     </section>
 
@@ -26,41 +26,67 @@
             @foreach($news as $new)
                 @if($loop->iteration%2!=0)
                     <div class="row row-a">
+                        @if(Session::get('locale') == 'vi')
                         <div class="col-md-6 col-sm-6">
-                            <a href="{{asset('/chi-tiet-tin-tuc.html')}}">
-                                <img src="images/news/News1.jpg" class="img-responsive">
+                            <a href="{{asset('/')}}chi-tiet-tin-tuc-{{$new->id}}-{{$new->slug_vi}}.html">
+                                <img src="{{URL::asset('')}}images/news/{{$new->avatar}}" class="img-responsive">
                             </a>
                         </div>
                         <div class="col-md-6 col-sm-6 row-a1 text-center">
-                            <h2><a href="{{asset('/chi-tiet-tin-tuc.html')}}">CELINE DION – BIỂU TƯỢNG THỜI TRANG Ở TUỔI
-                                    49</a></h2>
-                            <p>Trước kia, Celine rất hiếm khi được nhắc về thời trang. Nhưng giờ đây, ở tuổi 49, nữ ca
-                                sĩ bắt đầu
-                                thử nghiệm với thời trang. Hình ảnh của Celine Dion đã xuất hiện trên khắp các mặt báo
-                                như ngày
-                                nay.</p>
-                            <a href="{{asset('/chi-tiet-tin-tuc.html')}}" class="read-more">XEM THÊM <span
+                            <h2><a href="{{asset('/')}}chi-tiet-tin-tuc-{{$new->id}}-{{$new->slug_vi}}.html">
+                                    {{$new->title_vi}}
+                                </a></h2>
+                            <p>{!! str_limit($new->content_vi,200) !!}</p>
+                            <a href="{{asset('/')}}chi-tiet-tin-tuc-{{$new->id}}-{{$new->slug_vi}}.html" class="read-more">{{trans('home.read_more')}} <span
                                         class="glyphicon glyphicon-play"
                                         style="font-size: 0.9em"></span></a>
                         </div>
+                            @else
+                            <div class="col-md-6 col-sm-6">
+                                <a href="{{asset('/')}}chi-tiet-tin-tuc-{{$new->id}}-{{$new->slug_en}}.html">
+                                    <img src="{{URL::asset('')}}images/news/{{$new->avatar}}" class="img-responsive">
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-sm-6 row-a1 text-center">
+                                <h2><a href="{{asset('/')}}chi-tiet-tin-tuc-{{$new->id}}-{{$new->slug_en}}.html">
+                                        {{$new->title_en}}
+                                    </a></h2>
+                                <p>{!! str_limit($new->content_en,200) !!}</p>
+                                <a href="{{asset('/')}}chi-tiet-tin-tuc-{{$new->id}}-{{$new->slug_en}}.html" class="read-more">{{trans('home.read_more')}} <span
+                                            class="glyphicon glyphicon-play"
+                                            style="font-size: 0.9em"></span></a>
+                            </div>
+                        @endif
                     </div>
                 @else
                     <div class="row row-a">
+                        @if(Session::get('locale')=='vi')
                         <div class="col-md-6 col-sm-6 row-a1 text-center">
-                            <h2><a href="{{asset('/chi-tiet-tin-tuc.html')}}">SẮC THU</a></h2>
-                            <p>Màu sắc là một trong nhiều yếu tố cấu thành nên thời trang. Biết được tông màu nào đang
-                                được ưa
-                                chuộng sẽ giúp phái đẹp bắt kịp xu hướng cũng như sành điệu hơn trong phong cách thường
-                                ngày.</p>
-                            <a href="{{asset('/chi-tiet-tin-tuc.html')}}" class="read-more">XEM THÊM <span
+                            <h2><a href="{{asset('/')}}chi-tiet-tin-tuc-{{$new->id}}-{{$new->slug_vi}}.html">{{$new->title_vi}}</a></h2>
+                            <p>{!! str_limit($new->content_vi,200) !!}</p>
+                            <a href="{{asset('/')}}chi-tiet-tin-tuc-{{$new->id}}-{{$new->slug_vi}}.html" class="read-more">{{trans('home.read_more')}} <span
                                         class="glyphicon glyphicon-play"
                                         style="font-size: 0.9em"></span></a>
                         </div>
                         <div class="col-md-6 col-sm-6">
-                            <a href="{{asset('/chi-tiet-tin-tuc.html')}}">
-                                <img src="images/news/News2.jpg" class="img-responsive">
+                            <a href="{{asset('/')}}chi-tiet-tin-tuc-{{$new->id}}-{{$new->slug_vi}}.html">
+                                <img src="{{URL::asset('')}}images/news/{{$new->avatar}}" class="img-responsive">
                             </a>
                         </div>
+                            @else
+                            <div class="col-md-6 col-sm-6 row-a1 text-center">
+                                <h2><a href="{{asset('/')}}chi-tiet-tin-tuc-{{$new->id}}-{{$new->slug_en}}.html">{{$new->title_en}}</a></h2>
+                                <p>{!! str_limit($new->content_en,200) !!}</p>
+                                <a href="{{asset('/')}}chi-tiet-tin-tuc-{{$new->id}}-{{$new->slug_en}}.html" class="read-more">{{trans('home.read_more')}} <span
+                                            class="glyphicon glyphicon-play"
+                                            style="font-size: 0.9em"></span></a>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <a href="{{asset('/')}}chi-tiet-tin-tuc-{{$new->id}}-{{$new->slug_en}}.html">
+                                    <img src="{{URL::asset('')}}images/news/{{$new->avatar}}" class="img-responsive">
+                                </a>
+                            </div>
+                        @endif
                     </div>
                 @endif
             @endforeach

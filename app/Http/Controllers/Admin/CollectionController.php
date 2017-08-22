@@ -14,14 +14,14 @@ class CollectionController extends Controller
     {
         try{
             $collections=AglCollection::where('status',1)->orderBy('updated_at','desc')->get();
-            foreach ($collections as $collection)
-            {
-                $image=explode(';',substr($collection->avatar, 0, -1));
-                if(count($image)!=0)
-                {
-                    $collection->avatar=$image[0];
-                }
-            }
+//            foreach ($collections as $collection)
+//            {
+//                $image=explode(';',substr($collection->avatar, 0, -1));
+//                if(count($image)!=0)
+//                {
+//                    $collection->avatar=$image[0];
+//                }
+//            }
             return view('admin.collection.home',['collections'=>$collections]);
         }
         catch (\Exception $e)
@@ -44,6 +44,14 @@ class CollectionController extends Controller
             $collection->slug_vi=str_slug($request->title_vi);
             $collection->slug_en=str_slug($request->title_en);
             $collection->status=1;
+            if($request->hasFile('file'))
+            {
+                $image = $request->file('file');
+                $filename  = 'collection_'.time() . '.' . $image->getClientOriginalExtension();
+                $path = public_path('images/collection/' . $filename);
+                Image::make($image->getRealPath())->resize(550, 600)->save($path);
+                $collection->avatar=$filename;
+            }
             if($request->hasFile('file-multi'))
             {
                 $images='';
@@ -57,7 +65,7 @@ class CollectionController extends Controller
                     $images.=$filename.';';
                 }
             }
-            $collection->avatar=$images;
+            $collection->images=$images;
             if($collection->save())
             {
                 return redirect('/admin/collection')->with('success', 'Thêm tin tức thành công');
@@ -102,9 +110,18 @@ class CollectionController extends Controller
             $collection->slug_vi=str_slug($request->title_vi);
             $collection->slug_en=str_slug($request->title_en);
             $collection->status=1;
-            $images=$collection->avatar;
+            if($request->hasFile('file'))
+            {
+                $image = $request->file('file');
+                $filename  = 'collection_'.time() . '.' . $image->getClientOriginalExtension();
+                $path = public_path('images/collection/' . $filename);
+                Image::make($image->getRealPath())->resize(550, 600)->save($path);
+                $collection->avatar=$filename;
+            }
+            $images=$collection->images;
             if($request->hasFile('file-multi'))
             {
+                $images='';
                 $file_ary = $request->file('file-multi');
                 $i=1;
                 foreach ($file_ary as $file) {
@@ -115,8 +132,7 @@ class CollectionController extends Controller
                     $images.=$filename.';';
                 }
             }
-
-            $collection->avatar=$images;
+            $collection->images=$images;
             if($collection->save())
             {
                 return redirect('/admin/collection')->with('success', 'Thêm tin tức thành công');
@@ -136,13 +152,17 @@ class CollectionController extends Controller
             $collection=AglCollection::find($id);
             if($collection)
             {
-                $images=explode(';',substr($collection->avatar, 0, -1));
+                $images=explode(';',substr($collection->images, 0, -1));
                 foreach ($images as $image)
                 {
                     if(file_exists("images/collection/".$image))
                     {
                         unlink("images/collection/".$image);
                     }
+                }
+                if(file_exists("images/collection/".$collection->avatar))
+                {
+                    unlink("images/collection/".$collection->avatar);
                 }
                 $collection->status=0;
                 if($collection->save())

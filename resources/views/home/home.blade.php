@@ -7,7 +7,7 @@
             <div class="swiper-wrapper">
                 @foreach($slides as $slide)
                     <div class="item active swiper-slide">
-                        <div class="fill" style="background-image:url('images/{{$slide->avatar}}');">
+                        <div class="fill" style="background-image:url('images/slide/{{$slide->avatar}}');">
 
                         </div>
                     </div>
@@ -28,20 +28,27 @@
     <section class="top-content font-txt">
         <div class="container">
             <!-- Marketing Icons Section -->
+
             <div class="col-lg-12">
                 <h2 class="page-header text-center wow fadeInDown animated" data-wow-delay=".3s" style="color: gray; ">
-                    Angela Ngo
+                    @if(Session::get('locale')=='vi'){{$abouts[0]->title_vi}}@else{{$abouts[0]->title_en}}@endif
+
                 </h2>
             </div>
             <div class="col-md-8 col-md-offset-2 text-center wow fadeInDown animated" data-wow-delay=".3s">
-                <h3>"Phong cách và chất lượng tạo nên sự khác biệt của thời trang"</h3>
+                @if(Session::get('locale')=='vi')
+                <h3>{!! $abouts[0]->content_vi !!}</h3>
+                    @else
+                    <h3>{!! $abouts[0]->content_en !!}</h3>
+                    @endif
             </div>
+
         </div>
         <!-- /.row -->
     </section>
     <div class="container">
         <div class="col-md-12 " style="text-align: -webkit-center;">
-            <img src="images/fashionstyle-pic.png" class="img-responsive img-setting wow zoomIn animated"
+            <img src="{{URL::asset('')}}images/about-us/{{$abouts[0]->images_other}}" class="img-responsive img-setting wow zoomIn animated"
                  data-wow-delay=".3s">
         </div>
     </div>
@@ -51,26 +58,37 @@
             <div class="">
                 <div class="col-lg-12 gray-row">
                     <div class="col-md-6 col-sm-6">
-                        <img src="images/design-pic.png" class="img-responsive img-news wow zoomIn animated"
+                        <img src="{{URL::asset('')}}images/about-us/{{$abouts[1]->images_other}}" class="img-responsive img-news wow zoomIn animated"
                              data-wow-delay=".3s" alt="">
                     </div>
+                    @if(Session::get('locale')=='vi')
                     <div class="col-md-6 col-sm-6 text-field wow fadeInDown animated" data-wow-delay=".3s">
                         <h1 style="color:#000">{{$abouts[1]->title_vi}}</h1>
                         <p>{!! $abouts[1]->content_vi !!}</p>
-                        <a href="{{asset('/gioi-thieu.html')}}" class="read-more">Xem thêm <span class="glyphicon glyphicon-play"
-                                                                     style="font-size: 0.9em"></span></a>
+                        <a href="{{asset('/gioi-thieu.html')}}" class="read-more">{{trans('home.read_more')}} <span
+                                    class="glyphicon glyphicon-play"
+                                    style="font-size: 0.9em"></span></a>
                     </div>
+                        @else
+                        <div class="col-md-6 col-sm-6 text-field wow fadeInDown animated" data-wow-delay=".3s">
+                            <h1 style="color:#000">{{$abouts[1]->title_en}}</h1>
+                            <p>{!! $abouts[1]->content_en !!}</p>
+                            <a href="{{asset('/gioi-thieu.html')}}" class="read-more">{{trans('home.read_more')}} <span
+                                        class="glyphicon glyphicon-play"
+                                        style="font-size: 0.9em"></span></a>
+                        </div>
+                        @endif
 
                 </div>
             </div>
             <div>
                 <div class="col-md-12 txt-right">
                     <div class="collect collect-e wow fadeInLeftBig animated" data-wow-delay=".3s">
-                        <h1>Bộ sưu tập</h1>
-                        <h3 class="font-collect">Sắc màu <br> và kiểu dáng ấn tượng </h3>
+                        <h1>{{trans('home.collection')}}</h1>
+                        <h3 class="font-collect">{{trans('home.coll_1')}}<br>{{trans('home.coll_2')}} </h3>
                     </div>
 
-                    <img src="images/project-pic.png"
+                    <img src="{{URL::asset('')}}images/collection/project-pic.png"
                          class="img-responsive pull-right img-coll wow fadeInRightBig animated"
                          data-wow-delay=".3s" alt="">
                 </div>
@@ -132,13 +150,13 @@
         <div class="container-fluid con-collect">
             <div class="col-md-12">
                 <img class="img-responsive pull-right wow fadeInLeftBig animated" data-wow-delay=".3s"
-                     src="images/collection.png">
+                     src="{{URL::asset('')}}images/collection/collection.png">
             </div>
 
             <div class="pull-right wow fadeInRightBig animated txt-collect" data-wow-delay=".2s"
                  style="margin-right: 1%">
-                <h3>Bộ sưu tập mới nhất</h3>
-                <p>Sắc màu và kiểu dáng ấn tượng</p>
+                <h3><a href="{{asset('/bo-suu-tap.html')}}">{{trans('home.coll_new')}}</a></h3>
+                <p>{{trans('home.coll_new_d')}}</p>
             </div>
         </div>
     </section>
@@ -148,14 +166,14 @@
         <div class="container-fluid con-studio">
 
             <div class="col-md-6 img-studio">
-                <img src="images/2AngelaN_gdggdgdction_Detail.png" class="img-responsive wow fadeInLeftBig animated"
+                <img src="{{URL::asset('')}}images/news/2AngelaN_gdggdgdction_Detail.png" class="img-responsive wow fadeInLeftBig animated"
                      data-wow-delay=".5s">
             </div>
             <div class="col-md-5 info-studio info-studio-e wow zoomIn animated" data-wow-delay=".3s">
-                <h2>Tin tức</h2>
+                <h1>Tin tức</h1>
                 <h2>Sắc màu và kiểu dáng ấn tượng</h2>
                 <p>Chuyên mục trang tin tức về các xu hướng thời trang nổi bật cùng Angela Ngo</p>
-                <a href="{{asset('/tin-tuc.html')}}">Xem thêm</a>
+                <a href="{{asset('/tin-tuc.html')}}">{{trans('home.read_more')}}</a>
             </div>
             <div class="col-md-6">
                 <h2>ĐĂNG KÝ ƯU ĐÃI</h2>
@@ -187,31 +205,15 @@
                             chọn”
                         </p>
 
-                        <p class="text-center azfoothills">Lauren Hutton</p>
+                        <p class="text-center azfoothills"></p>
                     </div>
                     <div class="col-md-5 col-md-offset-1 col-xs-11 col-xs-offset-1 edit-press-2">
                         <p>
                             “Tôi không làm ra thời trang, tôi chính là thời trang”
                         </p>
-                        <p class="text-center stylefiles elles">Coco Chanel</p>
+                        <p class="text-center stylefiles elles"></p>
                     </div>
                 </div>
-                <div class="row swiper-slide">
-                    <div class="col-md-5 col-md-offset-1 col-xs-11 col-xs-offset-1 edit-press-1">
-                        <p class="text-center ">
-                            “Thời trang là thứ mà các NTK đem lại cho bạn 4 lần mỗi năm. Và phong cách là thứ mà bạn lựa
-                            chọn”
-                        </p>
-                        <p class="text-center azfoothills">Lauren Hutton</p>
-                    </div>
-                    <div class="col-md-5 col-md-offset-1 col-xs-11 col-xs-offset-1 edit-press-2">
-                        <p class="text-center">
-                            “Tôi không làm ra thời trang, tôi chính là thời trang”
-                        </p>
-                        <p class="text-center stylefiles elles">Coco Chanel</p>
-                    </div>
-                </div>
-
             </div>
 
             <!-- Add Pagination -->
@@ -266,12 +268,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 edit-shopnews shop-contain">
-                    <img src="images/pic-shop-1.png" class="img-responsive pic1">
+                    <img src="{{URL::asset('')}}images/product/pic-shop-1.png" class="img-responsive pic1">
                     <a class="pull-right text-shopnews" href="{{asset('/san-pham.html')}}">SẢN PHẨM</a>
                 </div>
 
                 <div class="col-md-6 edit-shopnews shop-contain">
-                    <img src="images/pic-shop-2.png" class="img-responsive pic1">
+                    <img src="{{URL::asset('')}}images/news/pic-shop-2.png" class="img-responsive pic1">
                     <a class="pull-right text-shopnews" href="{{asset('/tin-tuc.html')}}">TIN TỨC</a>
                 </div>
             </div>

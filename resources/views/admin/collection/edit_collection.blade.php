@@ -12,15 +12,15 @@
                     <p>{{ $message }}</p>
                 </div>
             @endif
-            <form id="demo-form2" data-parsley-validate action="{{url('admin/collection/edit-collection')}}/{{$collection->id}}"
+            <form id="frCollection" data-parsley-validate action="{{url('admin/collection/edit-collection')}}/{{$collection->id}}"
                   method="post" class="form-horizontal form-label-left" enctype="multipart/form-data">
                 <div class="row" style="padding: 10px 30px; margin-bottom: 10px; border-bottom: 2px #9a9999 solid;">
                     <a href="{{url('admin/collection')}}" class="btn btn-primary" type="button">Cancel</a>
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" id="btnSave" class="btn btn-success">Save</button>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="nav-tabs-custom">
-                        <ul class="nav nav-tabs" style="margin-bottom: 20px;">
+                        <ul class="nav nav-tabs" id="tabCollection" style="margin-bottom: 20px;">
                             <li class="active"><a href="#tab_vi" data-toggle="tab" aria-expanded="true">Tiếng Việt</a></li>
                             <li class=""><a href="#tab_en" data-toggle="tab" aria-expanded="true">English</a></li>
                         </ul>
@@ -57,6 +57,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Hình ảnh(550 x 600)</label>
+                        <input id="file" accept="image/*" name="file" type="file" style="padding-bottom: 20px" onchange="readURL(this);">
+                        <img id="imgF" src="{{asset('images/collection')}}/{{$collection->avatar}}" class="img-responsive" style="height: 200px;">
+                    </div>
+                </div>
                 @if(count($images)>0)
                     <div class="col-md-12">
                         <h5>Hình ảnh</h5>
@@ -69,13 +76,26 @@
                 @endif
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label class="control-label">Hình ảnh(300 x 200)</label>
+                        <label class="control-label">Hình ảnh(240 x 300)</label>
                         <input id="file-multi" type="file" name="file-multi[]" class="file" multiple data-preview-file-type="text" >
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgF').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @endsection
 @section('scripts')
     <script src="{{URL::asset('')}}ckeditor/ckeditor.js"></script>
@@ -87,6 +107,42 @@
                 filebrowserImageBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html?type=News',
                 filebrowserUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=News',
                 filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=News'
+            });
+        });
+        jQuery(document).ready(function() {
+            jQuery('#frCollection').validate({
+                ignore: ".ignore",
+                errorClass: "state-error",
+                validClass: "state-success",
+                errorElement: "em",
+                messages: {
+                    title_vi: {
+                        required: 'Tiêu đề không được trống.'
+                    },
+                    title_en: {
+                        required: 'Title không được trống.'
+                    },
+                    content_vi: {
+                        required: 'Nội dung vi không được trống.'
+                    },
+                    content_en: {
+                        required: 'Nội dung vi không được trống.'
+                    },
+                    file: {
+                        required: 'Hình ảnh không được trống.'
+                    }
+                },
+                invalidHandler: function(e, validator){
+                    if(validator.errorList.length)
+                        $('#tabCollection a[href="#' + jQuery(validator.errorList[0].element).closest(".tab-pane").attr('id') + '"]').tab('show')
+                }
+            });
+
+            jQuery('#btnSave').click(function(evt) {
+                evt.preventDefault();
+
+                jQuery('#frCollection').submit()
+
             });
         });
     </script>

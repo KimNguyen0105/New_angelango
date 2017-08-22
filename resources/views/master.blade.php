@@ -22,7 +22,7 @@
     <link href="{{asset('css/contactus.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/demo.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}"/>
-    <link href="{{asset('css/star-rating.css')}}" media="all" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('')}}css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
     <link href="{{asset('css/navwizard.css')}}" rel="stylesheet">
     <link href="{{asset('css/chatbox.css')}}" rel="stylesheet" type="text/css" media="all">
     <link href="{{asset('css/wizard_orderdetail.css')}}" rel="stylesheet">
@@ -63,7 +63,7 @@
 <!--Navbar script-->
 
 <!-- Swiper JS -->
-<script type="text/javascript" src="js/swiper.js"></script>
+<script type="text/javascript" src="{{URL::asset('')}}js/swiper.js"></script>
 <!-- Initialize Swiper -->
 <script>
     var swiper = new Swiper('.swiper-container', {
@@ -96,6 +96,9 @@
 <script type="text/javascript" src="js/jquery.montage.min.js"></script>
 <script type="text/javascript">
     $(function () {
+        /*
+         * just for this demo:
+         */
         $('#showcode').toggle(
             function () {
                 $(this).addClass('up').removeClass('down').next().slideDown();
@@ -175,7 +178,8 @@
     });
 </script>
 
-
+<!-- Bootstrap Core JavaScript -->
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
 
 
 

@@ -1,0 +1,64 @@
+.div-order{
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px #eee solid;
+    background-color: #fff;
+}
+.div-order img{
+    width:50%;
+}
+.div-request{
+    border: 1px #eee solid;
+    padding: 20px;
+}
+.div-account{
+    text-align: left;
+    float: left;
+    border: 1px #eee solid;
+    padding: 10px;
+    border-radius: 5px;
+    background: #fff;
+    margin-bottom: 30px;
+}
+.div-user{
+    text-align: right;
+    float: right;
+    border: 1px #1999ce solid;
+    padding: 10px;
+    border-radius: 5px;
+    background: #1999ce;
+    margin-bottom: 30px;
+    color: #fff;
+}
+.div-message{
+    text-align: right;
+    float: right;
+    padding: 10px;
+    background: #fff;
+    border: 1px #eee solid;
+}
+.div-message textarea{
+    resize: none;
+    margin-bottom: 20px;
+}
+.div-status-order{
+    padding: 15px;
+    background: #fff;
+    border: 1px #eee solid;
+}
+.request .nav-tabs>li{
+    display: inline;
+    float: none;
+}
+.request .nav-tabs {
+     border-bottom: 0px;
+    border: 1px #eee solid;
+}
+.request .nav-tabs>li>a{
+    border-bottom: 1px #eee solid;
+    margin-right: 0px;
+}
+.request .nav-tabs>li.active>a, .request .nav-tabs>li.active>a:focus, .request .nav-tabs>li.active>a:hover {
+    background-color: #ddd;
+    border-radius: 0px;
+}

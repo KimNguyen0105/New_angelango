@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\HbbLanguage;
-use App\Models\HbbMenu;
-use App\Models\HbbMenuTranslation;
-use App\Models\HbbSystemConfig;
+use App\Models\AglSystemConfig;
+use App\Models\AglOrderStatus;
 use Carbon\Carbon;
-use DB;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\Session;
+use Image;
+use App\Models\AglSlide;
+use App\Models\AglStyleLife;
+use App\Models\AglTopShopNews;
+use App\Models\AglMenu;
 
 class AdminController extends Controller
 {
@@ -21,170 +21,289 @@ class AdminController extends Controller
     {
         return view('admin.home');
     }
-
-    public function getSystemConfig()
+    public function getConfig()
     {
-        $systems = HbbSystemConfig::all();
-        return view('admin.systemconfig', ['systems' => $systems]);
+        $config=AglSystemConfig::first();
+        return view('admin.config.home',['config'=>$config]);
     }
-
-    public function updateSystemConfig(Request $request)
+    public function postConfig(Request $request)
     {
+        try{
+            $config=AglSystemConfig::first();
+            $config->address_vi=$request->address_vi;
+            $config->address_en=$request->address_en;
+            $config->google_map=$request->google_map;
+            $config->hotline=$request->hotline;
+            $config->phone_number=$request->phone_number;
 
-        $data = $request->all();
-        HbbSystemConfig::find(1)->update($data);
-        return redirect('/admin/system-config')->with('success', 'Updated successfully');
-    }
+            $config->facebook_link=$request->facebook_link;
+            $config->twitter_link=$request->twitter_link;
+            $config->instagram_link=$request->instagram_link;
 
-    public function getLanguage()
-    {
-        $language = HbbLanguage::get();
-
-        return view('admin.language', ['language' => $language]);
-    }
-
-    public function getCreateNewLanguage()
-    {
-        return view('admin.newlanguage');
-    }
-
-    public function postCreateNewLanguage(Request $r)
-    {
-        $lang = new HbbLanguage();
-        $lang->language = $r->get('language');
-        $lang->created_at = Carbon::now();
-        $lang->updated_at = Carbon::now();
-        $lang->save();
-        $menu = HbbMenu::get();
-        foreach ($menu as $m) {
-            $m_t = new HbbMenuTranslation();
-            $m_t->menu_id = $m->id;
-            $m_t->language_id = $lang->id;
-            $m_t->menu_name = '';
-            $m_t->slug = '';
-            $m_t->created_at = Carbon::now();
-            $m_t->update_at = Carbon::now();
-            $m_t->save();
+            $config->seo_title=$request->seo_title;
+            $config->seo_keyword=$request->seo_keyword;
+            $config->seo_author=$request->seo_author;
+            $config->seo_description=$request->seo_description;
+            $config->google_analytic=$request->google_analytic;
+            if($request->hasFile('file'))
+            {
+                if(file_exists("images/config/".$config->logo))
+                {
+                    unlink("images/config/".$config->logo);
+                }
+                $image = $request->file('file');
+                $filename  = 'logo_'.time() . '.' . $image->getClientOriginalExtension();
+                $path = public_path('images/config/' . $filename);
+                Image::make($image->getRealPath())->resize(100, 120)->save($path);
+                $config->logo=$filename;
+            }
+            if($config->save())
+            {
+                return redirect('/admin/config')->with('success','Cập nhật thông tin thành công');
+            }
+            else{
+                return redirect('/admin/config')->with('failed','Cập nhật thông tin thất bại');
+            }
         }
-        return redirect('/admin/system-language')->with('success', 'Created successfully');
-    }
-
-    public function getEditLanguage($id)
-    {
-        $lang = HbbLanguage::find($id);
-        return view('admin.updatelanguage', ['lang' => $lang]);
-    }
-
-    public function postEditLanguage(Request $r, $id)
-    {
-        HbbLanguage::find($id)->update([
-            'language' => $r->get('language'),
-            'updated_at' => Carbon::now()
-        ]);
-
-        return redirect('/admin/system-language')->with('success', 'Updated successfully');
-    }
-
-    public function getDeleteLanguage($id)
-    {
-        return view('admin.deletelanguage', ['id' => $id]);
-    }
-
-    public function postDeleteLanguage($id)
-    {
-        if ($id != 1) {
-            HbbMenuTranslation::where('language_id', $id)->delete();
-            HbbLanguage::where('id', $id)->delete();
-            return redirect('/admin/system-language');
-        }
-
-
-    }
-
-    public function getMenu($id)
-    {
-        if ($id != null) {
-            $language = HbbLanguage::get();
-            $menu = DB::table('hbb_menu')->join('hbb_menu_translation', 'hbb_menu.id', '=', 'hbb_menu_translation.menu_id')
-                ->where('hbb_menu.status', 1)
-                ->where('hbb_menu_translation.language_id', $id)
-                ->orderBy('hbb_menu.update_at', 'desc')
-                ->select('hbb_menu.*', 'hbb_menu_translation.menu_name', 'hbb_menu_translation.slug')
-                ->get();
-            return view('admin.menu', ['menu' => $menu, 'language' => $language]);
+        catch (\Exception $e)
+        {
+            dd($e);
+            return redirect('/admin/config');
         }
     }
-
-    public function getCreateNewMenu()
+    public function getSlide()
     {
-        $language = HbbLanguage::get();
-        return view('admin.createmenu', ['language' => $language]);
+        $slide=AglSlide::orderBy('updated_at','desc')->get();
+        return view('admin.home.slide',['slides'=>$slide]);
     }
-
-    public function postCreateNewMenu(Request $request)
+    public function getSlideByID($id)
     {
-
-        $language = HbbLanguage::get();
-        $menu = new HbbMenu();
-        $menu->parrent_id = 0;
-        $menu->created_at = Carbon::now();
-        $menu->update_at = Carbon::now();
-        $menu->status = 1;
-        $menu->sort_order = 2;
-        $menu->save();
-        foreach ($language as $lang) {
-            DB::table('hbb_menu_translation')->insert(
-                [
-                    'language_id' => $lang->id,
-                    'menu_id' => $menu->id,
-                    'menu_name' => $request->get('menu_name' . $lang->id),
-                    'slug' => str_slug($request->get('menu_name' . $lang->id)),
-                    'created_at' => Carbon::now(),
-                    'update_at' => Carbon::now()
-                ]
-            );
+        try{
+            if($id==0)
+            {
+                return view('admin.home.slide-detail');
+            }
+            else{
+                $slide=AglSlide::find($id);
+                if($slide)
+                {
+                    return view('admin.home.slide-detail-edit',['slide'=>$slide]);
+                }
+                else{
+                    return redirect('admin/slide');
+                }
+            }
         }
-        return redirect('/admin/1-menu-management')->with('success', 'Created successfully');
-    }
-
-    public function getDeleteMenu($id)
-    {
-        return view('admin.deletemenu', ['id' => $id]);
-    }
-
-    public function postDeleteMenu($id)
-    {
-        HbbMenuTranslation::where('menu_id', $id)->delete();
-        HbbMenu::where('id', $id)->delete();
-        return redirect('/admin/1-menu-management')->with('success', 'Delete successfully');
-    }
-
-    public function getEditMenu($id)
-    {
-        $language = HbbLanguage::get();
-        $menu = DB::table('hbb_menu')->join('hbb_menu_translation', 'hbb_menu.id', '=', 'hbb_menu_translation.menu_id')
-            ->where('hbb_menu.id', $id)
-            ->orderBy('hbb_menu.update_at', 'desc')
-            ->select('hbb_menu.*', 'hbb_menu_translation.menu_name', 'hbb_menu_translation.slug', 'hbb_menu_translation.language_id')
-            ->get();
-        return view('admin.editmenu', ['menu' => $menu, 'id' => $id, 'language' => $language]);
-    }
-
-    public function postEditMenu(Request $request, $id)
-    {
-        $language = HbbLanguage::get();
-        foreach ($language as $lang) {
-
-            DB::table('hbb_menu_translation')->where('menu_id', $id)
-                ->where('language_id', $lang->id)
-                ->update(
-                    [
-                        'menu_name' => $request->get('menu_name' . $lang->id),
-                        'slug' => str_slug($request->get('menu_name' . $lang->id)),
-                        'update_at' => Carbon::now()
-                    ]
-                );
+        catch (\Exception $e)
+        {
+            return redirect('admin/slide')->with('failed','Lấy thông tin slide thất bại');
         }
-        return redirect('/admin/1-menu-management')->with('success', 'Update successfully');
+
+    }
+    public function postSlide($id, Request $request)
+    {
+        try{
+            $show=0;
+            if($request->is_show)
+            {
+                $show=1;
+            }
+            if($id==0)
+            {
+                $slide=new AglSlide();
+                $slide->title_vi=$request->title_vi;
+                $slide->title_en=$request->title_en;
+                $slide->link=$request->link;
+                $slide->is_show=$show;
+                $slide->sort_order=$request->sort_order;
+                if($request->hasFile('file'))
+                {
+                    $image = $request->file('file');
+                    $filename  = 'slide_'.time() . '.' . $image->getClientOriginalExtension();
+                    $path = public_path('images/slide/' . $filename);
+                    Image::make($image->getRealPath())->resize(1700, 700)->save($path);
+                    $slide->avatar=$filename;
+                }
+            }
+            else{
+                $slide=AglSlide::find($id);
+                $slide->title_vi=$request->title_vi;
+                $slide->title_en=$request->title_en;
+                $slide->link=$request->link;
+                $slide->is_show=$show;
+                $slide->sort_order=$request->sort_order;
+                if($request->hasFile('file'))
+                {
+                    if(file_exists("images/slide/".$slide->avatar))
+                    {
+                        unlink("images/slide/".$slide->avatar);
+                    }
+                    $image = $request->file('file');
+                    $filename  = 'slide_'.time() . '.' . $image->getClientOriginalExtension();
+                    $path = public_path('images/slide/' . $filename);
+                    Image::make($image->getRealPath())->resize(1700, 700)->save($path);
+                    $slide->avatar=$filename;
+                }
+            }
+            $slide->save();
+            return redirect('admin/slide')->with('success','Thêm slide thành công');
+        }
+        catch (\Exception $e)
+        {
+            return redirect('admin/slide')->with('failed','Thêm slide thất bại');
+        }
+    }
+    public function DeleteSlide($id)
+    {
+        try{
+            $slide=AglSlide::find($id);
+            if($slide)
+            {
+                if(file_exists("images/slide/".$slide->avatar))
+                {
+                    unlink("images/slide/".$slide->avatar);
+                }
+                AglSlide::where('id',$id)->delete();
+                return redirect('admin/slide')->with('success','Xóa slide thành công');
+            }
+        }
+        catch (\Exception $e)
+        {
+            return redirect('admin/slide')->with('failed','Xóa slide thất bại');
+        }
+    }
+    public function getStyleLife()
+    {
+        $style=AglStyleLife::orderBy('updated_at','desc')->get();
+        return view('admin.home.style-life',['styles'=>$style]);
+    }
+    public function getStyleLifeByID($id)
+    {
+        try{
+            if($id==0)
+            {
+                return view('admin.home.style-life-detail');
+            }
+            else{
+                $style=AglStyleLife::find($id);
+                if($style)
+                {
+                    return view('admin.home.style-life-detail-edit',['style'=>$style]);
+                }
+                else{
+                    return redirect('admin/style-life');
+                }
+            }
+        }
+        catch (\Exception $e)
+        {
+            return redirect('admin/style-life')->with('failed','Lấy thông tin thời trang và cuộc sống thất bại');
+        }
+
+    }
+    public function postStyleLife($id, Request $request)
+    {
+        try{
+            if($id==0)
+            {
+                $style=new AglStyleLife();
+                $style->content_vi=$request->content_vi;
+                $style->content_en=$request->content_en;
+            }
+            else{
+                $style=AglStyleLife::find($id);
+                $style->content_vi=$request->content_vi;
+                $style->content_en=$request->content_en;
+            }
+            $style->save();
+            return redirect('admin/style-life')->with('success','Thêm thành công');
+        }
+        catch (\Exception $e)
+        {
+            return redirect('admin/style-life')->with('failed','Thêm thất bại');
+        }
+    }
+    public function DeleteStyleLife($id)
+    {
+        try{
+            AglStyleLife::where('id',$id)->delete();
+            return redirect('admin/style-life')->with('success','Xóa thành công');
+        }
+        catch (\Exception $e)
+        {
+            return redirect('admin/slide')->with('failed','Xóa thất bại');
+        }
+    }
+
+
+    public function getShopNews()
+    {
+        $shop=AglTopShopNews::get();
+        return view('admin.home.shop-news',['shops'=>$shop]);
+    }
+    public function getShopNewsByID($id)
+    {
+        try{
+            $shop=AglTopShopNews::find($id);
+            if($shop)
+            {
+                return view('admin.home.shop-news-detail-edit',['shop'=>$shop]);
+            }
+            else{
+                return redirect('admin/shop-news');
+            }
+        }
+        catch (\Exception $e)
+        {
+            return redirect('admin/shop-news')->with('failed','Lấy thông tin thất bại');
+        }
+
+    }
+    public function postShopNews($id, Request $request)
+    {
+        try{
+            $shop=AglTopShopNews::find($id);
+            $shop->title_vi=$request->title_vi;
+            $shop->title_en=$request->title_en;
+            if($request->hasFile('file'))
+            {
+                if(file_exists("images/home/".$shop->avatar))
+                {
+                    unlink("images/home/".$shop->avatar);
+                }
+                $image = $request->file('file');
+                $filename  = 'home_'.time() . '.' . $image->getClientOriginalExtension();
+                $path = public_path('images/home/' . $filename);
+                Image::make($image->getRealPath())->resize(1700, 700)->save($path);
+                $shop->avatar=$filename;
+            }
+            $shop->save();
+            return redirect('admin/shop-news')->with('success','Cập nhật thành công');
+        }
+        catch (\Exception $e)
+        {
+            return redirect('admin/shop-news')->with('failed','Cập nhật thất bại');
+        }
+    }
+    public function getMenu()
+    {
+        $menu=AglMenu::get();
+        return view('admin.menu.home',['menus'=>$menu]);
+    }
+    public function postMenu(Request $request)
+    {
+        try{
+            $id=$request->id;
+            $shop=AglMenu::find($id);
+            $shop->title_vi=$request->title_vi;
+            $shop->title_en=$request->title_en;
+            $shop->sort_order=$request->sort_order;
+            $shop->save();
+            return redirect('admin/menu')->with('success','Cập nhật thành công');
+        }
+        catch (\Exception $e)
+        {
+            return redirect('admin/menu')->with('failed','Cập nhật thất bại');
+        }
     }
 }
