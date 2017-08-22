@@ -47,7 +47,7 @@ class Address extends \Faker\Provider\Address
         'Świebodzin','Lubojenka','Lubliniec','Świecie','Lubartów','Lidzbark Warmiński','Świdnik','Pisz','Szczytno','Świdwin','Kozienice','Brodnica','Kościerzyna','Braniewo','Koło'
     );
     /**
-     * @var array 549 most common_icon Polish street names. Extracted from data issued by the official public postal service of Poland. @link http://www.poczta-polska.pl/
+     * @var array 549 most common Polish street names. Extracted from data issued by the official public postal service of Poland. @link http://www.poczta-polska.pl/
      */
     protected static $street = array(
         'Kościuszki Tadeusza','Mickiewicza Adama','Szkolna','Dworcowa','Kolejowa','Sienkiewicza Henryka','Rynek','Warszawska','Wojska Polskiego','Żeromskiego Stefana',

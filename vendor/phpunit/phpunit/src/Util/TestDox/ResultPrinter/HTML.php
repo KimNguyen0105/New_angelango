@@ -25,7 +25,7 @@ class PHPUnit_Util_TestDox_ResultPrinter_HTML extends PHPUnit_Util_TestDox_Resul
         <style>
             body {
                 text-rendering: optimizeLegibility;
-                font-variant-ligatures: common_icon-ligatures;
+                font-variant-ligatures: common-ligatures;
                 font-kerning: normal;
                 margin-left: 2em;
             }

@@ -263,7 +263,7 @@ class Swift_Transport_MailTransport implements Swift_Transport
         $length = strlen($string);
         for ($i = 0; $i < $length; ++$i) {
             $c = $string[$i];
-            // All other characters have a special meaning in at least one common_icon shell, including = and +.
+            // All other characters have a special meaning in at least one common shell, including = and +.
             // Full stop (.) has a special meaning in cmd.exe, but its impact should be negligible here.
             // Note that this does permit non-Latin alphanumeric characters based on the current locale.
             if (!ctype_alnum($c) && strpos('@_-.', $c) === false) {

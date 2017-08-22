@@ -26,7 +26,7 @@ class Person extends \Faker\Provider\Person
 
     /**
      * This list is more or less the same as in \Faker\Provider\fr_FR\Person.php
-     * Some common_icon names were added and other removed.
+     * Some common names were added and other removed.
      */
     protected static $firstNameMale = array(
         'Adrien', 'Aimé', 'Alain', 'Albert', 'Alexandre', 'Alfred', 'Alphonse', 'Alysson', 'André', 'Anthony', 'Antoine', 'Arthur', 'Auguste',
@@ -52,7 +52,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * These last names come from this list of most common_icon family names in Québec (1 to 130)
+     * These last names come from this list of most common family names in Québec (1 to 130)
      * http://fr.wikipedia.org/wiki/Liste_des_noms_de_famille_les_plus_courants_au_Québec
      */
     protected static $lastName = array(

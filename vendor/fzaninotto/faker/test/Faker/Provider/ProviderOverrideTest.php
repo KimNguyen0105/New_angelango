@@ -13,7 +13,7 @@ use Faker;
  * @package Faker\Test\Provider
  *
  * This class tests a large portion of all locale specific providers. It does not test the entire stack, because each
- * locale specific provider (can) has specific implementations. The goal of this test is to test the common_icon denominator
+ * locale specific provider (can) has specific implementations. The goal of this test is to test the common denominator
  * and to try to catch possible invalid multi-byte sequences.
  */
 class ProviderOverrideTest extends \PHPUnit_Framework_TestCase

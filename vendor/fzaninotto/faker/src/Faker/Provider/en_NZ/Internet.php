@@ -5,7 +5,7 @@ namespace Faker\Provider\en_NZ;
 class Internet extends \Faker\Provider\Internet
 {
     /**
-     * An array of common_icon en_NZ (New Zeland) TLD's
+     * An array of common en_NZ (New Zeland) TLD's
      * @var array
      */
     protected static $tld = array(

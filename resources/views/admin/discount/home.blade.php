@@ -19,7 +19,46 @@
                         </div>
                     @endif
                 <div class="row x_title">
-                    <div class="col-md-12">
+                    <div class="col-sm-2 mail_list_column">
+                        <button id="compose" class="btn btn-sm btn-success btn-block" type="button">Khuyến mãi</button>
+                        <a href="{{url('/admin/discount')}}">
+                          <div class="mail_list" style="padding: 7px">
+                            <div class="left">
+                              <i class="fa fa-circle"></i>
+                            </div>
+                            <div class="right">
+                              <h3>Tất cả<small>{{$dem_tat_ca}}</small></h3>
+                             
+                            </div>
+                          </div>
+                        </a>
+
+                        <a href="{{url('/admin/discount/con-han-khuyen-mai')}}">
+                          <div class="mail_list" style="padding: 7px">
+                            <div class="left">
+                              <i class="fa fa-circle"></i>
+                            </div>
+                            <div class="right">
+                              <h3>Còn hạn<small>@if(isset($dem_con_han)){{$dem_con_han}}@else{{0}}@endif</small></h3>
+                             
+                            </div>
+                          </div>
+                        </a>
+
+                        <a href="{{url('/admin/discount/het-han-khuyen-mai')}}">
+                          <div class="mail_list" style="padding: 7px">
+                            <div class="left">
+                              <i class="fa fa-circle"></i>
+                            </div>
+                            <div class="right">
+                              <h3>Hết hạn<small>@if(isset($dem_het_han)){{$dem_het_han}}@else{{0}}@endif</small></h3>
+                             
+                            </div>
+                          </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-10">
                         <table class="table table-bordered table-responsive projecttable">
                             <thead>
                             <tr>
@@ -30,7 +69,8 @@
                                 <th width="15%">Hạn khuyến mãi</th>
                                 <th width="15%">Giá khuyến mãi</th>
                                 <th width="15%">Lượt xem</th>
-                                <th width="15%">Dánh giá</th>
+                                <th width="15%">Đánh giá</th>
+                                
                                 <th width="15%">Action</th>
                             </tr>
                             </thead>
@@ -38,6 +78,7 @@
                             @foreach($discount as $item)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
+                                   
                                     <td><img src="{{asset('/images/product')}}/{{$item->avatar}}"
                                              style="height:100px;"/></td>
                                     <td>{{$item->title_vi}}</td>
@@ -46,7 +87,7 @@
                                      }}</td>
                                     <td>{{number_format($item->price_discount,0,",",".")." VNĐ"}}</td>
                                     <td>{{$item->view}}</td>
-                                    <td> <input value="{{$item->rating}}" disabled="true" type="number" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs"></td>
+                                    <td>{{$item->rating}}</td>
                                     <td>
                                         <a href="{{url('/admin/discount/edit-discount')}}/{{$item->discount_id}}"
                                            class="btn btn-xs btn-primary editlink"><span
@@ -64,7 +105,7 @@
                             <tfoot></tfoot>
                         </table>
                     </div>
-
+                    
                     <div class="clearfix"></div>
                 </div>
             </div>

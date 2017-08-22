@@ -14,7 +14,7 @@ namespace Hamcrest;
  * which will ensure that the Matcher API can grow to support
  * new features and remain compatible with all Matcher implementations.
  * <p/>
- * For easy access to common_icon Matcher implementations, use the static factory
+ * For easy access to common Matcher implementations, use the static factory
  * methods in {@link Hamcrest\CoreMatchers}.
  *
  * @see Hamcrest\CoreMatchers

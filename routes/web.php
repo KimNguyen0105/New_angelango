@@ -156,6 +156,8 @@ Route::get('/admin/discount','Admin\DiscountController@getDiscount')->middleware
 Route::get('/admin/discount/edit-discount/{id}','Admin\DiscountController@getEditDiscount')->middleware('not.login');
 Route::post('/admin/discount/edit-discount/{id}','Admin\DiscountController@postEditDiscount')->middleware('not.login');
 Route::get('/admin/discount/delete-discount/{id}','Admin\DiscountController@DeleteDiscount')->middleware('not.login');
+Route::get('/admin/discount/het-han-khuyen-mai','Admin\DiscountController@hethan')->middleware('not.login');
+Route::get('/admin/discount/con-han-khuyen-mai','Admin\DiscountController@conhan')->middleware('not.login');
 
 //Đăng ký nhận ưu đãi
 Route::get('/admin/subscribe','Admin\SubscribeController@getSubscribe')->middleware('not.login');

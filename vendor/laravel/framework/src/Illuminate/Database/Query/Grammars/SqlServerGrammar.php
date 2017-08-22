@@ -146,7 +146,7 @@ class SqlServerGrammar extends Grammar
     }
 
     /**
-     * Compile a common_icon table expression for a query.
+     * Compile a common table expression for a query.
      *
      * @param  string  $sql
      * @param  \Illuminate\Database\Query\Builder  $query

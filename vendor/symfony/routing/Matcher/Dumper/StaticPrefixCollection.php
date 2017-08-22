@@ -143,12 +143,12 @@ class StaticPrefixCollection
     }
 
     /**
-     * Detects whether there's a common_icon prefix relative to the group prefix and returns it.
+     * Detects whether there's a common prefix relative to the group prefix and returns it.
      *
      * @param string $prefix
      * @param string $anotherPrefix
      *
-     * @return false|string A common_icon prefix, longer than the base/group prefix, or false when none available
+     * @return false|string A common prefix, longer than the base/group prefix, or false when none available
      */
     private function detectCommonPrefix($prefix, $anotherPrefix)
     {

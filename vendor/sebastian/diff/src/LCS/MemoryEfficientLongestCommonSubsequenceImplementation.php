@@ -11,12 +11,12 @@
 namespace SebastianBergmann\Diff\LCS;
 
 /**
- * Memory-efficient implementation of longest common_icon subsequence calculation.
+ * Memory-efficient implementation of longest common subsequence calculation.
  */
 class MemoryEfficientImplementation implements LongestCommonSubsequence
 {
     /**
-     * Calculates the longest common_icon subsequence of two arrays.
+     * Calculates the longest common subsequence of two arrays.
      *
      * @param array $from
      * @param array $to

@@ -67,7 +67,7 @@ class File_Iterator_Facade
     }
 
     /**
-     * Returns the common_icon path of a set of files.
+     * Returns the common path of a set of files.
      *
      * @param  array  $files
      * @return string

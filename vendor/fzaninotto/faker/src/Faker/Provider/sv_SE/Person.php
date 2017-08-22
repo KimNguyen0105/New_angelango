@@ -85,7 +85,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * @var array Swedish common_icon last names
+     * @var array Swedish common last names
      * @link http://www.scb.se/sv_/Hitta-statistik/Statistik-efter-amne/Befolkning/Amnesovergripande-statistik/Namnstatistik/30898/2012A01x/Samtliga-folkbokforda--Efternamn-topplistor/Efternamn-topp-100/
      */
     protected static $lastName = array(

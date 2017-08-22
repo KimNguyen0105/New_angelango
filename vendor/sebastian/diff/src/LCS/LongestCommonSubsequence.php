@@ -11,12 +11,12 @@
 namespace SebastianBergmann\Diff\LCS;
 
 /**
- * Interface for implementations of longest common_icon subsequence calculation.
+ * Interface for implementations of longest common subsequence calculation.
  */
 interface LongestCommonSubsequence
 {
     /**
-     * Calculates the longest common_icon subsequence of two arrays.
+     * Calculates the longest common subsequence of two arrays.
      *
      * @param array $from
      * @param array $to

@@ -111,7 +111,7 @@ class Docblock
         $first = reset($lines);
         $last  = end($lines);
 
-        // find the longest common_icon substring
+        // find the longest common substring
         $count = min(strlen($first), strlen($last));
         for ($i = 0; $i < $count; $i++) {
             if ($first[$i] !== $last[$i]) {
