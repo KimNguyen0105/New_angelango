@@ -81,6 +81,43 @@ class UserController extends Controller
             return redirect('admin/user')->with('failed','Lấy thông tin user thất bại');
         }
     }
+    public function postProfile($id, Request $request)
+    {
+        try{
+
+                $user=AglUser::find($id);
+                $user->username=$request->username;
+                if($request->password){
+                    $user->password=md5($request->password);
+                }
+                if($request->hasFile('file'))
+                {
+                    if($user->avatar!="default.png")
+                    {
+                        if(file_exists("images/users/".$user->avatar))
+                        {
+                            unlink("images/users/".$user->avatar);
+                        }
+                    }
+                    $image = $request->file('file');
+                    $filename  = 'user_'.time() . '.' . $image->getClientOriginalExtension();
+                    $path = public_path('images/users/' . $filename);
+                    Image::make($image->getRealPath())->resize(150, 150)->save($path);
+                    $user->avatar=$filename;
+                }
+                if ($user->save())
+                {
+                    return redirect('admin/profile/'.$id)->with('success','Cập nhật thông tin thành công');
+                }
+
+        }
+        catch (\Exception $e)
+        {
+            dd($e);
+            return redirect('admin/profile/'.$id)->with('failed','Cập nhật thông tin thất bại');
+        }
+    }
+
     public function postUser($id, Request $request)
     {
         try{

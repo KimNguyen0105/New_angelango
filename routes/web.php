@@ -120,6 +120,7 @@ Route::get('/admin/user/{id}','Admin\UserController@getUserByID')->middleware('n
 Route::post('/admin/user/{id}','Admin\UserController@postUser')->middleware('not.login');
 Route::post('/admin/user/delete/{id}','Admin\UserController@DeleteUser')->middleware('not.login');
 Route::get('/admin/profile/{id}','Admin\UserController@Profile')->middleware('not.login');
+Route::post('/admin/profile/{id}','Admin\UserController@postProfile')->middleware('not.login');
 
 
 //hướng dẫn

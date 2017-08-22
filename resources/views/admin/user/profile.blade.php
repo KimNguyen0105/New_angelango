@@ -2,6 +2,13 @@
 @section('content')
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
             @if ($message = Session::get('failed'))
                 <div class="alert alert-error">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
@@ -9,7 +16,7 @@
                     <p>{{ $message }}</p>
                 </div>
             @endif
-            <form id="frUser" data-parsley-validate action="{{url('admin/user')}}/{{$user->id}}"
+            <form id="frUser" data-parsley-validate action="{{url('admin/profile')}}/{{$user->id}}"
                   method="post" class="form-horizontal form-label-left" enctype="multipart/form-data">
                 <div class="row" style="padding: 10px 30px; margin-bottom: 10px; border-bottom: 2px #9a9999 solid;">
                     <button type="submit" id="btnSave" class="btn btn-success">Save</button>
