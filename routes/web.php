@@ -83,6 +83,13 @@ Route::get('/admin/banner/edit-banner/{id}','Admin\BannerController@getEditBanne
 Route::post('/admin/banner/edit-banner/{id}','Admin\BannerController@postEditBanner')->middleware('not.login');
 Route::get('/admin/banner/delete-banner/{id}','Admin\BannerController@DeleteBanner')->middleware('not.login');
 
+//account
+Route::get('/admin/account','Admin\AccountController@getAccount')->middleware('not.login');
+Route::get('/admin/account/create-account','Admin\AccountController@getCreateAccount')->middleware('not.login');
+Route::post('/admin/account/create-account','Admin\AccountController@postCreateAccount')->middleware('not.login');
+Route::get('/admin/account/edit-account/{id}','Admin\AccountController@getEditAccount')->middleware('not.login');
+Route::post('/admin/account/edit-account/{id}','Admin\AccountController@postEditAccount')->middleware('not.login');
+Route::get('/admin/account/delete-account/{id}','Admin\AccountController@DeleteAccount')->middleware('not.login');
 
 //system permission
 Route::get('/admin/system-permission','Admin\PermissionController@Index')->middleware('not.login');
