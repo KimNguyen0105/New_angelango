@@ -15,7 +15,11 @@
 namespace Ramsey\Uuid;
 
 /**
+<<<<<<< HEAD
  * UuidFactoryInterface defines common_icon functionality all `UuidFactory` instances
+=======
+ * UuidFactoryInterface defines common functionality all `UuidFactory` instances
+>>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
  * must implement
  */
 interface UuidFactoryInterface

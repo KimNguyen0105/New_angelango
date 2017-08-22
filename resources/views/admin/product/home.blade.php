@@ -21,7 +21,7 @@
                     @endif
                 <div class="row x_title">
                     <div class="col-md-12">
-                        <table id="data-table" class="table table-bordered table-responsive projecttable">
+                        <table  class="table table-bordered table-responsive projecttable">
                             <thead>
                             <tr>
                                 <th width="5%">#</th>
@@ -71,10 +71,4 @@
 
         </div>
     </div>
-@endsection
-@section('scripts')
-<script>
-   $('#data-table').DataTable();
-</script>
-
 @endsection

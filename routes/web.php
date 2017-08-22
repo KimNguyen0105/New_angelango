@@ -118,8 +118,7 @@ Route::post('/admin/menu','Admin\AdminController@postMenu')->middleware('not.log
 Route::get('/admin/user','Admin\UserController@getUser')->middleware('not.login');
 Route::get('/admin/user/{id}','Admin\UserController@getUserByID')->middleware('not.login');
 Route::post('/admin/user/{id}','Admin\UserController@postUser')->middleware('not.login');
-Route::post('/admin/style-life/{id}','Admin\AdminController@postStyleLife')->middleware('not.login');
-Route::get('/admin/style-life/delete-style-life/{id}','Admin\AdminController@DeleteStyleLife')->middleware('not.login');
+Route::post('/admin/user/delete/{id}','Admin\UserController@DeleteUser')->middleware('not.login');
 
 
 //hướng dẫn
@@ -130,7 +129,8 @@ Route::get('/admin/guide/delete-guide/{id}','Admin\GuideController@DeleteGuide')
 
 //system permission
 Route::get('/admin/permission','Admin\PermissionController@Index')->middleware('not.login');
-Route::post('/admin/permission','Admin\PermissionController@postPermission')->middleware('not.login');
+Route::get('/admin/permission/{id}','Admin\PermissionController@getPermission')->middleware('not.login');
+Route::post('/admin/permission/{id}','Admin\PermissionController@postPermission')->middleware('not.login');
 
 //danh mục sản phẩm
 Route::get('/admin/menu-product','Admin\MenuProductController@getMenuProduct')->middleware('not.login');
@@ -156,6 +156,8 @@ Route::get('/admin/discount','Admin\DiscountController@getDiscount')->middleware
 Route::get('/admin/discount/edit-discount/{id}','Admin\DiscountController@getEditDiscount')->middleware('not.login');
 Route::post('/admin/discount/edit-discount/{id}','Admin\DiscountController@postEditDiscount')->middleware('not.login');
 Route::get('/admin/discount/delete-discount/{id}','Admin\DiscountController@DeleteDiscount')->middleware('not.login');
+Route::get('/admin/discount/het-han-khuyen-mai','Admin\DiscountController@hethan')->middleware('not.login');
+Route::get('/admin/discount/con-han-khuyen-mai','Admin\DiscountController@conhan')->middleware('not.login');
 
 //Đăng ký nhận ưu đãi
 Route::get('/admin/subscribe','Admin\SubscribeController@getSubscribe')->middleware('not.login');

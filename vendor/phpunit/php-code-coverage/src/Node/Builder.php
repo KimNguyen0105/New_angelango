@@ -130,7 +130,11 @@ class Builder
     }
 
     /**
+<<<<<<< HEAD
      * Reduces the paths by cutting the longest common_icon start path.
+=======
+     * Reduces the paths by cutting the longest common start path.
+>>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * For instance,
      *

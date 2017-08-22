@@ -67,7 +67,11 @@ class File_Iterator_Facade
     }
 
     /**
+<<<<<<< HEAD
      * Returns the common_icon path of a set of files.
+=======
+     * Returns the common path of a set of files.
+>>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  array  $files
      * @return string

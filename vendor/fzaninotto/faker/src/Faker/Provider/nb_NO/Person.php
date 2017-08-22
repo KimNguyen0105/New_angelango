@@ -254,7 +254,11 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
+<<<<<<< HEAD
     * @var array Norwegian common_icon last names (200 first from the link)
+=======
+    * @var array Norwegian common last names (200 first from the link)
+>>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
     * @link http://www.ssb.no/befolkning/statistikker/navn/aar/2015-01-27?fane=tabell&sort=nummer&tabell=216066
     */
     protected static $lastName = array(

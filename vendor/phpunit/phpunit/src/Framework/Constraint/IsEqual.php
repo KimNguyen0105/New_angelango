@@ -106,7 +106,11 @@ class PHPUnit_Framework_Constraint_IsEqual extends PHPUnit_Framework_Constraint
     public function evaluate($other, $description = '', $returnResult = false)
     {
         // If $this->value and $other are identical, they are also equal.
+<<<<<<< HEAD
         // This is the most common_icon path and will allow us to skip
+=======
+        // This is the most common path and will allow us to skip
+>>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
         // initialization of all the comparators.
         if ($this->value === $other) {
             return true;
