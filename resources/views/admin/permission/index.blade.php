@@ -3,6 +3,8 @@
     <div class="row">
 
         <div class="col-md-12 col-sm-12 col-xs-12">
+            <a onclick="createPermission()" class="btn btn-sm btn-success addlink"><span
+                        class="glyphicon glyphicon-new-window"></span> Create Permission</a>
             <div class="dashboard_graph">
 
                 <div class="row x_title">
@@ -11,11 +13,16 @@
                             {{--<small>Graph title sub-title</small>--}}
                         </h3>
                     </div>
-
                 </div>
-
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
+                @if ($message = Session::get('failed'))
+                    <div class="alert alert-error">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
                         <p>{{ $message }}</p>
@@ -25,9 +32,9 @@
                     <table class="table table-bordered table-responsive">
                         <thead>
                         <tr>
-
-                            <th>Permission</th>
-                            <th>User can do</th>
+                            <th>Quyền</th>
+                            <th>Link</th>
+                            <th>Công việc</th>
 
                             <th>Action</th>
                         </tr>
@@ -35,11 +42,12 @@
                         <tbody>
                         @foreach($permission as $item)
                             <tr>
-                                <td>{{$item->permission}}</td>
+                                <td>{{$item->name}}</td>
 
+                                <td>{{$item->link}}</td>
                                 <td>{{$item->note}}</td>
                                 <td>
-                                    <a href="{{URL::asset('')}}admin/edit-permission-{{$item->id}}"
+                                    <a onclick="getPermission('{{$item->id}}','{{$item->name}}','{{$item->link}}','{{$item->note}}')"
                                        class="btn btn-xs btn-primary editlink"><span class="glyphicon glyphicon-pencil"></span>
                                         Edit</a>
                                 </td>
@@ -56,22 +64,56 @@
         </div>
 
     </div>
+    <div id="editPermission" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xác nhận xóa</h4>
+                </div>
+                <form method="POST" action="{{url('/admin/permission')}}">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Quyền</label>
+                            <input name="id" id="id" hidden>
+                            <input class="form-control" required name="name" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label>Link</label>
+                            <input class="form-control" name="link" required id="link">
+                        </div>
+                        <div class="form-group">
+                            <label>Công việc</label>
+                            <input class="form-control" name="note" id="note">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-info" value="Save">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
 @endsection
 @section('scripts')
     <script>
-        $('.editlink').click(function (e) {
-            var a_href = $(this).attr('href'); /* Lấy giá trị của thuộc tính href */
-            e.preventDefault(); /* Không thực hiện action mặc định */
-            $.ajax({ /* Gửi request lên server */
-                url: a_href, /* Nội dung trong Delete.cshtml cụ thể là deleteModal div được server trả về */
-                type: 'GET',
-                contentType: 'application/json; charset=utf-8',
-                success: function (data) { /* Sau khi nhận được giá */
-                    $('.body-content').prepend(data); /* body-content div (định nghĩa trong _Layout.cshtml) sẽ thêm deleteModal div vào dưới cùng */
-                    $('#deleteModal').modal('show'); /* Hiển thị deleteModal div dưới kiểu modal */
-                }
-            });
-        })
+        function getPermission(id, name,link, note) {
+            $('#id').val(id);
+            $('#name').val(name);
+            $('#link').val(link);
+            $('#note').val(note);
+            $('#editPermission').modal('show');
+        }
+        function createPermission() {
+            $('#id').val(0);
+            $('#name').val('');
+            $('#link').val('');
+            $('#note').val('');
+            $('#editPermission').modal('show');
+        }
     </script>
 @endsection

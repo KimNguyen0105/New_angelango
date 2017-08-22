@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 21 Aug 2017 02:42:56 +0000.
+ * Date: Tue, 22 Aug 2017 06:58:47 +0000.
  */
 
 namespace App\Models;
@@ -19,8 +19,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $avatar
  * @property bool $is_show
  * @property int $sort_order
- * @property int $created_at
- * @property int $updated_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
  *
  * @package App\Models
  */
@@ -30,9 +30,7 @@ class AglSlide extends Eloquent
 
 	protected $casts = [
 		'is_show' => 'bool',
-		'sort_order' => 'int',
-		'created_at' => 'int',
-		'updated_at' => 'int'
+		'sort_order' => 'int'
 	];
 
 	protected $fillable = [

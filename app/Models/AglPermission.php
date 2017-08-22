@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 21 Aug 2017 02:42:56 +0000.
+ * Date: Tue, 22 Aug 2017 06:58:47 +0000.
  */
 
 namespace App\Models;
@@ -16,6 +16,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $name
  * @property string $link
  * @property string $note
+ * @property int $parent_id
  *
  * @package App\Models
  */
@@ -24,9 +25,14 @@ class AglPermission extends Eloquent
 	protected $table = 'agl_permission';
 	public $timestamps = false;
 
+	protected $casts = [
+		'parent_id' => 'int'
+	];
+
 	protected $fillable = [
 		'name',
 		'link',
-		'note'
+		'note',
+		'parent_id'
 	];
 }
