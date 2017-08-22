@@ -8,6 +8,7 @@ use App\Models\AglPermission;
 use App\Models\AglUserPermission;
 use Illuminate\Support\Facades\Session;
 use Image;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -43,7 +44,7 @@ class UserController extends Controller
     public function getUserByID($id)
     {
         try{
-            $p=AglPermission::get();
+            $p=AglPermission::where('parent_id',0)->get();
             if($id==0)
             {
                 return view('admin.user.create_user',['permission'=>$p]);
@@ -123,7 +124,7 @@ class UserController extends Controller
                 if ($user->save())
                 {
                     $p = AglPermission::get();
-                    AglUserPermission::where('user_id')->delete();
+                    AglUserPermission::where('user_id',$id)->delete();
                     foreach ($p as $item) {
                         if ($request->get('permission_'.$item->id)==1) {
                             $u_p = new AglUserPermission();
@@ -174,4 +175,20 @@ class UserController extends Controller
         $request->session()->flush();
         return redirect('/admin/log-in');
     }
+    public static function getPermissionUserById()
+    {
+        $user_permission = DB::table('agl_user_permission')
+            ->join('agl_permission', 'agl_user_permission.permission_id', '=', 'agl_permission.id')
+            ->where('agl_user_permission.user_id', Session::get('user_id'))
+            ->get();
+        foreach ($user_permission as $item)
+        {
+            $p=AglPermission::where('parent_id',$item->id)->get();
+            $item->arr=$p;
+        }
+        return view('admin.partial.permission', [
+            'user_permission' => $user_permission
+        ]);
+    }
+
 }

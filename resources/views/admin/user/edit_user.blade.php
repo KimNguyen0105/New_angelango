@@ -35,7 +35,7 @@
                         <label for="introduce">
                             Password
                         </label>
-                        <input type="password" class="form-control" value="{{$user->password}}" name="password" id="password"  required maxlength="255">
+                        <input type="password" class="form-control" name="password" id="password" maxlength="255">
                     </div>
                     <div class="form-group">
                         <label>Quyền quản trị</label>
@@ -43,7 +43,7 @@
                             @if($permission!=null)
                                 @foreach($permission as $item)
                                     <div class="col-md-6">
-                                        <label><input type="checkbox" value="1" name="permission_{{$item->id}}"> {{$item->name}}</label><br>
+                                        <label><input @if($permissionUser->contains('permission_id',$item->id)) checked @endif type="checkbox" value="1" name="permission_{{$item->id}}"> {{$item->name}}</label><br>
                                     </div>
                                 @endforeach
                             @endif
@@ -89,28 +89,15 @@
                     "email": {
                         required: true,
                         email: true
-                    },
-                    "password": {
-                        required: true,
-                        min: 6
-                    },
-                    "username": {
-                        required: true,
-                        min: 6
                     }
                 },
                 messages: {
                     email: {
                         required: 'Email không được trống.',
                         email: 'Email không đúng định dạng.'
-                    },
-                    password: {
-                        required: 'Password không được trống.',
-                        min: 'Password phải từ 6 ký tự trở lên.'
-                    },
+                    }
                     username: {
-                        required: 'Username không được trống.',
-                        min: 'Username phải từ 6 ký tự trở lên.'
+                        required: 'Username không được trống.'
                     }
                 }
             });

@@ -26,8 +26,8 @@
                             <tr>
                                 <th width="5%">#</th>
                                 <th width="15%">Avatar</th>
-                                <th width="15%">Tiêu đề (vi)</th>
-                                <th width="15%">Tiêu đề (en)</th>
+                                <th width="15%">User Name</th>
+                                <th width="15%">Email</th>
                                 <th width="15%">Action</th>
                             </tr>
                             </thead>

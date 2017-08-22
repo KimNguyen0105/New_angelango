@@ -99,8 +99,7 @@ Route::post('/admin/menu','Admin\AdminController@postMenu')->middleware('not.log
 Route::get('/admin/user','Admin\UserController@getUser')->middleware('not.login');
 Route::get('/admin/user/{id}','Admin\UserController@getUserByID')->middleware('not.login');
 Route::post('/admin/user/{id}','Admin\UserController@postUser')->middleware('not.login');
-Route::post('/admin/style-life/{id}','Admin\AdminController@postStyleLife')->middleware('not.login');
-Route::get('/admin/style-life/delete-style-life/{id}','Admin\AdminController@DeleteStyleLife')->middleware('not.login');
+Route::post('/admin/user/delete/{id}','Admin\UserController@DeleteUser')->middleware('not.login');
 
 
 //hướng dẫn
@@ -111,7 +110,8 @@ Route::get('/admin/guide/delete-guide/{id}','Admin\GuideController@DeleteGuide')
 
 //system permission
 Route::get('/admin/permission','Admin\PermissionController@Index')->middleware('not.login');
-Route::post('/admin/permission','Admin\PermissionController@postPermission')->middleware('not.login');
+Route::get('/admin/permission/{id}','Admin\PermissionController@getPermission')->middleware('not.login');
+Route::post('/admin/permission/{id}','Admin\PermissionController@postPermission')->middleware('not.login');
 
 //danh mục sản phẩm
 Route::get('/admin/menu-product','Admin\MenuProductController@getMenuProduct')->middleware('not.login');

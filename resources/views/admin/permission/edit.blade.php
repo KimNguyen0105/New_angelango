@@ -12,7 +12,7 @@
                     <p>{{ $message }}</p>
                 </div>
             @endif
-            <form id="frNews" data-parsley-validate action="{{url('/admin/permission/0')}}"
+            <form id="frNews" data-parsley-validate action="{{url('/admin/permission')}}/{{$permission->id}}"
                   method="post" class="form-horizontal form-label-left" enctype="multipart/form-data">
                 <div class="row" style="padding: 10px 30px; margin-bottom: 10px; border-bottom: 2px #9a9999 solid;">
                     <a href="{{url('admin/permission')}}" class="btn btn-primary" type="button">Cancel</a>
@@ -21,16 +21,15 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <label>Quyền</label>
-                        <input name="id" id="id" hidden>
-                        <input class="form-control" required name="name" id="name">
+                        <input class="form-control" value="{{$permission->name}}" required name="name" id="name">
                     </div>
                     <div class="form-group">
                         <label>Link</label>
-                        <input class="form-control" name="link" required id="link">
+                        <input class="form-control" name="link" required id="link" value="{{$permission->link}}">
                     </div>
                     <div class="form-group">
                         <label>Công việc</label>
-                        <input class="form-control" name="note" id="note">
+                        <input class="form-control" name="note" id="note" value="{{$permission->note}}">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -39,7 +38,11 @@
                         <select class="form-control" name="parent_id">
                             <option value="0">Nhóm cha</option>
                             @foreach($parents as $parent)
+                                @if($parent->id==$permission->parent_id)
+                                    <option value="{{$parent->id}}" selected>{{$parent->name}}</option>
+                                    @else
                                     <option value="{{$parent->id}}">{{$parent->name}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>

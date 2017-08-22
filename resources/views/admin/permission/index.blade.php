@@ -3,7 +3,7 @@
     <div class="row">
 
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <a onclick="createPermission()" class="btn btn-sm btn-success addlink"><span
+            <a href="{{url('/admin/permission/0')}}" class="btn btn-sm btn-success addlink"><span
                         class="glyphicon glyphicon-new-window"></span> Create Permission</a>
             <div class="dashboard_graph">
 
@@ -29,13 +29,12 @@
                     </div>
                 @endif
                 <div class="col-md-12">
-                    <table class="table table-bordered table-responsive">
+                    <table class="table table-bordered table-responsive projecttable">
                         <thead>
                         <tr>
                             <th>Quyền</th>
                             <th>Link</th>
                             <th>Công việc</th>
-
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -43,11 +42,10 @@
                         @foreach($permission as $item)
                             <tr>
                                 <td>{{$item->name}}</td>
-
                                 <td>{{$item->link}}</td>
                                 <td>{{$item->note}}</td>
                                 <td>
-                                    <a onclick="getPermission('{{$item->id}}','{{$item->name}}','{{$item->link}}','{{$item->note}}')"
+                                    <a href="{{url('admin/permission')}}/{{$item->id}}"
                                        class="btn btn-xs btn-primary editlink"><span class="glyphicon glyphicon-pencil"></span>
                                         Edit</a>
                                 </td>
@@ -82,7 +80,7 @@
                         </div>
                         <div class="form-group">
                             <label>Link</label>
-                            <input class="form-control" name="link" required id="link">
+                            <textarea class="form-control" name="link" required id="link" rows="5"></textarea>
                         </div>
                         <div class="form-group">
                             <label>Công việc</label>

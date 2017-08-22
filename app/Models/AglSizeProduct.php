@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 18 Aug 2017 03:11:07 +0000.
+ * Date: Tue, 22 Aug 2017 07:02:12 +0000.
  */
 
 namespace App\Models;
@@ -25,8 +25,4 @@ class AglSizeProduct extends Eloquent
 	protected $fillable = [
 		'size'
 	];
-	public function product()
-    {
-        return $this->belongsToMany('App\Models\AglProduct');
-    }
 }
