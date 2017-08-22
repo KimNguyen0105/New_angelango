@@ -12,12 +12,13 @@
 */
 
 Route::get('/','Controller@getHome');
+Route::get('language/{locale}','Controller@SetLanguage');
 Route::get('/bo-suu-tap.html','Controller@getPageCollection');
 Route::get('/chi-tiet-bo-suu-tap-{id}.html','Controller@getPageCollectionDetail');
 Route::get('/san-pham.html','Controller@getPageProduct');
 Route::get('/chi-tiet-san-pham.html','Controller@getPageProductDetail');
 Route::get('/tin-tuc.html','Controller@getPageNews');
-Route::get('/chi-tiet-tin-tuc.html','Controller@getPageNewsDetail');
+Route::get('/chi-tiet-tin-tuc-{id}.html','Controller@getPageNewsDetail');
 Route::get('/gioi-thieu.html','Controller@getPageAbout');
 Route::get('/lien-he.html','Controller@getPageContact');
 Route::get('/gio-hang.html','Controller@getPagePaycart');

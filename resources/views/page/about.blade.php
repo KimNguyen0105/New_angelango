@@ -2,76 +2,43 @@
 @section('main')
     <!--Header Banner-->
     <section class="banner-contactus">
-        <img style="width: 100%; height: auto;" src="images/about/1.png" class="img-responsive">
+        <img style="width: 100%; height: auto;" src="{{URL::asset('')}}images/banner/{{$banner->image}}" class="img-responsive">
 
     </section>
 
     <!--Header content-->
+    @if(Session::get('locale')=='vi')
+        {{--set language--}}
     <section>
         <div class="container font-txt">
             <div class="row">
                 <div class="text-center col-lg-12 all-about-title ">
-                    <h2>ANGELA NGO</h2>
-                    <p>"Phong cách và chất lượng tạo nên sự khác biệt của thời trang"</p>
+                    <h2>{{$abouts[0]->title_vi}}</h2>
+                    <p>{!! $abouts[0]->content_vi !!}</p>
                 </div>
                 <div class="col-md-12 img-about-a">
-                    <img src="images/about/2.png" class="img-responsive">
+                    <img src="{{URL::asset('')}}images/about-us/{{$abouts[0]->avatar}}" class="img-responsive">
                 </div>
                 <div>
                     <div class="col-md-8 img-about-b">
-                        <img src="images/about/3.png" class="img-responsive">
+                        <img src="{{URL::asset('')}}images/about-us/{{$abouts[1]->avatar}}" class="img-responsive">
                     </div>
                     <div class="col-md-4 txt-about-a">
-                        <h2>Giới thiệu về Angela Ngo</h2>
-                        <p>"Phong cách và chất lượng tạo nên sự khác biệt của thời trang"
-                            Angela Ngo là một nhà may và nhà thiết kế thời trang chuyên nghiệp. Các sản phẩm thời trang của
-                            cô với phong cách đơn giản, sang trọng và quyến rũ luôn thu hút được khách hàng nữ. Ngoài ra,
-                            các sản phẩm thời trang này phù hợp với mọi hình dáng và kích cỡ cơ thể.</p>
+                        <h2>{{$abouts[1]->title_vi}}</h2>
+                        <p>{!! $abouts[1]->content_vi !!}</p>
                     </div>
                 </div>
                 <div class="col-md-12 txt-choose">
-                    <h2 class="text-center">CHÚNG TÔI KHÁC BIỆT</h2>
+                    <h2 class="text-center">{{trans('home.we_different')}}</h2>
+                    @foreach($about_different as $about)
                     <div class="col-md-4">
                         <div class="col-md-12">
-                            <img src="images/icon/11.png" class="img-responsive">
-                            <h4>GIAO HÀNG MIỄN PHÍ</h4>
-                            <p>Việc mua 2 món hàng sẽ được miễn phí giao hàng ngay hôm sau hoặc bạn có thể chọn hình thức
-                                giao hàng nhanh có phí và nhận được hàng ngay lập tức</p>
-                        </div>
-                        <div class="col-md-12">
-                            <img src="images/icon/14.png" class="img-responsive">
-                            <h4>HỖ TRỢ TRỰC TUYẾN</h4>
-                            <p>Chúng tôi sẽ luôn tích cực giúp đỡ và tư vấn cho bạn về bất kỳ thắc mắc nào bạn có về việc
-                                đặt hàng và thông tin các sản phẩm </p>
+                            <img src="{{URL::asset('')}}images/about-us/{{$about->avatar}}" class="img-responsive">
+                            <h4>{{$about->title_vi}}</h4>
+                            <p>{!! $about->content_vi !!}</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="col-md-12">
-                            <img src="images/icon/12.png" class="img-responsive">
-                            <h4>MUA SẮM AN TOÀN</h4>
-                            <p>Việc giao dịch và thông tin cá nhân của bạn luôn được bảo mật hàng đầu. Bạn sẽ luôn cảm thấy
-                                an toàn khi mua sắm.</p>
-                        </div>
-                        <div class="col-md-12">
-                            <img src="images/icon/15.png" class="img-responsive">
-                            <h4>SẢN PHẨM LUÔN MỚI</h4>
-                            <p>100 sản phẩm mới luôn được thêm vào trang web mỗi tuần, bạn sẽ được tha hồ lựa chọn.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="col-md-12">
-                            <img src="images/icon/13.png" class="img-responsive">
-                            <h4>ƯU ĐÃI ĐẶC BIỆT</h4>
-                            <p>Ưu đãi lớn quanh năm cho tất cả các sản phẩm độc quyền, trực tuyến dành cho bạn bè, gia đình
-                                như quà tặng, phiếu khuyến mãi.</p>
-                        </div>
-                        <div class="col-md-12">
-                            <img src="images/icon/16.png" class="img-responsive">
-                            <h4>CHÍNH SÁCH ĐỔI-TRẢ</h4>
-                            <p>Chúng tôi chấp nhận việc đổi - trả trong vòng 1 tuần các mặt hàng sai sót được mua trong các
-                                cửa hàng của chúng tôi với điều kiện biên lai hợp lệ, mạc sản phẩm còn đính nguyên.</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -81,16 +48,10 @@
         <div class="container cont-about">
             <div class="row">
                 <div class="col-md-12 txt-story">
-                    <h2 class="text-center" style="color: gray;">Câu chuyện của Angela Ngo</h2>
+                    <h2 class="text-center" style="color: gray;">{{$abouts[2]->title_vi}}</h2>
                 </div>
                 <div class="col-md-12 txt-story-p">
-                    <p>
-                        Trang phục dân tộc trên mỗi vùng miền trên quê hương Việt Nam đặc biệt rất phong phú. Nhưng ấn tượng
-                        thời thơ bé với những sắc màu rực rỡ trên bộ váy áo, những tà áo dài thướt that của các thiếu nữ Sài
-                        Gòn in đậm nét trong kí ức của cô. <br>Bởi thế từ khi còn là cô bé, cô đã tự thiết kế và may những
-                        chiếc
-                        váy áo váy cho búp bê và quần áo cho mình.
-                    </p>
+                    <p>{!! $abouts[2]->content_vi !!}</p>
                 </div>
             </div>
         </div>
@@ -99,41 +60,103 @@
         <div class="container cont-about">
             <div class="row">
                 <div class="col-md-12 pic-about-1">
-                    <img src="images/about/4.png" class="img-responsive">
+                    <img src="{{URL::asset('')}}images/about-us/{{$abouts[2]->avatar}}" class="img-responsive">
                 </div>
-                <div class="col-md-12 txt-story-p">
-                    <h2 style="color: gray;">Sắc màu và sáng tạo cái đẹp</h2>
-                    <p class="txt-story-p1">
-                        Đam mê cái đẹp, đam mê sắc màu cô tự tìm hiểu về thời trang truyền thống, tìm hiểu chất liệu, kiểu
-                        họa tiết của các dân tộc Việt Nam rồi thiết kế sáng tạo màu sắc hoa văn táo bạo bằng cảm quan hiện
-                        đại vào trong những bộ trang phục. Khởi đầu sự nghiệp với công việc cắt may, thiết kế, cô mong muốn
-                        phát triển các sản phẩm của mình lên một tầm cao mới.
-                    </p>
+                <div class="col-md-8 col-sm-12 col-xs-12 txt-story-p">
+                    <h2 style="color: gray;">{{$abouts[3]->title_vi}}</h2>
+                    <p class="txt-story-p1">{!! $abouts[3]->content_vi !!}</p>
                 </div>
             </div>
 
         </div>
     </section>
+@else
+        <section>
+            <div class="container font-txt">
+                <div class="row">
+                    <div class="text-center col-lg-12 all-about-title ">
+                        <h2>{{$abouts[0]->title_en}}</h2>
+                        <p>{!! $abouts[0]->content_en !!}</p>
+                    </div>
+                    <div class="col-md-12 img-about-a">
+                        <img src="{{URL::asset('')}}images/about-us/{{$abouts[0]->avatar}}" class="img-responsive">
+                    </div>
+                    <div>
+                        <div class="col-md-8 img-about-b">
+                            <img src="{{URL::asset('')}}images/about-us/{{$abouts[1]->avatar}}" class="img-responsive">
+                        </div>
+                        <div class="col-md-4 txt-about-a">
+                            <h2>{{$abouts[1]->title_en}}</h2>
+                            <p>{!! $abouts[1]->content_en !!}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12 txt-choose">
+                        <h2 class="text-center">{{trans('home.we_different')}}</h2>
+                        @foreach($about_different as $about)
+                            <div class="col-md-4">
+                                <div class="col-md-12">
+                                    <img src="{{URL::asset('')}}images/about-us/{{$about->avatar}}" class="img-responsive">
+                                    <h4>{{$about->title_en}}</h4>
+                                    <p>{!! $about->content_en !!}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="row-story font-txt">
+            <div class="container cont-about">
+                <div class="row">
+                    <div class="col-md-12 txt-story">
+                        <h2 class="text-center" style="color: gray;">{{$abouts[2]->title_en}}</h2>
+                    </div>
+                    <div class="col-md-12 txt-story-p">
+                        <p>{!! $abouts[2]->content_en !!}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="font-txt">
+            <div class="container cont-about">
+                <div class="row">
+                    <div class="col-md-12 pic-about-1">
+                        <img src="{{URL::asset('')}}images/about-us/{{$abouts[2]->avatar}}" class="img-responsive">
+                    </div>
+                    <div class="col-md-8 col-sm-12 col-xs-12 txt-story-p">
+                        <h2 style="color: gray;">{{$abouts[3]->title_en}}</h2>
+                        <p class="txt-story-p1">{!! $abouts[3]->content_en !!}</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        @endif
+        {{--end set language--}}
 
     <section class="row-about">
         <div class="container ">
-
             <div class="col-md-12 img-about-c">
-                <img src="images/about/5.png" class="img-responsive">
+                <img src="{{URL::asset('')}}images/about-us/{{$abouts[3]->avatar}}" class="img-responsive">
             </div>
+                <?php
+                $hinh = explode(';',$abouts[3]->images_other);
+                ?>
             <div class="img-fixed">
                 <div class="col-md-4 img-about-c1">
-                    <img src="images/about/6.png" class="img-responsive">
+                    <img src="{{URL::asset('')}}images/about-us/{{array_shift($hinh)}}" class="img-responsive">
                 </div>
                 <div class="col-md-8">
-                    <img src="images/about/7.png" class="img-responsive">
+                    <img src="{{URL::asset('')}}images/about-us/{{array_shift($hinh)}}" class="img-responsive">
                 </div>
             </div>
             <div class="clearfix"></div>
             <div class="col-md-12 img-about-d">
-                <img src="images/about/8.png" class="img-responsive">
+                <img src="{{URL::asset('')}}images/about-us/{{array_shift($hinh)}}" class="img-responsive">
             </div>
             <div class="clearfix"></div>
+
         </div>
     </section>
 
