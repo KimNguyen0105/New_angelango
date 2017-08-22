@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 18 Aug 2017 03:11:07 +0000.
+ * Date: Mon, 21 Aug 2017 09:35:47 +0000.
  */
 
 namespace App\Models;
@@ -62,13 +62,4 @@ class AglProduct extends Eloquent
 		'seo_description',
 		'seo_author'
 	];
-
-	public function pimage()
-    {
-        return $this->hasMany('App\Models\AglProductImage');
-    }
-    public function size()
-    {
-        return $this->belongsToMany('App\Models\AglSizeProduct');
-    }
 }

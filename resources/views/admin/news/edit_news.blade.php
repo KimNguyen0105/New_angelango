@@ -12,15 +12,15 @@
                     <p>{{ $message }}</p>
                 </div>
             @endif
-            <form id="demo-form2" data-parsley-validate action="{{url('admin/news/edit-news')}}/{{$news->id}}"
+            <form id="frNews" data-parsley-validate action="{{url('admin/news/edit-news')}}/{{$news->id}}"
                   method="post" class="form-horizontal form-label-left" enctype="multipart/form-data">
                 <div class="row" style="padding: 10px 30px; margin-bottom: 10px; border-bottom: 2px #9a9999 solid;">
                     <a href="{{url('admin/news')}}" class="btn btn-primary" type="button">Hủy bỏ</a>
-                    <button type="submit" class="btn btn-success">Lưu</button>
+                    <button type="submit" id="btnSave" class="btn btn-success">Lưu</button>
                 </div>
                 <div class="col-md-8">
                     <div class="nav-tabs-custom">
-                        <ul class="nav nav-tabs" style="margin-bottom: 20px;">
+                        <ul class="nav nav-tabs" id="tabNews" style="margin-bottom: 20px;">
                             <li class="active"><a href="#tab_vi" data-toggle="tab" aria-expanded="true">Tiếng Việt</a></li>
                             <li class=""><a href="#tab_en" data-toggle="tab" aria-expanded="true">English</a></li>
                             <li class=""><a href="#tab_seo" data-toggle="tab" aria-expanded="true">Seo</a></li>
@@ -89,7 +89,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label class="control-label">Hình ảnh(300 x 200)</label>
-                        <input id="file" accept="image/*" name="file" type="file" style="padding-bottom: 20px" onchange="readURL(this);" class="file-loading">
+                        <input id="file" accept="image/*" name="file" type="file" style="padding-bottom: 20px" onchange="readURL(this);">
                         <img id="imgF" src="{{asset('images/news')}}/{{$news->avatar}}" class="img-responsive" style="height: 200px;">
                     </div>
                 </div>
@@ -127,12 +127,47 @@
                 filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=News'
             });
         });
-        {{--CKEDITOR.replace('.editors', {--}}
-            {{--filebrowserBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html',--}}
-            {{--filebrowserImageBrowseUrl: '{{URL::asset('')}}ckfinder/ckfinder.html?type=News',--}}
-            {{--filebrowserUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',--}}
-            {{--filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=News'--}}
-        {{--});--}}
+        jQuery(document).ready(function() {
+            jQuery('#frNews').validate({
+                ignore: ".ignore",
+                errorClass: "state-error",
+                validClass: "state-success",
+                errorElement: "em",
+                messages: {
+                    title_vi: {
+                        required: 'Tiêu đề không được trống.'
+                    },
+                    title_en: {
+                        required: 'Title không được trống.'
+                    },
+                    file: {
+                        required: 'Hình ảnh không được trống.'
+                    },
+                    seo_title:{
+                        required: 'Seo title không được trống.'
+                    },
+                    seo_keyword: {
+                        required: 'Seo keyword không được trống.'
+                    },
+                    seo_author: {
+                        required: 'Seo author không được trống.'
+                    },
+                    seo_description: {
+                        required: 'Seo description không được trống.'
+                    }
+                },
+                invalidHandler: function(e, validator){
+                    if(validator.errorList.length)
+                        $('#tabNews a[href="#' + jQuery(validator.errorList[0].element).closest(".tab-pane").attr('id') + '"]').tab('show')
+                }
+            });
 
+            jQuery('#btnSave').click(function(evt) {
+                evt.preventDefault();
+
+                jQuery('#frNews').submit()
+
+            });
+        });
     </script>
 @endsection

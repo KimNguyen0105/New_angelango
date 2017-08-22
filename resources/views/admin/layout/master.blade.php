@@ -33,6 +33,7 @@
 
 <!-- Custom Theme Style -->
     <link href="{{URL::asset('')}}css/custom.min.css" rel="stylesheet">
+	  <link href="{{URL::asset('')}}css/admin.css" rel="stylesheet">
 </head>
 
 <body class="nav-md body-content">
@@ -96,6 +97,9 @@
 <script src="{{URL::asset('')}}js/bootstrap-select.min.js"></script>
 
 
+<script src="{{URL::asset('')}}js/jquery.validate.js"></script>
+
+<script src="{{URL::asset('')}}js/jquery.dataTables.min.js"></script>
 <!-- FastClick -->
 
 <!-- Custom Theme Scripts -->
@@ -108,6 +112,9 @@
         $("#myDelete").modal('show');
     }
 </script>
+<script>
+        $(".projecttable").DataTable();
+    </script>
 @yield('scripts')
 </body>
 </html>

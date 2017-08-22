@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 18 Aug 2017 03:11:07 +0000.
+ * Date: Mon, 21 Aug 2017 09:35:47 +0000.
  */
 
 namespace App\Models;
@@ -33,10 +33,4 @@ class AglProductImage extends Eloquent
 		'link',
 		'color'
 	];
-
-	public function product()
-    {
-    	return $this->belongTo('App\Models\AglProduct');
-    }
-    
 }

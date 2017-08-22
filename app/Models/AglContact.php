@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 18 Aug 2017 03:11:07 +0000.
+ * Date: Mon, 21 Aug 2017 09:35:47 +0000.
  */
 
 namespace App\Models;
@@ -14,6 +14,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property int $id
  * @property string $name
+ * @property string $email
  * @property string $phone
  * @property string $address
  * @property string $title
@@ -34,6 +35,7 @@ class AglContact extends Eloquent
 
 	protected $fillable = [
 		'name',
+		'email',
 		'phone',
 		'address',
 		'title',

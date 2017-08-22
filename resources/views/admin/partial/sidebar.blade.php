@@ -17,47 +17,57 @@
             </div>
         </div>
         <!-- /menu profile quick info -->
-
         <br />
-
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
-                <h3>General</h3>
+                <h3>Danh mục Quản lý</h3>
                 <ul class="nav side-menu">
-                    <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                    <li><a href="{{url('/admin/news')}}">News</a></li>
-                    <li><a href="{{url('/admin/collection')}}">Collection</a></li>
-
-                    <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-table"></i> Quản lý Trang chủ<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="tables.html">Tables</a></li>
-                            <li><a href="tables_dynamic.html">Table Dynamic</a></li>
+                            <li><a href="{{url('/admin/menu')}}"> Menu</a></li>
+                            <li><a href="{{url('/admin/slide')}}">Slide</a></li>
+                            <li><a href="{{url('/admin/style-life')}}">Thời trang và cuộc sống</a></li>
+                            <li><a href="{{url('/admin/shop-news')}}">Sản phẩm - Tin tức</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{URL::asset('')}}admin/1-menu-management"><i class="fa fa-bug"></i> Menu management</a>
+                    <li><a href="{{url('/admin/news')}}"><i class="fa fa-table"></i> Tin tức</a></li>
+                    <li><a href="{{url('/admin/collection')}}"><i class="fa fa-table"></i> Bộ sưu tập</a></li>
+
+                    <li><a><i class="fa fa-table"></i> Quản lý đơn hàng<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{url('/admin/status')}}">Trạng thái đơn hàng</a></li>
+                            <li><a href="{{url('/admin/order')}}">Đơn hàng</a></li>
+                        </ul>
                     </li>
-                    <li><a href="{{URL::asset('')}}admin/1-menu-management"><i class="fa fa-bug"></i> Send mail example</a>
+                    <li><a><i class="fa fa-table"></i> Quản lý phản hồi<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{url('/admin/qa')}}">Hỏi đáp</a></li>
+                            <li><a href="{{url('/admin/request')}}">Yêu cầu thiết kế lại</a></li>
+                            <li><a href="{{url('/admin/contact')}}">Quản lý liên hệ</a></li>
+                        </ul>
                     </li>
-                    <li><a href="{{URL::asset('')}}admin/resize-image"><i class="fa fa-bug"></i> Resize image example</a>
+                    <li><a><i class="fa fa-table"></i> Quản lý Giới thiệu<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{url('/admin/about-us')}}">Giới thiệu</a></li>
+                            <li><a href="{{url('/admin/about-us-different')}}">Chúng tôi khác biệt</a></li>
+                        </ul>
+                    </li>
+                    <li><a><i class="fa fa-table"></i> Quản lý user Admin<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{url('/admin/user')}}">Tài khoản Admin</a></li>
+                            <li><a href="{{url('/admin/permission')}}">Quản lý quyền Admin</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{url('/admin/account')}}"><i class="fa fa-table"></i>Tài khoản Người dùng</a></li>
+                    <li><a><i class="fa fa-table"></i> Quản lý Chung<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{url('/admin/config')}}">Config</a></li>
+                            <li><a href="{{url('/admin/guide')}}">Hướng dẫn</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
-            <div class="menu_section">
-                <h3>System config</h3>
-                <ul class="nav side-menu">
-                    <li><a href="{{URL::asset('')}}admin/system-config"><i class="fa fa-bug"></i> System information</a>
-                    </li>
-                    <li><a href="{{URL::asset('')}}admin/system-language"><i class="fa fa-windows"></i> System language</a>
-
-                    </li>
-                    <li><a href="{{URL::asset('')}}admin/system-permission"><i class="fa fa-sitemap"></i> System permission</a>
-
-                    </li>
-                    <li><a href="{{URL::asset('')}}/admin/theme"><i class="fa fa-laptop"></i> System theme</a></li>
-                </ul>
-            </div>
-
         </div>
         <!-- /sidebar menu -->
 

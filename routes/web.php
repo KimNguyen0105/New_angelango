@@ -23,7 +23,6 @@ Route::get('/admin/sign-up','Admin\UserController@getSignup');
 Route::post('/admin/sign-up','Admin\UserController@postSignup');
 
 
-
 //system config
 Route::get('/admin/system-config','Admin\AdminController@getSystemConfig')->middleware('not.login');
 Route::post('/admin/system-config','Admin\AdminController@updateSystemConfig')->middleware('not.login');
@@ -42,6 +41,77 @@ Route::get('/admin/collection/create-collection','Admin\CollectionController@get
 Route::post('/admin/collection/create-collection','Admin\CollectionController@postCreateCollection')->middleware('not.login');
 Route::get('/admin/collection/edit-collection/{id}','Admin\CollectionController@getEditCollection')->middleware('not.login');
 Route::post('/admin/collection/edit-collection/{id}','Admin\CollectionController@postEditCollection')->middleware('not.login');
+Route::get('/admin/collection/delete-collection/{id}','Admin\CollectionController@DeleteCollection')->middleware('not.login');
+//config system
+Route::get('/admin/config','Admin\AdminController@getConfig')->middleware('not.login');
+Route::post('/admin/config','Admin\AdminController@postConfig')->middleware('not.login');
+//HỎi đáp
+Route::get('/admin/qa','Admin\QAController@getQA')->middleware('not.login');
+Route::get('/admin/qa/{id}','Admin\QAController@DeleteQA')->middleware('not.login');
+//yêu cầu thiết kế lại
+Route::get('/admin/request','Admin\QAController@getRequest')->middleware('not.login');
+Route::get('/admin/request/{id}','Admin\QAController@getRequestByID')->middleware('not.login');
+Route::post('/admin/request/create-request/{id}','Admin\QAController@PostRequestByID')->middleware('not.login');
+Route::get('/admin/request/delete-request/{id}','Admin\QAController@DeleteRequest')->middleware('not.login');
+
+//trạng thái đơn hàng
+Route::get('/admin/status','Admin\OrderController@getStatusOrder')->middleware('not.login');
+Route::post('/admin/status','Admin\OrderController@postStatusOrder')->middleware('not.login');
+Route::get('/admin/status/delete-status/{id}','Admin\OrderController@DeleteStatusOrder')->middleware('not.login');
+//đơn hàng
+Route::get('/admin/order','Admin\OrderController@getOrder')->middleware('not.login');
+Route::get('/admin/order/{id}','Admin\OrderController@getOrderByID')->middleware('not.login');
+Route::post('/admin/order/update-status-order/{id}','Admin\OrderController@postOrderStatus')->middleware('not.login');
+Route::get('/admin/order/delete-order/{id}','Admin\OrderController@DeleteOrder')->middleware('not.login');
+//liên hệ
+Route::get('/admin/contact','Admin\ContactController@getContact')->middleware('not.login');
+Route::get('/admin/contact/{id}','Admin\ContactController@getContactByID')->middleware('not.login');
+Route::post('/admin/contact/{id}','Admin\ContactController@postContact')->middleware('not.login');
+Route::get('/admin/contact/delete-contact/{id}','Admin\ContactController@DeleteContact')->middleware('not.login');
+//giới thiệu
+Route::get('/admin/about-us','Admin\AboutUsController@getAboutUs')->middleware('not.login');
+Route::get('/admin/about-us/{id}','Admin\AboutUsController@getAboutUsByID')->middleware('not.login');
+Route::post('/admin/about-us/{id}','Admin\AboutUsController@postAboutUsByID')->middleware('not.login');
+Route::get('/admin/about-us/delete-images/{id}','Admin\AboutUsController@DeleteAboutUsImage')->middleware('not.login');
+
+Route::get('/admin/about-us-different','Admin\AboutUsController@getAboutUsDifferent')->middleware('not.login');
+Route::get('/admin/about-us-different/{id}','Admin\AboutUsController@getAboutUsByIDDifferent')->middleware('not.login');
+Route::post('/admin/about-us-different/{id}','Admin\AboutUsController@postAboutUsByIDDifferent')->middleware('not.login');
+//trang chủ
+Route::get('/admin/slide','Admin\AdminController@getSlide')->middleware('not.login');
+Route::get('/admin/slide/{id}','Admin\AdminController@getSlideByID')->middleware('not.login');
+Route::post('/admin/slide/{id}','Admin\AdminController@postSlide')->middleware('not.login');
+Route::get('/admin/slide/delete-slide/{id}','Admin\AdminController@DeleteSlide')->middleware('not.login');
+
+Route::get('/admin/style-life','Admin\AdminController@getStyleLife')->middleware('not.login');
+Route::get('/admin/style-life/{id}','Admin\AdminController@getStyleLifeByID')->middleware('not.login');
+Route::post('/admin/style-life/{id}','Admin\AdminController@postStyleLife')->middleware('not.login');
+Route::get('/admin/style-life/delete-style-life/{id}','Admin\AdminController@DeleteStyleLife')->middleware('not.login');
+
+Route::get('/admin/shop-news','Admin\AdminController@getShopNews')->middleware('not.login');
+Route::get('/admin/shop-news/{id}','Admin\AdminController@getShopNewsByID')->middleware('not.login');
+Route::post('/admin/shop-news/{id}','Admin\AdminController@postShopNews')->middleware('not.login');
+
+Route::get('/admin/menu','Admin\AdminController@getMenu')->middleware('not.login');
+Route::post('/admin/menu','Admin\AdminController@postMenu')->middleware('not.login');
+
+//user
+Route::get('/admin/user','Admin\UserController@getUser')->middleware('not.login');
+Route::get('/admin/user/{id}','Admin\UserController@getUserByID')->middleware('not.login');
+Route::post('/admin/user/{id}','Admin\UserController@postUser')->middleware('not.login');
+Route::post('/admin/style-life/{id}','Admin\AdminController@postStyleLife')->middleware('not.login');
+Route::get('/admin/style-life/delete-style-life/{id}','Admin\AdminController@DeleteStyleLife')->middleware('not.login');
+
+
+//hướng dẫn
+Route::get('/admin/guide','Admin\GuideController@getGuide')->middleware('not.login');
+Route::get('/admin/guide/{id}','Admin\GuideController@getGuideByID')->middleware('not.login');
+Route::post('/admin/guide/{id}','Admin\GuideController@postGuide')->middleware('not.login');
+Route::get('/admin/guide/delete-guide/{id}','Admin\GuideController@DeleteGuide')->middleware('not.login');
+
+//system permission
+Route::get('/admin/permission','Admin\PermissionController@Index')->middleware('not.login');
+Route::post('/admin/permission','Admin\PermissionController@postPermission')->middleware('not.login');
 
 //danh mục sản phẩm
 Route::get('/admin/menu-product','Admin\MenuProductController@getMenuProduct')->middleware('not.login');
@@ -91,16 +161,3 @@ Route::get('/admin/account/edit-account/{id}','Admin\AccountController@getEditAc
 Route::post('/admin/account/edit-account/{id}','Admin\AccountController@postEditAccount')->middleware('not.login');
 Route::get('/admin/account/delete-account/{id}','Admin\AccountController@DeleteAccount')->middleware('not.login');
 
-//system permission
-Route::get('/admin/system-permission','Admin\PermissionController@Index')->middleware('not.login');
-Route::get('/admin/resize-image','Admin\PermissionController@getResize')->middleware('not.login');
-Route::post('/admin/resize-image','Admin\PermissionController@postResize')->middleware('not.login');
-
-//menu management
-Route::get('/admin/{id}-menu-management','Admin\AdminController@getMenu')->middleware('not.login');
-Route::get('/admin/create-new-menu','Admin\AdminController@getCreateNewMenu')->middleware('not.login');
-Route::post('/admin/create-new-menu','Admin\AdminController@postCreateNewMenu')->middleware('not.login');
-Route::get('/admin/delete-menu-{id}','Admin\AdminController@getDeleteMenu')->middleware('not.login');
-Route::post('/admin/delete-menu-{id}','Admin\AdminController@postDeleteMenu')->middleware('not.login');
-Route::get('/admin/edit-menu-{id}','Admin\AdminController@getEditMenu')->middleware('not.login');
-Route::post('/admin/edit-menu-{id}','Admin\AdminController@postEditMenu')->middleware('not.login');
