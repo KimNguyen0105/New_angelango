@@ -12,7 +12,7 @@
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href="{{URL::asset('')}}admin/user/{{Session::get('user_id')}}"> Profile</a></li>
+                        <li><a href="{{URL::asset('')}}admin/profile/{{Session::get('user_id')}}"> Profile</a></li>
                         <li><a href="{{URL::asset('')}}admin/log-out"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                     </ul>
                 </li>
@@ -37,7 +37,7 @@
                         </li>
                         <li>
                             <a>
-                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                <span class="image"><img src="{{URL::asset('')}}images/users/{{Session::get('avatar')}}" alt="Profile Image" /></span>
                                 <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>

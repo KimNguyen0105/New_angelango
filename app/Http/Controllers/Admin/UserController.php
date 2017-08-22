@@ -26,7 +26,7 @@ class UserController extends Controller
                 return redirect('/admin/log-in')->with('fail','Username or password wrong!  ');
             }
             else{
-                Session::put('username',$user->username);
+                Session::put('username',$user->email);
                 Session::put('user_id',$user->id);
                 Session::put('avatar',$user->avatar);
                 return redirect('/admin');
@@ -64,6 +64,20 @@ class UserController extends Controller
         catch (\Exception $e)
         {
             dd($e);
+            return redirect('admin/user')->with('failed','Lấy thông tin user thất bại');
+        }
+    }
+    public function Profile($id)
+    {
+        try{
+            $user=AglUser::find($id);
+            if($user)
+            {
+                return view('admin.user.profile',['user'=>$user]);
+            }
+        }
+        catch (\Exception $e)
+        {
             return redirect('admin/user')->with('failed','Lấy thông tin user thất bại');
         }
     }
