@@ -2,8 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <a href="{{url('/admin/menu-product/create-menu-product')}}" class="btn btn-sm btn-success addlink"><span
-                        class="glyphicon glyphicon-new-window"></span> Create Menu Product</a>
+           
             <div class="dashboard_graph">
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">

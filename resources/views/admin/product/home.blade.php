@@ -21,7 +21,7 @@
                     @endif
                 <div class="row x_title">
                     <div class="col-md-12">
-                        <table class="table table-bordered table-responsive projecttable">
+                        <table id="data-table" class="table table-bordered table-responsive projecttable">
                             <thead>
                             <tr>
                                 <th width="5%">#</th>
@@ -37,10 +37,10 @@
                             </thead>
                             <tbody>
                             @foreach($product as $item)
+
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td><img src="{{asset('/images/product')}}/{{$item->avatar}}"
-                                             style="height:100px;"/></td>
+                                    <td><img src="{{asset('/images/product')}}/{{$item->avatar}}" style="height:100px;"/></td>
                                     <td>{{$item->title_vi}}</td>
                                     <td>{{App\Models\AglMenuProduct::find($item->menu_product_id)->title_vi}}</td>
                                     <td>@if($item->is_discount==1){{"Có"}}@else{{"Không"}}@endif</td>
@@ -52,13 +52,11 @@
                                            class="btn btn-xs btn-primary editlink"><span
                                                     class="glyphicon glyphicon-pencil"></span>
                                             Edit</a>
-                                        @if($loop->count > 2)
+                                       
                                             <a onclick="ftDelete('{{url('admin/product/delete-product')}}/{{$item->id}}')"
                                                class="btn btn-xs btn-danger deletelink"><span
                                                         class="glyphicon glyphicon-trash"></span> Delete</a>
-                                        @else
-                                            <i>Default 2 new, can't delete</i>
-                                        @endif
+                                      
                                     </td>
                                 </tr>
                             @endforeach
@@ -73,4 +71,10 @@
 
         </div>
     </div>
+@endsection
+@section('scripts')
+<script>
+   $('#data-table').DataTable();
+</script>
+
 @endsection

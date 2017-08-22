@@ -33,6 +33,15 @@
                     </li>
                     <li><a href="{{url('/admin/news')}}"><i class="fa fa-table"></i> Tin tức</a></li>
                     <li><a href="{{url('/admin/collection')}}"><i class="fa fa-table"></i> Bộ sưu tập</a></li>
+                    
+                    <li><a><i class="fa fa-table"></i> Quản lý sản phẩm<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{url('/admin/product')}}">Danh sách sản phẩm</a></li>
+                             <li><a href="{{url('/admin/discount')}}">Sản phẩm khuyến mãi</a></li>
+                            <li><a href="{{url('/admin/menu-product')}}">Danh mục sản phẩm</a></li>
+
+                        </ul>
+                    </li>
 
                     <li><a><i class="fa fa-table"></i> Quản lý đơn hàng<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
@@ -45,6 +54,7 @@
                             <li><a href="{{url('/admin/qa')}}">Hỏi đáp</a></li>
                             <li><a href="{{url('/admin/request')}}">Yêu cầu thiết kế lại</a></li>
                             <li><a href="{{url('/admin/contact')}}">Quản lý liên hệ</a></li>
+                            <li><a href="{{url('/admin/subscribe')}}">Đăng ký nhận khuyến mãi</a></li>
                         </ul>
                     </li>
                     <li><a><i class="fa fa-table"></i> Quản lý Giới thiệu<span class="fa fa-chevron-down"></span></a>
@@ -63,6 +73,7 @@
                     <li><a><i class="fa fa-table"></i> Quản lý Chung<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{url('/admin/config')}}">Config</a></li>
+                            <li><a href="{{url('/admin/banner')}}">Banner</a></li>
                             <li><a href="{{url('/admin/guide')}}">Hướng dẫn</a></li>
                         </ul>
                     </li>

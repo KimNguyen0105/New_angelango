@@ -41,13 +41,11 @@
                                            class="btn btn-xs btn-primary editlink"><span
                                                     class="glyphicon glyphicon-pencil"></span>
                                             Edit</a>
-                                        @if($loop->count > 2)
+                                        
                                             <a onclick="ftDelete('{{url('admin/menu-product/delete-menu-product')}}/{{$item->id}}')"
                                                class="btn btn-xs btn-danger deletelink"><span
                                                         class="glyphicon glyphicon-trash"></span> Delete</a>
-                                        @else
-                                            <i>Default 2 news, can't delete</i>
-                                        @endif
+                                       
                                     </td>
                                 </tr>
                             @endforeach

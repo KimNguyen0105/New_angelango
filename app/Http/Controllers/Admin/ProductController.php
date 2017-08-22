@@ -21,7 +21,6 @@ class ProductController extends Controller
     public function getProduct()
     {
         $product = AglProduct::where('status',1)->orderBy('updated_at', 'desc')->get();
-        
         return view('admin.product.home', [
             'product' => $product
         ]);
@@ -320,7 +319,7 @@ class ProductController extends Controller
     {
         try{
             $product=AglProduct::find($id);
-            $product_image=AglProductImage::where('product_id',$product->id);
+            $product_image=AglProductImage::where('product_id',$product->id)->get();
             if($product)
             {
 
@@ -328,23 +327,25 @@ class ProductController extends Controller
                 {
                     unlink("images/product/".$product->avatar);
                 }
-                if(file_exists("images/product_image/".$product_image->link))
-                {
-                    unlink("images/product_image/".$product_image->link);
-                }
+              
 
-                $product->status=0;
-                if($product->save())
-                {
+                $product->delete();
+                
+                    foreach ($product_image as $key => $item) {
+                      if(file_exists("images/product_image/".$item->link))
+                        {
+                            unlink("images/product_image/".$item->link);
+                        }
+                    }
+                      
+                        AglProductImage::where('product_id',$product->id)->delete();
                     return redirect('/admin/product')->with('success', 'Xóa sản phẩm thành công');
-                }
-                else{
-                    return redirect('/admin/product')->with('failed', 'Xóa sản phẩm thất bại');
-                }
+                
             }
         }
         catch (\Exception $e)
         {
+            dd($e);
             return redirect('/admin/product')->with('failed', 'Xóa sản phẩm thất bại');
         }
     }
