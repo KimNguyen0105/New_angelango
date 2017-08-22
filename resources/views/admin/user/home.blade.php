@@ -45,7 +45,7 @@
                                                     class="glyphicon glyphicon-pencil"></span>
                                             Edit</a>
 
-                                            <a onclick="ftDelete('{{url('admin/user/delete-user')}}/{{$user->id}}')"
+                                            <a onclick="ftDelete('{{url('admin/user/delete')}}/{{$user->id}}')"
                                                class="btn btn-xs btn-danger deletelink"><span
                                                         class="glyphicon glyphicon-trash"></span> Delete</a>
                                     </td>

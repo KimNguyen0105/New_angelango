@@ -21,13 +21,13 @@ class UserController extends Controller
         $password=$request->get('password');
         $user = AglUser::where('email',$email)->where('status',1)->first();
         if($user!=null){
-            if($password!=$user->password){
-
+            if(md5($password)!=$user->password){
                 return redirect('/admin/log-in')->with('fail','Username or password wrong!  ');
             }
             else{
                 Session::put('username',$user->username);
                 Session::put('user_id',$user->id);
+                Session::put('avatar',$user->avatar);
                 return redirect('/admin');
             }
         }
@@ -88,7 +88,7 @@ class UserController extends Controller
                 {
                     $p = AglPermission::get();
                     foreach ($p as $item) {
-                        if ($request->permission_ . $item->id == 1) {
+                        if ($request->get('permission_'.$item->id)==1) {
                             $u_p = new AglUserPermission();
                             $u_p->user_id = $user->id;
                             $u_p->permission_id = $item->id;
@@ -102,23 +102,72 @@ class UserController extends Controller
                 $user=AglUser::find($id);
                 $user->username=$request->username;
                 $user->email=$request->email;
-                $user->password=md5($request->password);
+                if($request->password){
+                    $user->password=md5($request->password);
+                }
                 if($request->hasFile('file'))
                 {
+                    if($user->avatar!="default.png")
+                    {
+                        if(file_exists("images/users/".$user->avatar))
+                        {
+                            unlink("images/users/".$user->avatar);
+                        }
+                    }
                     $image = $request->file('file');
                     $filename  = 'user_'.time() . '.' . $image->getClientOriginalExtension();
                     $path = public_path('images/users/' . $filename);
                     Image::make($image->getRealPath())->resize(150, 150)->save($path);
                     $user->avatar=$filename;
                 }
-                $user->save();
-                return redirect('admin/user')->with('success','Cập nhật user thành công');
+                if ($user->save())
+                {
+                    $p = AglPermission::get();
+                    AglUserPermission::where('user_id')->delete();
+                    foreach ($p as $item) {
+                        if ($request->get('permission_'.$item->id)==1) {
+                            $u_p = new AglUserPermission();
+                            $u_p->user_id = $user->id;
+                            $u_p->permission_id = $item->id;
+                            $u_p->save();
+                        }
+                    }
+                    return redirect('admin/user')->with('success','Cập nhật user thành công');
+                }
+
             }
 
         }
         catch (\Exception $e)
         {
+            dd($e);
             return redirect('admin/user')->with('failed','Thêm user thất bại');
+        }
+    }
+    public function DeleteUser($id)
+    {
+        try{
+            $user=AglUser::find($id);
+            if($user)
+            {
+                AglUserPermission::where('user_id')->delete();
+                if($user->avatar!="default.png")
+                {
+                    if(file_exists("images/users/".$user->avatar))
+                    {
+                        unlink("images/users/".$user->avatar);
+                    }
+                }
+                $user->delete();
+                return redirect('admin/user')->with('success','Xóa user thành công');
+            }
+            else{
+                return redirect('admin/user')->with('failed','Xóa user thất bại');
+            }
+        }
+        catch (\Exception $e)
+        {
+            return redirect('admin/user')->with('failed','Xóa user thất bại');
         }
     }
     public function Logout(Request $request){
