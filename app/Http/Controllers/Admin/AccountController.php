@@ -9,43 +9,117 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\HbbUser;
 use DB;
+use Hash;
+use md5;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-
+use App\Models\AglAccount;
 class AccountController extends Controller{
-    public function getLogin(){
-        return view('admin.login');
+
+
+    public function getAccount(){
+        $account = AglAccount::where('status',1)->orderBy('id', 'desc')->get();
+        return view('admin.account.home',['account'=>$account]);
     }
-    public function postLogin(Request $request){
 
-        $username = $request->get('username');
-        $password=$request->get('password');
-        $user = HbbUser::where('username',$username)->first();
-        //dd($user);
-        if($user!=null){
-            $pass = $user->password;
-            if($password!=$pass){
+     public function getCreateAccount(){
+        
+        return view('admin.account.create_account');
+    }
 
-                return redirect('/admin/log-in')->with('fail','Username or password wrong!  ');
-            }
-            else{
-                Session::put('username',$username);
-                Session::put('user_id',$user->id);
-                return redirect('/admin');
-            }
+    public function postCreateAccount(Request $request){
+        $account = new AglAccount();
+       
+        $account->name = $request->name;
+        if ($request->input('password')) {
+            $this->validate($request,
+                [
+                    'txtRePass' =>'same:password',
+                    
+                ],
+                [
+                    'txtRePass.same'=>'nhập lại mật khẩu không khớp',
+                   
+                ]);
+            $pass = $request->input('password');
+            $account->password = md5($pass);
+
         }
-        else{
-
-            return redirect('/admin/log-in')->with('fail','Account not exist!');
+        $email = $account->email;
+        
+        if($email != $request->input('email'))
+       {
+        if ($request->input('email')) {
+            $this->validate($request,
+                [
+                     'email' => 'required|unique:agl_account,email|regex:/^[a-z][a-z0-9]*(_[a-z0-9]+)*(\.[a-z0-9]+)*@[a-z0-9]([a-z0-9-][a-z0-9]+)*(\.[a-z]{2,4}){1,2}$/'
+                ],
+                [
+                      'email.unique' => 'Email đã tồn tại',
+                      'email.regex' => 'Email không đúng định dạng'
+                ]);
+            
+            // $edit_banner->banner_title =$request->input('txtTitle');
         }
-        return redirect()->back();
-    }
-    public function postSignup(Request $request)
-    {
+       }
+        $account->email = $request->email;
+         $account->status = 1;
+        $account->save();
 
+        return redirect('/admin/account')->with('success', 'Thêm account thành công');
     }
-    public function Logout(Request $request){
-        $request->session()->flush();
-        return redirect('/admin/log-in');
+
+    public function getEditAccount($id){
+        $account = AglAccount::find($id);
+        return view('admin.account.edit_account',['account'=>$account]);
     }
+
+    public function postEditAccount($id,Request $request){
+        $account = AglAccount::find($id);
+       
+        $account->name = $request->name;
+        if ($request->input('password')) {
+            $this->validate($request,
+                [
+                    'txtRePass' =>'same:password',
+                    
+                ],
+                [
+                    'txtRePass.same'=>'nhập lại mật khẩu không khớp',
+                   
+                ]);
+            $pass = $request->input('password');
+            $account->password = md5($pass);
+
+        }
+        $email = $account->email;
+        
+        if($email != $request->input('email'))
+       {
+        if ($request->input('email')) {
+            $this->validate($request,
+                [
+                     'email' => 'required|unique:agl_account,email|regex:/^[a-z][a-z0-9]*(_[a-z0-9]+)*(\.[a-z0-9]+)*@[a-z0-9]([a-z0-9-][a-z0-9]+)*(\.[a-z]{2,4}){1,2}$/'
+                ],
+                [
+                      'email.unique' => 'Email đã tồn tại',
+                      'email.regex' => 'Email không đúng định dạng'
+                ]);
+            
+            // $edit_banner->banner_title =$request->input('txtTitle');
+        }
+       }
+        $account->email = $request->email;
+
+        $account->save();
+
+        return redirect('/admin/account')->with('success', 'Cập nhật account thành công');
+    }
+    public function DeleteAccount($id){
+        $account = AglAccount::find($id);
+        $account->status = 0;
+        $account->save();
+        return redirect('/admin/account')->with('success', 'Xóa account thành công');
+    }
+    
 }
