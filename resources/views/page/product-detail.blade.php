@@ -1,4 +1,5 @@
 @extends('master')
+
 @section('main')
     <!--     <header id="myCarousel" class="carousel slide sua-header">
 
@@ -45,22 +46,22 @@
                         <span> Kích cỡ: </span>
                         <div class="btn-group select-size" data-toggle="buttons">
                             <label class="btn">
-                                <input type="radio" name="options" id="option2" autocomplete="off">S
+                                <input type="radio" name="size" value="S" id="option2" autocomplete="off">S
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
 
                             <label class="btn active">
-                                <input type="radio" name="options" id="option1" autocomplete="off">M
+                                <input type="radio" name="size" value="M" id="option1" autocomplete="off">M
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
 
                             <label class="btn">
-                                <input type="radio" name="options" id="option2" autocomplete="off">L
+                                <input type="radio" name="size" value="L" id="option2" autocomplete="off">L
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
 
                             <label class="btn">
-                                <input type="radio" name="options" id="option2" autocomplete="off">XL
+                                <input type="radio" name="size" value="XL" id="option2" autocomplete="off">XL
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
                         </div>
@@ -68,19 +69,19 @@
 
                     <div class="well-sm">
                         <span> Chọn màu: </span>
-                        <div class="btn-group" data-toggle="buttons">
+                        <div class="btn-group select-color" data-toggle="buttons">
                             <label class="btn btn-1">
-                                <input type="radio" name="options" id="option2" autocomplete="off">
+                                <input type="radio" name="color" id="option2" autocomplete="off">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
 
                             <label class="btn btn-2 active">
-                                <input type="radio" name="options" id="option1" autocomplete="off">
+                                <input type="radio" name="color" id="option1" autocomplete="off">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
 
                             <label class="btn btn-3">
-                                <input type="radio" name="options" id="option2" autocomplete="off">
+                                <input type="radio" name="color" id="option2" autocomplete="off">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
                         </div>
@@ -88,8 +89,8 @@
 
                     <div class="add-product">
                         <p>Số lượng:
-                            <span id="soluong">1</span>
-                            <span id="btn-addtocart"><a href="#">Thêm vào giỏ hàng</a></span>
+                            <span id="soluong" style="padding: 5px 1px;"><input style="border: none;width: 48px;" class="input-quantity" min="1" type="number" value="1"></span>
+                            <span id="btn-addtocart"><a href="javascript:void(0)" data-id="1" class="btn-add-to-cart" >Thêm vào giỏ hàng</a></span>
                         </p>
                     </div>
                     <ul class="nav nav-tabs" role="tablist">

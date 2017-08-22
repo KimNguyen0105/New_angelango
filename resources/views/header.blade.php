@@ -55,7 +55,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 icon-top">
                     <div class="col-md-3 col-sm-4 col-xs-3">
                         <a class="read-more font-txt" href="{{asset('/gio-hang.html')}}">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> (0)</a>
+                            <span class="glyphicon glyphicon-shopping-cart"><span class="badge cart-icon">{{\Gloudemans\Shoppingcart\Facades\Cart::count()}}</span></span></a>
                     </div>
                     <div class="col-md-5 col-sm-4 col-xs-4 dropdown" style="padding: 0px">
                         <a class="read-more font-txt txt-login" data-toggle="dropdown">
