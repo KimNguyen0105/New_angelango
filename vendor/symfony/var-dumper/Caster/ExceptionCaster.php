@@ -16,11 +16,7 @@ use Symfony\Component\VarDumper\Exception\ThrowingCasterException;
 use Symfony\Component\VarDumper\Cloner\Stub;
 
 /**
-<<<<<<< HEAD
  * Casts common_icon Exception classes to array representation.
-=======
- * Casts common Exception classes to array representation.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */

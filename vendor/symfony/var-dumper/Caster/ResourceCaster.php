@@ -14,11 +14,7 @@ namespace Symfony\Component\VarDumper\Caster;
 use Symfony\Component\VarDumper\Cloner\Stub;
 
 /**
-<<<<<<< HEAD
  * Casts common_icon resource types to array representation.
-=======
- * Casts common resource types to array representation.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */

@@ -504,11 +504,7 @@ class Logger implements LoggerInterface
     /**
      * Adds a log record at an arbitrary level.
      *
-<<<<<<< HEAD
      * This method allows for compatibility with common_icon interfaces.
-=======
-     * This method allows for compatibility with common interfaces.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  mixed   $level   The log level
      * @param  string  $message The log message
@@ -525,11 +521,7 @@ class Logger implements LoggerInterface
     /**
      * Adds a log record at the DEBUG level.
      *
-<<<<<<< HEAD
      * This method allows for compatibility with common_icon interfaces.
-=======
-     * This method allows for compatibility with common interfaces.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  string  $message The log message
      * @param  array   $context The log context
@@ -543,11 +535,7 @@ class Logger implements LoggerInterface
     /**
      * Adds a log record at the INFO level.
      *
-<<<<<<< HEAD
      * This method allows for compatibility with common_icon interfaces.
-=======
-     * This method allows for compatibility with common interfaces.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  string  $message The log message
      * @param  array   $context The log context
@@ -561,11 +549,7 @@ class Logger implements LoggerInterface
     /**
      * Adds a log record at the NOTICE level.
      *
-<<<<<<< HEAD
      * This method allows for compatibility with common_icon interfaces.
-=======
-     * This method allows for compatibility with common interfaces.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  string  $message The log message
      * @param  array   $context The log context
@@ -579,11 +563,7 @@ class Logger implements LoggerInterface
     /**
      * Adds a log record at the WARNING level.
      *
-<<<<<<< HEAD
      * This method allows for compatibility with common_icon interfaces.
-=======
-     * This method allows for compatibility with common interfaces.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  string  $message The log message
      * @param  array   $context The log context
@@ -597,11 +577,7 @@ class Logger implements LoggerInterface
     /**
      * Adds a log record at the WARNING level.
      *
-<<<<<<< HEAD
      * This method allows for compatibility with common_icon interfaces.
-=======
-     * This method allows for compatibility with common interfaces.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  string  $message The log message
      * @param  array   $context The log context
@@ -615,11 +591,7 @@ class Logger implements LoggerInterface
     /**
      * Adds a log record at the ERROR level.
      *
-<<<<<<< HEAD
      * This method allows for compatibility with common_icon interfaces.
-=======
-     * This method allows for compatibility with common interfaces.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  string  $message The log message
      * @param  array   $context The log context
@@ -633,11 +605,7 @@ class Logger implements LoggerInterface
     /**
      * Adds a log record at the ERROR level.
      *
-<<<<<<< HEAD
      * This method allows for compatibility with common_icon interfaces.
-=======
-     * This method allows for compatibility with common interfaces.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  string  $message The log message
      * @param  array   $context The log context
@@ -651,11 +619,7 @@ class Logger implements LoggerInterface
     /**
      * Adds a log record at the CRITICAL level.
      *
-<<<<<<< HEAD
      * This method allows for compatibility with common_icon interfaces.
-=======
-     * This method allows for compatibility with common interfaces.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  string  $message The log message
      * @param  array   $context The log context
@@ -669,11 +633,7 @@ class Logger implements LoggerInterface
     /**
      * Adds a log record at the CRITICAL level.
      *
-<<<<<<< HEAD
      * This method allows for compatibility with common_icon interfaces.
-=======
-     * This method allows for compatibility with common interfaces.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  string  $message The log message
      * @param  array   $context The log context
@@ -687,11 +647,7 @@ class Logger implements LoggerInterface
     /**
      * Adds a log record at the ALERT level.
      *
-<<<<<<< HEAD
      * This method allows for compatibility with common_icon interfaces.
-=======
-     * This method allows for compatibility with common interfaces.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  string  $message The log message
      * @param  array   $context The log context
@@ -705,11 +661,7 @@ class Logger implements LoggerInterface
     /**
      * Adds a log record at the EMERGENCY level.
      *
-<<<<<<< HEAD
      * This method allows for compatibility with common_icon interfaces.
-=======
-     * This method allows for compatibility with common interfaces.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  string  $message The log message
      * @param  array   $context The log context
@@ -723,11 +675,7 @@ class Logger implements LoggerInterface
     /**
      * Adds a log record at the EMERGENCY level.
      *
-<<<<<<< HEAD
      * This method allows for compatibility with common_icon interfaces.
-=======
-     * This method allows for compatibility with common interfaces.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  string  $message The log message
      * @param  array   $context The log context

@@ -67,11 +67,7 @@ class SyslogUdpHandler extends AbstractSyslogHandler
     }
 
     /**
-<<<<<<< HEAD
      * Make common_icon syslog header (see rfc5424)
-=======
-     * Make common syslog header (see rfc5424)
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      */
     protected function makeCommonSyslogHeader($severity)
     {

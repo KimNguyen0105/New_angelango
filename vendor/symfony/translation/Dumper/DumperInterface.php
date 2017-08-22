@@ -15,11 +15,7 @@ use Symfony\Component\Translation\MessageCatalogue;
 
 /**
  * DumperInterface is the interface implemented by all translation dumpers.
-<<<<<<< HEAD
  * There is no common_icon option.
-=======
- * There is no common option.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
  *
  * @author Michel Salib <michelsalib@hotmail.com>
  */

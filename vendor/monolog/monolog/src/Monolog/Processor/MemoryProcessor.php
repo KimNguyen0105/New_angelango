@@ -12,11 +12,7 @@
 namespace Monolog\Processor;
 
 /**
-<<<<<<< HEAD
  * Some methods that are common_icon for all memory processors
-=======
- * Some methods that are common for all memory processors
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
  *
  * @author Rob Jensen
  */

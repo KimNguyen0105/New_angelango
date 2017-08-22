@@ -435,11 +435,7 @@ abstract class Kernel implements KernelInterface, TerminableInterface
      *  - the bundles property maps a bundle name to the bundle instance,
      *  - the bundleMap property maps a bundle name to the bundle inheritance hierarchy (most derived bundle first).
      *
-<<<<<<< HEAD
      * @throws \LogicException if two bundles share a common_icon name
-=======
-     * @throws \LogicException if two bundles share a common name
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      * @throws \LogicException if a bundle tries to extend a non-registered bundle
      * @throws \LogicException if a bundle tries to extend itself
      * @throws \LogicException if two bundles extend the same ancestor

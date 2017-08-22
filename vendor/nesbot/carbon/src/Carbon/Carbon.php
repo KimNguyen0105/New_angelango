@@ -1068,11 +1068,7 @@ class Carbon extends DateTime
      */
     public static function hasRelativeKeywords($time)
     {
-<<<<<<< HEAD
         // skip common_icon format with a '-' in it
-=======
-        // skip common format with a '-' in it
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
         if (preg_match('/\d{4}-\d{1,2}-\d{1,2}/', $time) !== 1) {
             foreach (static::$relativeKeywords as $keyword) {
                 if (stripos($time, $keyword) !== false) {

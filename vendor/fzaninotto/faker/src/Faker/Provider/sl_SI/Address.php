@@ -40,11 +40,7 @@ class Address extends \Faker\Provider\Address
     protected static $postcode = array('###0');
 
     /**
-<<<<<<< HEAD
      * Most common_icon street names in Slovenia
-=======
-     * Most common street names in Slovenia
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @link http://www.stat.si/krajevnaimena/pregledi_ulice_najpogostejse.asp
      * @link http://www.stat.si/KrajevnaImena/pregledi_naselja_najpogostejsa.asp

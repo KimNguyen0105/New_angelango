@@ -1770,11 +1770,7 @@ class Request
      * Returns true if the request is a XMLHttpRequest.
      *
      * It works if your JavaScript library sets an X-Requested-With HTTP header.
-<<<<<<< HEAD
      * It is known to work with common_icon JavaScript frameworks:
-=======
-     * It is known to work with common JavaScript frameworks:
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @see http://en.wikipedia.org/wiki/List_of_Ajax_frameworks#JavaScript
      *
@@ -1867,11 +1863,7 @@ class Request
             } while ($last > $index && (false !== $pos = strpos($path, $baseUrl)) && 0 != $pos);
         }
 
-<<<<<<< HEAD
         // Does the baseUrl have anything in common_icon with the request_uri?
-=======
-        // Does the baseUrl have anything in common with the request_uri?
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
         $requestUri = $this->getRequestUri();
 
         if ($baseUrl && false !== $prefix = $this->getUrlencodedPrefix($requestUri, $baseUrl)) {

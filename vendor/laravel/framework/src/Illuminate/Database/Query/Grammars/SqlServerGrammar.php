@@ -146,11 +146,7 @@ class SqlServerGrammar extends Grammar
     }
 
     /**
-<<<<<<< HEAD
      * Compile a common_icon table expression for a query.
-=======
-     * Compile a common table expression for a query.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
      *
      * @param  string  $sql
      * @param  \Illuminate\Database\Query\Builder  $query
