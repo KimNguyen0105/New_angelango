@@ -34,6 +34,34 @@
                         </label>
                         <input type="text" class="form-control" name="name" id="name" value="{!! old('name') !!}" required maxlength="255">
                     </div>
+                    <div class="form-group">
+                        <label for="introduce">
+                            Số điện thoại
+                        </label>
+                        <input type="text" class="form-control" name="phone_number" id="phone_number" value="{!! old('phone_number') !!}" required maxlength="255">
+                    </div>
+                    <div class="form-group">
+                        <label for="introduce">
+                            Ngày sinh
+                        </label>
+                        <input type="date" class="form-control" name="birthday" id="birthday" value="{!! old('birthday') !!}" required maxlength="255">
+                    </div>
+                    <div class="form-group">
+                        <label for="introduce">
+                           Giới tính
+                        </label>
+                         <div class="radio">
+                            <label>
+                              <input type="radio" checked="" value="1" id="optionsRadios1" name="gender"> Nam
+                            </label>
+                          </div>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" checked="" value="0" id="optionsRadios1" name="gender"> Nữ
+                            </label>
+                          </div>
+                         
+                    </div>
 
                     <div class="form-group">
                         <label for="introduce">

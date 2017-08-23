@@ -27,6 +27,9 @@
                                 <th width="5%">#</th>
                                 <th width="15%">Email</th>
                                 <th width="15%">Name</th>
+                                <th width="15%">Số điện thoại</th>
+                                <th width="15%">Ngày sinh</th>
+                                <th width="15%">Giới tính</th>
                                 <th width="15%">Ngày đăng ký</th>
                                 <th width="15%">Action</th>
 
@@ -38,6 +41,9 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->name}}</td>
+                                    <td>{{$item->phone_number}}</td>
+                                    <td>{{date( "d-m-Y", strtotime($item->birthday))}}</td>
+                                    <td>@if($item->gender==1){{"Nam"}}@else{{"Nữ"}}@endif</td>
                                     <td>{{date( "d-m-Y", strtotime($item->created_at))}}</td>
                                     <td>
                                         <a href="{{url('/admin/account/edit-account')}}/{{$item->id}}"
