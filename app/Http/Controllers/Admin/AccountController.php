@@ -63,6 +63,9 @@ class AccountController extends Controller{
         }
        }
         $account->email = $request->email;
+        $account->phone_number = $request->phone_number;
+        $account->gender = $request->gender;
+        $account->birthday = $request->birthday;
          $account->status = 1;
         $account->save();
 
@@ -110,7 +113,9 @@ class AccountController extends Controller{
         }
        }
         $account->email = $request->email;
-
+        $account->phone_number = $request->phone_number;
+        $account->gender = $request->gender;
+        $account->birthday = $request->birthday;
         $account->save();
 
         return redirect('/admin/account')->with('success', 'Cập nhật account thành công');
