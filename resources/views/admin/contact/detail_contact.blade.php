@@ -29,7 +29,7 @@
                     @endif
                 </p>
                 <div class="form-group">
-                    <label>Cập nhật trạng thái đơn hàng</label>
+                    <label>Cập nhật trạng thái liên hệ</label>
                     <form method="POST" action="{{url('admin/contact')}}/{{$contact->id}}">
                         <select class="form-control" name="status">
                             @if($contact->status==0)
