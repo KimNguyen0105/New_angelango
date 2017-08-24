@@ -8,8 +8,7 @@
     </style>
     <div class="row request">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <a href="{{url('/admin/news/create-news')}}" class="btn btn-sm btn-success addlink"><span
-                        class="glyphicon glyphicon-new-window"></span> Create News</a>
+            <h3>Yêu cầu thiết kế lại</h3>
             <div class="dashboard_graph">
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">
@@ -45,7 +44,7 @@
                                             <th width="5%">#</th>
                                             <th width="10%">Hình ảnh</th>
                                             <th width="10%">Mã hóa đơn</th>
-                                            <th width="10%">Tên sản phẩm</th>
+                                            <th width="30%">Tên sản phẩm</th>
                                             <th width="15%">Action</th>
                                         </tr>
                                         </thead>
@@ -54,7 +53,7 @@
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td><img src="{{asset('/images/product')}}/{{$request1->avatar}}"
-                                                         style="height:150px; width:100%"/></td>
+                                                         style="height:150px"/></td>
                                                 <td>{{$request1->order_id}}</td>
                                                 <td>{{$request1->title_vi}}</td>
                                                 <td>
@@ -81,7 +80,7 @@
                                             <th width="5%">#</th>
                                             <th width="10%">Hình ảnh</th>
                                             <th width="10%">Mã hóa đơn</th>
-                                            <th width="10%">Tên sản phẩm</th>
+                                            <th width="30%">Tên sản phẩm</th>
                                             <th width="15%">Action</th>
                                         </tr>
                                         </thead>
@@ -90,7 +89,7 @@
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td><img src="{{asset('/images/product')}}/{{$request2->avatar}}"
-                                                         style="height:150px; width:100%"/></td>
+                                                         style="height:150px;"/></td>
                                                 <td>{{$request2->order_id}}</td>
                                                 <td>{{$request2->title_vi}}</td>
                                                 <td>
