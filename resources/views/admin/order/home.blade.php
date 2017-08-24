@@ -101,7 +101,7 @@
                                                     @foreach($order as $item)
                                                         <tr>
                                                             <td>{{$loop->iteration}}</td>
-                                                            <td>{{$item->id}}</td>
+                                                            <td>{{$item->order_id}}</td>
                                                             <td>{{$item->fullname}}</td>
                                                             <td>{{$item->created_at}}</td>
                                                             <td>{{$item->total_item}}</td>
