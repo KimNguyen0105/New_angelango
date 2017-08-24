@@ -148,7 +148,7 @@
                                     <div class="form-group" id="ngayhethankm">
                                         <label class="control-label">Hạn khuyến mãi</label>
                                         <div class="">
-                                            <input class="form-control" name="ngaykm" type="date" value="">
+                                            <input class="form-control" id="ngaykm" name="ngaykm" type="date" value="">
                                         </div>
                                         <span class="text-aqua"> Định dạng: <strong>ngày/tháng/năm</strong></span>
                                     </div>
@@ -255,6 +255,7 @@
             var option = $('#mySelect').val();
             if(option==1){
              $("input#pricekm").prop("required",true);
+              $("input#ngaykm").prop("required",true);
         $("#km").show();
        
          
@@ -263,6 +264,7 @@
     {
         $("#km").hide();
         $("input#pricekm").prop("required",false);
+        $("input#ngaykm").prop("required",false);
     }
         }
     </script>

@@ -172,7 +172,7 @@
                                     <div class="form-group" id="ngayhethankm">
                                         <label class="control-label">Hạn khuyến mãi</label>
                                         <div class="">
-                                            <input class="form-control" name="ngaykm" type="date" value="{!! old('ngaykm',isset($discount) ? date( "Y-m-d", strtotime($discount->date)): null) !!}"
+                                            <input class="form-control" @if(Illuminate\Support\Facades\Session::get('required')==1) required="true" @endif id="ngaykm" name="ngaykm" type="date" value="{!! old('ngaykm',isset($discount) ? date( "Y-m-d", strtotime($discount->date)): null) !!}"
                                             >
 
                                             
@@ -342,6 +342,7 @@
             var option = $('#mySelect').val();
             if(option==1){
              $("input#pricekm").prop("required",true);
+              $("input#ngaykm").prop("required",true);
         $("#km").show();
        
          
@@ -350,6 +351,7 @@
     {
         $("#km").hide();
         $("input#pricekm").prop("required",false);
+        $("input#ngaykm").prop("required",false);
     }
         }
     </script>
