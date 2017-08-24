@@ -21,6 +21,7 @@ class ProductController extends Controller
     public function getProduct()
     {
         $product = AglProduct::where('status',1)->orderBy('updated_at', 'desc')->get();
+    // dd($product);
         return view('admin.product.home', [
             'product' => $product
         ]);

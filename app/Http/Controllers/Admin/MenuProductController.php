@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\AglMenuProduct;
 use Image;
+use App\Models\AglProduct;
 
 class MenuProductController extends Controller
 {
@@ -82,12 +83,21 @@ class MenuProductController extends Controller
     public function DeleteMenuProduct($id)
     {
         try{
+
+            $product = AglProduct::where('menu_product_id',$id)->get();
+            // dd($product);
             $menu_product=AglMenuProduct::find($id);
             if($menu_product)
             {
                $menu_product->status=0;
+
                 if($menu_product->save())
                 {
+                    foreach ($product as $key => $item) {
+                        $item->status=0;
+                        $item->save();
+                    }
+                   
                     return redirect('/admin/menu-product')->with('success', 'Xóa  thành công');
                 }
                 else{
@@ -97,6 +107,7 @@ class MenuProductController extends Controller
         }
         catch (\Exception $e)
         {
+            dd($e);
             return redirect('/admin/menu-product')->with('failed', 'Xóa  thất bại');
         }
     }
