@@ -155,7 +155,7 @@
                                     <label for="introduce">
                                         Có khuyến mãi không
                                     </label>
-                                    <select id="mySelect" name="is_discount" class="form-control" required="" onchange="myFunction()">
+                                    <select id="mySelect" name="is_discount" class="form-control" required="" onchange="LoadKM()">
                                     <option value="">Choose..</option>
                                     @if($product->is_discount==1)
                                     <option selected value="1">Có khuyến mãi</option>
@@ -185,7 +185,7 @@
                                         </label>
                                          <div class="controls">
                                             <div class="input-group">
-                                                <input type="text" class="form-control numeral12" name="pricekm" id="price" value="{!! old('pricekm',isset($discount) ? $discount->price_discount: null) !!}">
+                                                <input type="text" class="form-control numeral12" name="pricekm" id="pricekm" @if(Illuminate\Support\Facades\Session::get('required')==1) required="true" @endif value="{!! old('pricekm',isset($discount) ? $discount->price_discount: null) !!}">
                                                  <span style="padding: 4px 12px;font-size: 23px;" class="input-group-addon">₫</span>
                                             </div>
                                         </div>
@@ -338,22 +338,20 @@
 
         });
 
-        function myFunction() {
-            var cleaveNumeral = new Cleave('.numeral12', {
-    numeral: true,
-    numeralThousandsGroupStyle: 'thousand'
-});
-    var x = document.getElementById("mySelect").value;
-    if(x==1)
-    {
+        function LoadKM(){
+            var option = $('#mySelect').val();
+            if(option==1){
+             $("input#pricekm").prop("required",true);
         $("#km").show();
+       
+         
     }
-    if(x==0)
+    else if(option==0)
     {
         $("#km").hide();
+        $("input#pricekm").prop("required",false);
     }
-    
-}
+        }
     </script>
     <script src="{{URL::asset('')}}js/cleave.min.js"></script>
     <script src="{{URL::asset('')}}js/cleave-phone.i18n.js"></script>

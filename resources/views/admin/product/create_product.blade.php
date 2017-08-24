@@ -137,7 +137,7 @@
                                     <label for="introduce">
                                         Có khuyến mãi không
                                     </label>
-                                    <select id="mySelect" name="is_discount" class="form-control" required="" onchange="myFunction()">
+                                    <select id="mySelect" name="is_discount" class="form-control" required="" onchange="LoadKM()">
                                     <option value="">Choose..</option>
                                     <option id="khuyenmai" value="1">Có khuyến mãi</option>
                                     <option id = "khongkhuyenmai" value="0">Không khuyến mãi</option>
@@ -158,7 +158,7 @@
                                         </label>
                                         <div class="controls">
                                             <div class="input-group">
-                                                <input type="text" class="form-control numeral12" name="pricekm" id="price"  required placeholder="Nhập giá sản phẩm">
+                                                <input type="text" class="form-control numeral12" name="pricekm" id="pricekm"  placeholder="Nhập giá sản phẩm">
                                                  <span style="padding: 4px 12px;font-size: 23px;" class="input-group-addon">₫</span>
                                             </div>
                                         </div>
@@ -180,7 +180,7 @@
                                 <i style="background-color: rgb(224, 26, 181);"></i>
                             </span>
                         </div>
-                        <label for="introduce">Chọn hình sản phẩm theo màu (135 x 200)</label><input class="file-multi" type="file" required name="file-multi'+i+'[]" class="file" multiple data-preview-file-type="text" >
+                        <label for="introduce">Chọn hình sản phẩm theo màu (135 x 200)</label><input class="file-multi" type="file" required name="file-multi0[]" class="file" multiple data-preview-file-type="text" >
                     </div>
                     <label style="padding-top: 8px;" class="col-md-2 pull-left">Hình sản phẩm</label>
                     <button type="button" class="btn btn-primary col-md-2" id="addImage">Thêm hình sản phẩm</button>
@@ -215,7 +215,7 @@
     <script src="{{URL::asset('')}}ckfinder/ckfinder.js"></script>
     <script>
      $('.file-multi').fileinput();
-    var i =0;
+    var i =1;
         $(document).ready(function(){
             $("#addImage").click(function(e){
                 $("#insert").append('<div class="form-group"><label for="introduce">Chọn màu sản phẩm</label><div class="input-group demo1 colorpicker-element"><input name="mau[]" type="text" value="#e01ab5" class="form-control"><span class="input-group-addon"><i style="background-color: rgb(224, 26, 181);"></i></span></div><label for="introduce">Chọn hình sản phẩm theo màu (135 x 200)</label><input class="file-multi" type="file" required name="file-multi'+i+'[]" class="file" multiple data-preview-file-type="text" ></div>');
@@ -241,23 +241,7 @@
             {{--filebrowserImageUploadUrl: '{{URL::asset('')}}ckfinder/core/connector/php/connector.php?command=QuickUpload&type=News'--}}
         {{--});--}}
 
-    function myFunction() {
-        var cleaveNumeral = new Cleave('.numeral12', {
-    numeral: true,
-    numeralThousandsGroupStyle: 'thousand'
-});
-    var x = document.getElementById("mySelect").value;
-    if(x==1)
-    {
-        $("#km").show();
-         
-    }
-    if(x==0)
-    {
-        $("#km").hide();
-    }
-    
-}
+
 
     </script>
     <script src="{{URL::asset('')}}js/cleave.min.js"></script>
@@ -267,5 +251,19 @@
             numeral: true,
             numeralThousandsGroupStyle: 'thousand'
         });
+        function LoadKM(){
+            var option = $('#mySelect').val();
+            if(option==1){
+             $("input#pricekm").prop("required",true);
+        $("#km").show();
+       
+         
+    }
+    else if(option==0)
+    {
+        $("#km").hide();
+        $("input#pricekm").prop("required",false);
+    }
+        }
     </script>
 @endsection
