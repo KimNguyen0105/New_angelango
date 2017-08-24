@@ -42,7 +42,7 @@ class AglProduct extends Eloquent
 	protected $table = 'agl_product';
 
 	protected $casts = [
-		'is_discount' => 'bool',
+		'is_discount' => 'int',
 		'price' => 'int',
 		'view' => 'int',
 		'rating' => 'int',

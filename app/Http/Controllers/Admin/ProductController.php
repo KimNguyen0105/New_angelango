@@ -12,7 +12,7 @@ use App\Models\AglColorProduct;
 use App\Models\AglProductImage;
 use App\Models\AglSpecificProduct;
 use App\Models\AglProductDiscount;
-
+use Illuminate\Support\Facades\Session;
 use Image;
 
 class ProductController extends Controller
@@ -79,6 +79,7 @@ class ProductController extends Controller
             $product->price=implode(explode(',',$request->price));
             $product->is_discount=$request->is_discount;
             $product->rating=3;
+
             $product->view=3;
             $product->status=1;
             $product->menu_product_id=$request->menu_product;
@@ -175,12 +176,15 @@ class ProductController extends Controller
             $menu_product = AglMenuProduct::where('status',1)->get();
             $size = AglSizeProduct::orderBy('id', 'desc')->get()->toArray();
             $product_size = DB::table('agl_specific_products')->where('product_id',$id)->join('agl_size_product','agl_specific_products.size_id','=','agl_size_product.id')->select('agl_size_product.id')->get();
-              // dd($product);
+             // dd($product);
             $product_color = DB::table('agl_color_product')->where('id_product',$product->id)->get();
             $product_img = DB::table('agl_product_image')->where('product_id',$product->id)->get();
 
             if($product)
             {
+                if($product->is_discount==1){
+                    Session::put('required',1);
+                }
                 return view('admin.product.edit_product',['product'=>$product,'product_color'=>$product_color,'product_img'=>$product_img,'product_size'=>$product_size,'menu_product'=>$menu_product,'size'=>$size,'discount'=>$discount]);
             }
             else{
@@ -205,6 +209,7 @@ class ProductController extends Controller
                 $product->content_en=$request->content_en;
                 $product->price=implode(explode(',',$request->price));
                 $product->is_discount=$request->is_discount;
+
                 $product->rating = $request->rating;
                 $product->view=3;
                 $product->status=1;
@@ -303,7 +308,7 @@ class ProductController extends Controller
         }
         catch (\Exception $e)
         {
-            
+
             return redirect('/admin/product')->with('failed', 'Cập nhật sản phẩm thất bại');
         }
     }

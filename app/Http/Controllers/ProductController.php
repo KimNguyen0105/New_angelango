@@ -51,6 +51,7 @@ class ProductController extends Controller
 //        dd($color);
         $size = AglSpecificProduct::where('product_id', $id)->select('size_id')->get();
         $image = AglProductImage::where('product_id', $id)->get();
+       
         $relation = AglProduct::where('menu_product_id',$product->menu_product_id)->orderBy('updated_at','desc')->take(3)->get();
         return view('page.product-detail',
             [
