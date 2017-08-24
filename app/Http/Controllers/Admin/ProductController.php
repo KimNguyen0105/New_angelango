@@ -82,7 +82,6 @@ class ProductController extends Controller
             $product->view=3;
             $product->status=1;
             $product->menu_product_id=$request->menu_product;
-
             $product->seo_title=$request->seo_title;
             $product->seo_keyword=$request->seo_keyword;
             $product->seo_author=$request->seo_author;
@@ -161,7 +160,7 @@ class ProductController extends Controller
         }
         catch (\Exception $e)
         {
-            
+            // dd($e);
             return redirect('/admin/product/create-product')->with('failed', 'Thêm sản phẩm thất bại');
         }
         
@@ -252,16 +251,7 @@ class ProductController extends Controller
                         }
                         
                     }
-                     if($request->is_discount==0){
-                        
-                        if(AglProductDiscount::where('product_id',$id))
-                        {
-                            $discount = AglProductDiscount::where('product_id',$id);
-                            $discount->delete();
-                        }
-                        
-                    }
-
+                    
                     $size = $request->size;
                     AglSpecificProduct::where('product_id',$id)->delete();
                     foreach($size as $item){
@@ -313,7 +303,8 @@ class ProductController extends Controller
         }
         catch (\Exception $e)
         {
-            return view('admin.product.home')->with('failed', 'Cập nhật sản phẩm thất bại');
+            
+            return redirect('/admin/product')->with('failed', 'Cập nhật sản phẩm thất bại');
         }
     }
     public function DeleteProduct($id)
