@@ -184,3 +184,11 @@ Route::get('/admin/account/edit-account/{id}','Admin\AccountController@getEditAc
 Route::post('/admin/account/edit-account/{id}','Admin\AccountController@postEditAccount')->middleware('not.login');
 Route::get('/admin/account/delete-account/{id}','Admin\AccountController@DeleteAccount')->middleware('not.login');
 
+//Thống kê
+Route::get('/admin/statistic/able','Admin\StatisticController@getProductAble')->middleware('not.login');
+Route::get('/admin/statistic/sellers','Admin\StatisticController@Sellers')->middleware('not.login');
+Route::post('/admin/statistic/sellers/form-to','Admin\StatisticController@SellersFromTo')->middleware('not.login');
+Route::get('/admin/statistic/account','Admin\StatisticController@Account')->middleware('not.login');
+Route::get('/admin/statistic/account/{id}','Admin\StatisticController@OrderAccount')->middleware('not.login');
+Route::get('/admin/statistic/revenue','Admin\StatisticController@Revenue')->middleware('not.login');
+Route::post('/admin/statistic/revenue/month','Admin\StatisticController@RevenueMonth')->middleware('not.login');

@@ -20,7 +20,7 @@
     <link href="{{URL::asset('')}}css/bootstrap-select.min.css" rel="stylesheet">
 
     {{-- <link href="{{URL::asset('')}}css/daterangepicker.css" rel="stylesheet"> --}}
-
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all">
 {{--<!-- iCheck -->--}}
 <link href="{{URL::asset('')}}css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
@@ -34,6 +34,16 @@
 <!-- Custom Theme Style -->
     <link href="{{URL::asset('')}}css/custom.min.css" rel="stylesheet">
 	  <link href="{{URL::asset('')}}css/admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+    <link href="{{asset('css/MonthPicker.min.css')}}" rel="stylesheet" type="text/css" />
+    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" />--}}
+    <script src="{{URL::asset('')}}js/jquery.min.js"></script>
+    {{-- <script src="{{URL::asset('')}}js/star-rating.js"></script> --}}
+<!-- Bootstrap -->
+    <script src="{{URL::asset('')}}js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <script src="https://cdn.rawgit.com/digitalBush/jquery.maskedinput/1.4.1/dist/jquery.maskedinput.min.js"></script>
+    <script src="{{asset('js/MonthPicker.min.js')}}"></script>
 </head>
 
 <body class="nav-md body-content">
@@ -86,10 +96,7 @@
 
 <!-- jQuery -->
 
-<script src="{{URL::asset('')}}js/jquery.min.js"></script>
-{{-- <script src="{{URL::asset('')}}js/star-rating.js"></script> --}}
-<!-- Bootstrap -->
-<script src="{{URL::asset('')}}js/bootstrap.min.js"></script>
+
 
 <script src="{{URL::asset('')}}js/bootstrap-colorpicker.min.js"></script>
 

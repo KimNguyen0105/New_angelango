@@ -2,11 +2,7 @@
 
 /**
  * Created by Reliese Model.
-<<<<<<< HEAD
- * Date: Tue, 22 Aug 2017 07:02:12 +0000.
-=======
- * Date: Tue, 22 Aug 2017 06:58:47 +0000.
->>>>>>> 3e79027f7dec6419f9a0e776ab821eff8a07fe72
+ * Date: Thu, 24 Aug 2017 04:46:16 +0000.
  */
 
 namespace App\Models;
@@ -19,6 +15,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $id
  * @property string $title_vi
  * @property string $title_en
+ * @property string $description_vi
+ * @property string $description_en
+ * @property string $fa_class
  * @property int $sort_order
  *
  * @package App\Models
@@ -35,6 +34,9 @@ class AglOrderStatus extends Eloquent
 	protected $fillable = [
 		'title_vi',
 		'title_en',
+		'description_vi',
+		'description_en',
+		'fa_class',
 		'sort_order'
 	];
 }

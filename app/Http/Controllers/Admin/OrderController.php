@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AglOrder;
@@ -66,7 +67,7 @@ class OrderController extends Controller
             $status=AglOrderStatus::orderBy('sort_order','asc')->get();
             foreach ($status as $statu)
             {
-                $item=AglOrder::where('status',$statu->id)->orderBy('updated_at','desc')->get();
+                $item=AglOrder::where('status_id',$statu->id)->orderBy('updated_at','desc')->get();
                 array_push($order, $item);
             }
             return view('admin.order.home',['orders'=>$order,'status'=>$status]);
@@ -80,7 +81,7 @@ class OrderController extends Controller
     {
         try{
             $order=DB::table('agl_order')
-                ->join('agl_order_status','agl_order.status','=','agl_order_status.id')
+                ->join('agl_order_status','agl_order.status_id','=','agl_order_status.id')
                 ->where('agl_order.id',$id)
                 ->select('agl_order.*','agl_order_status.title_vi as status_name')->first();
             $status=AglOrderStatus::orderBy('sort_order','asc')->get();
@@ -101,7 +102,7 @@ class OrderController extends Controller
     {
         try{
             $order=AglOrder::find($id);
-            $order->status=$request->status;
+            $order->status_id=$request->status;
             $order->save();
             return redirect()->back();
         }

@@ -7,7 +7,7 @@
         <div class="col-md-12 div-order">
             <h3>Thông tin đơn hàng</h3>
             <div class="col-md-4">
-                <p>Mã hóa đơn: {{$order->id}}</p>
+                <p>Mã hóa đơn: {{$order->order_id}}</p>
                 <p>Ngày tạo: {{$order->created_at}}</p>
                 <p>Ngày cập nhật: {{$order->updated_at}}</p>
             </div>
@@ -15,7 +15,7 @@
             <div class="col-md-3">
                 <p>Số lượng: {{$order->total_item}}</p>
                 <p>Phí ship: {{$order->shipping_costs}}</p>
-                <p>Tổng tiền: {{$order->total_price}}</p>
+                <p>Tổng tiền: {{number_format($order->total_price)}} VNĐ</p>
             </div>
             <div class="col-md-5">
                 <p>Tên khách hàng: {{$order->fullname}}</p>
@@ -33,7 +33,7 @@
                     <select class="form-control" name="status">
                         @if($status!=null)
                             @foreach($status as $statu)
-                                @if($statu->id==$order->status)
+                                @if($statu->id==$order->status_id)
                                     <option value="{{$statu->id}}" selected>{{$statu->title_vi}}</option>
                                 @else
                                     <option value="{{$statu->id}}">{{$statu->title_vi}}</option>

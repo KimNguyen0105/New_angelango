@@ -60,11 +60,11 @@
                                                     @foreach($order as $item)
                                                             <tr>
                                                                 <td>{{$loop->iteration}}</td>
-                                                                <td>{{$item->id}}</td>
-                                                                <td>{{$item->name}}</td>
+                                                                <td>{{$item->order_id}}</td>
+                                                                <td>{{$item->fullname}}</td>
                                                                 <td>{{$item->created_at}}</td>
                                                                 <td>{{$item->total_item}}</td>
-                                                                <td>{{$item->total_price}}</td>
+                                                                <td>{{number_format($item->total_price)}} VNĐ</td>
                                                                 <td>
                                                                     <a href="{{url('/admin/order')}}/{{$item->id}}"
                                                                        class="btn btn-xs btn-primary editlink"><span
@@ -102,10 +102,10 @@
                                                         <tr>
                                                             <td>{{$loop->iteration}}</td>
                                                             <td>{{$item->id}}</td>
-                                                            <td>{{$item->name}}</td>
+                                                            <td>{{$item->fullname}}</td>
                                                             <td>{{$item->created_at}}</td>
                                                             <td>{{$item->total_item}}</td>
-                                                            <td>{{$item->total_price}}</td>
+                                                            <td>{{number_format($item->total_price)}} VNĐ</td>
                                                             <td>
                                                                 <a href="{{url('/admin/order')}}/{{$item->id}}"
                                                                    class="btn btn-xs btn-primary editlink"><span
