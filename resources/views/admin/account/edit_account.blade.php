@@ -37,6 +37,35 @@
 
                     <div class="form-group">
                         <label for="introduce">
+                            Số điện thoại
+                        </label>
+                        <input type="text" class="form-control" name="phone_number" id="phone_number" value="{!! old('phone_number',isset($account) ? $account->phone_number: null) !!}" required maxlength="255">
+                    </div>
+                    <div class="form-group">
+                        <label for="introduce">
+                            Ngày sinh
+                        </label>
+                        <input type="date" class="form-control" name="birthday" id="birthday" value="{!! old('birthday',isset($account)? date( "Y-m-d", strtotime($account->birthday)) :null) !!}" required maxlength="255">
+                    </div>
+                    <div class="form-group">
+                        <label for="introduce">
+                           Giới tính
+                        </label>
+                         <div class="radio">
+                            <label>
+                              <input type="radio" @if($account->gender==1) checked="" @endif value="1" id="optionsRadios1" name="gender"> Nam
+                            </label>
+                          </div>
+                          <div class="radio">
+                            <label>
+                              <input type="radio"@if($account->gender==0) checked="" @endif value="0" id="optionsRadios1" name="gender"> Nữ
+                            </label>
+                          </div>
+                         
+                    </div>
+
+                    <div class="form-group">
+                        <label for="introduce">
                             Password
                         </label>
                         <input type="password" class="form-control" name="password" id="password" value="" maxlength="255">

@@ -71,8 +71,8 @@
 
                     <div class="add-product">
                         <p>Số lượng:
-                            <span id="soluong">1</span>
-                            <span id="btn-addtocart"><a href="#">Thêm vào giỏ hàng</a></span>
+                            <span id="soluong" style="padding: 5px 1px;"><input style="border: none;width: 48px;" class="input-quantity" min="1" type="number" value="1"></span>
+                            <span id="btn-addtocart"><a href="javascript:void(0)" data-id="1" class="btn-add-to-cart" >Thêm vào giỏ hàng</a></span>
                         </p>
                     </div>
                     <ul class="nav nav-tabs" role="tablist">

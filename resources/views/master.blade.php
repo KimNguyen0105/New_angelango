@@ -12,7 +12,7 @@
     <title>Angela Ngo | Trang Chủ</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="{{asset('css/modern-business.css')}}" rel="stylesheet">
@@ -34,6 +34,7 @@
     <link href="{{asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
 
+    @yield('css')
 
     <!--Favicon-->
     <link rel="icon" href="{{asset('images/icon/Angela_icon.png')}}">
@@ -78,9 +79,21 @@
 </script>
 
 <!-- jQuery -->
-<script src="{{URL::asset('')}}js/jquery.js"></script>
-@yield('scripts')
-<script type="text/javascript" src="{{URL::asset('')}}js/jquery.montage.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': '{{csrf_token()}}'
+        }
+    });
+</script>
+<script type="text/javascript" src="hadesker/js/hadesker.cart.js"></script>
+
+@yield('js')
+
+<script type="text/javascript" src="js/jquery.montage.min.js"></script>
 <script type="text/javascript">
     $(function () {
         /*
@@ -137,7 +150,7 @@
 </script>
 <script src="{{asset('js/guide.js')}}"></script>
 <script src="{{asset('js/navbar_scrolling.js')}}"></script>
-
+<script src="{{asset('js/star-rating.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/wizard_order.js')}}"></script>
 
 <!--animate-->

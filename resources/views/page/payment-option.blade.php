@@ -21,8 +21,11 @@
     <section class="contact-form paycart-form">
         <div class="container">
             <div class="row">
-
-                <form class="form-horizontal custom-form">
+                <form class="form-horizontal custom-form" method="POST" action="{{asset('dat-hang.html')}}">
+                    <input type="hidden" name="firstname" value="{{$customer['firstname']}}">
+                    <input type="hidden" name="lastname" value="{{$customer['lastname']}}">
+                    <input type="hidden" name="address" value="{{$customer['address']}}">
+                    <input type="hidden" name="phone" value="{{$customer['phone']}}">
                     <div class="col-lg-6 custom-tagp edit-title-payopt">
                         <h2>LỰA CHỌN HÌNH THỨC THANH TOÁN</h2>
                         <div class="billing-info">
@@ -63,16 +66,15 @@
                             <p></p>
                             <div class="form-group">
                                 <div class="col-sm-5">
-                                    <button class="form-control">Đặt hàng</button>
+                                    <button type="submit" class="form-control">Đặt hàng</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-
                     <div class="col-lg-6">
                         <h2>ĐƠN HÀNG CỦA BẠN</h2>
-                        <p>(3 sản phẩm)</p>
+                        <p>({{$tongso}} sản phẩm)</p>
                         <div class="table-responsive">
                             <table class="table table-hover edit-table-sum">
                                 <thead>
@@ -85,50 +87,33 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td style="width: 100px"><img style="width: 70px; height: 90px" src="images/detail-product-full.png"></td>
-                                    <td>Set áo ren... - BY8010</br>
-                                        Kích cỡ: S
+                                <? $total = 0 ?>
+                                @foreach($cart as $item)
+                                <tr id="{{$item['rowId']}}">
+                                    <td style="width: 100px"><img style="width: 70px; height: 90px" src="{{asset($item["options"]["image"])}}"></td>
+                                    <td>{{$item["name"]}}...</br>
+                                        Kích cỡ: {{$item["options"]["size"]}}<br>
+                                        Màu: <div style="vertical-align: middle;display: -webkit-inline-box;width: 20px;height: 20px;border-radius: 50%;background-color: {{$item["options"]["color"]}}"></div>
                                     </td>
                                     <td class="text-center">
-                                        <input type="number" name="quantity" value="1" min="1" max="1000" class="text-center">
+                                        <input type="number" name="quantity" value="{{$item["qty"]}}" min="1" max="1000" class="text-center">
                                     </td>
-                                    <td class="text-center">2.000.000 VNĐ</td>
-                                    <td><center><button class="glyphicon glyphicon-remove"></button></center></td>
+                                    <td class="text-center">{{number_format($item["price"]*$item["qty"],0,",",'.')}} VNĐ</td>
+                                    <td><center><button type="button" data-rowid="{{$item['rowId']}}" class="btn-remove-cart glyphicon glyphicon-remove"></button></center></td>
                                 </tr>
-                                <tr>
-                                    <td style="width: 100px"><img style="width: 70px; height: 90px" src="images/product3.png"></td>
-                                    <td>Đầm suông cổ... - BY8010</br>
-                                        Kích cỡ: M
-                                    </td>
-                                    <td class="text-center">
-                                        <input type="number" name="quantity" value="1" min="1" max="1000" class="text-center">
-                                    </td>
-                                    <td class="text-center">2.000.000 VNĐ</td>
-                                    <td><center><button class="glyphicon glyphicon-remove"></button></center></td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 100px"><img style="width: 70px; height: 90px" src="images/product1.png"></td>
-                                    <td>Set áo thun... - BY8010</br>
-                                        Kích cỡ: S
-                                    </td>
-                                    <td class="text-center">
-                                        <input type="number" name="quantity" value="1" min="1" max="1000" class="text-center">
-                                    </td>
-                                    <td class="text-center">2.000.000 VNĐ</td>
-                                    <td><center><button class="glyphicon glyphicon-remove"></button></center></td>
-                                </tr>
+                                <? $total += $item["price"]*$item["qty"] ?>
+                                @endforeach
 
                                 <tr id="edit-stotal">
                                     <td colspan="2">Tổng tiền</br><br> <span style="color: #ffccd5">Phí vận chuyển</span></td>
                                     <td class="text-center"></td>
-                                    <td class="text-center">6.000.000 VNĐ</br> <span style="color: #ffccd5">Miễn phí</span></td>
+                                    <td class="text-center">{{number_format($total,0,",",'.')}} VNĐ</br> <span style="color: #ffccd5">Miễn phí</span></td>
                                     <td></td>
                                 </tr>
                                 <tr id="edit-total">
                                     <td colspan="2">Thành tiền</br> <span style="font-weight: normal;">(Tổng số tiền thanh toán)</span></td>
                                     <td class="text-center"></td>
-                                    <td class="text-center"><span style="color: #ff0098;">6.000.000 VNĐ</span></td>
+                                    <td class="text-center"><span style="color: #ff0098;">{{number_format($total,0,",",'.')}} VNĐ</span></td>
                                     <td></td>
                                 </tr>
                                 </tbody>

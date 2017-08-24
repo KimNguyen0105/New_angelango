@@ -22,7 +22,7 @@ Route::get('/chi-tiet-tin-tuc-{id}.html','Controller@getPageNewsDetail');
 Route::get('/gioi-thieu.html','Controller@getPageAbout');
 Route::get('/lien-he.html','Controller@getPageContact');
 Route::get('/gio-hang.html','Controller@getPagePaycart');
-Route::get('/thanh-toan.html','Controller@getPaymentOption');
+//Route::get('/thanh-toan.html','Controller@getPaymentOption');
 Route::get('/dang-nhap.html','Controller@getPageLogin');
 Route::get('/dang-ky.html','Controller@getPageSignup');
 Route::get('/thong-tin-ca-nhan.html','Controller@getPagePersonal');
@@ -31,6 +31,19 @@ Route::get('/quan-ly-hoa-don.html','Controller@getPageOrderDetail');
 Route::get('/huong-dan-mua-hang.html','Controller@getPageShopGuide');
 
 
+//Hadesker Cart
+Route::POST('cart/add-to-cart','Controller@postAddToCart');
+Route::DELETE('cart/clear-cart','Controller@deleteClearCart');
+
+Route::GET('cart/district/{province_id}','Controller@getDistrict');
+Route::GET('cart/ward/{district_id}','Controller@getWard');
+
+Route::POST('/thanh-toan.html','Controller@postPaymentOption');
+Route::POST('/dat-hang.html','Controller@postPaymentFinish');
+
+Route::get('test',function (){
+   \Gloudemans\Shoppingcart\Facades\Cart::destroy();
+});
 
 
 //================== Admin routes ================================
