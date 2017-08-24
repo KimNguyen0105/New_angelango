@@ -16,7 +16,7 @@
                 <div class="col-lg-2 col-md-4 col-xs-12">
                     @foreach($image as $item)
                         <div class="edit-pic-dtprd col-md-12 col-xs-4">
-                            <center><img src="{{URL::asset('')}}images/product/{{$item->link}}" class="img-responsive">
+                            <center><img src="{{URL::asset('')}}images/product_image/{{$item->link}}" class="img-responsive">
                             </center>
                         </div>
                     @endforeach

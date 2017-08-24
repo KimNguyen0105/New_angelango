@@ -11,7 +11,7 @@
                 @foreach($product as $item)
                     <div class="col-sm-6 col-md-4">
                         <div class="thumbnail edit-thumbnail">
-                            <a href="{{URL::asset('')}}san-pham/{{$item->id}}-{{str_slug($item->title_vi)}}.html"><img src="{{URL::asset('')}}images/{{$item->avatar}}" alt="{{$item->title_vi}}"
+                            <a href="{{URL::asset('')}}san-pham/{{$item->id}}-{{str_slug($item->title_vi)}}.html"><img src="{{URL::asset('')}}images/product/{{$item->avatar}}" alt="{{$item->title_vi}}"
                                                                                 class="zoom-img"></a>
                             <div class="caption edit-caption">
                                 <h3>@if(app()->getLocale()=='en') {{$item->title_en}} @else {{$item->title_vi}} @endif</h3>
