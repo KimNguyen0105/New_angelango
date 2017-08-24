@@ -76,7 +76,7 @@ class ProductController extends Controller
             $product->title_en=$request->title_en;
             $product->content_vi=$request->content_vi;
             $product->content_en=$request->content_en;
-            $product->price=$request->price;
+            $product->price=implode(explode(',',$request->price));
             $product->is_discount=$request->is_discount;
             $product->rating=3;
             $product->view=3;
@@ -87,6 +87,7 @@ class ProductController extends Controller
             $product->seo_keyword=$request->seo_keyword;
             $product->seo_author=$request->seo_author;
             $product->seo_description=$request->seo_description;
+           
             //save hình đại diện
             if($request->hasFile('file'))
             {
@@ -103,7 +104,7 @@ class ProductController extends Controller
                 if($request->is_discount==1){
                     $discount = new AglProductDiscount();
                      $discount->product_id = $id_produc;
-                     $discount->price_discount = $request->pricekm;
+                     $discount->price_discount = implode(explode(',',$request->pricekm));
                      $discount->date = $request->ngaykm;
                      $discount->save();
                 }
@@ -161,7 +162,7 @@ class ProductController extends Controller
         catch (\Exception $e)
         {
             
-            return view('admin.product.create_product')->with('failed', 'Thêm sản phẩm thất bại');
+            return redirect('/admin/product/create-product')->with('failed', 'Thêm sản phẩm thất bại');
         }
         
 
@@ -203,7 +204,7 @@ class ProductController extends Controller
                 $product->title_en=$request->title_en;
                 $product->content_vi=$request->content_vi;
                 $product->content_en=$request->content_en;
-                $product->price=$request->price;
+                $product->price=implode(explode(',',$request->price));
                 $product->is_discount=$request->is_discount;
                 $product->rating = $request->rating;
                 $product->view=3;
@@ -239,13 +240,13 @@ class ProductController extends Controller
                         if($discount == null){
                             $discount = new AglProductDiscount();
                             $discount->product_id = $id;
-                            $discount->price_discount = $request->pricekm;
+                            $discount->price_discount = implode(explode(',',$request->pricekm));
                             $discount->date = $request->ngaykm;
                             $discount->save();
                         }
                         else{
                             $discount->product_id = $id;
-                            $discount->price_discount = $request->pricekm;
+                           $discount->price_discount = implode(explode(',',$request->pricekm));
                             $discount->date = $request->ngaykm;
                             $discount->save();
                         }
