@@ -103,7 +103,13 @@
                                     <label for="introduce">
                                         Giá sản phẩm
                                     </label>
-                                    <input type="text" class="form-control" name="price" id="price" value="{!! old('price',isset($product) ? $product->price: null) !!}" required >
+                                    <div class="controls">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control numeral" name="price" id="price" value="{!! old('price',isset($product) ? $product->price: null) !!}" required >
+                                                 <span style="padding: 4px 12px;font-size: 23px;" class="input-group-addon">₫</span>
+                                            </div>
+                                    </div>
+                                   
                                 </div>
 
                                 <div class="form-group">
@@ -142,7 +148,7 @@
                                         <label for="introduce">
                                             Điểm đánh giá
                                         </label>
-                                        <input type="text" class="form-control" name="rating" id="price" value="{!! old('rating',isset($product) ? $product->rating: null) !!}">
+                                        <input type="number" class="form-control" name="rating" id="price" value="{!! old('rating',isset($product) ? $product->rating: null) !!}">
                                     </div>
 
                                 <div class="form-group">
@@ -177,7 +183,14 @@
                                         <label for="introduce">
                                             Giá khuyến mãi
                                         </label>
-                                        <input type="text" class="form-control" name="pricekm" id="price" value="{!! old('pricekm',isset($discount) ? $discount->price_discount: null) !!}">
+                                         <div class="controls">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control numeral12" name="pricekm" id="price" value="{!! old('pricekm',isset($discount) ? $discount->price_discount: null) !!}">
+                                                 <span style="padding: 4px 12px;font-size: 23px;" class="input-group-addon">₫</span>
+                                            </div>
+                                        </div>
+
+                                        
                                     </div>
                                     
                                 </div>
@@ -326,6 +339,10 @@
         });
 
         function myFunction() {
+            var cleaveNumeral = new Cleave('.numeral12', {
+    numeral: true,
+    numeralThousandsGroupStyle: 'thousand'
+});
     var x = document.getElementById("mySelect").value;
     if(x==1)
     {
@@ -337,5 +354,17 @@
     }
     
 }
+    </script>
+    <script src="{{URL::asset('')}}js/cleave.min.js"></script>
+    <script src="{{URL::asset('')}}js/cleave-phone.i18n.js"></script>
+    <script>
+        var cleaveNumeral = new Cleave('.numeral', {
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand'
+        });
+        var cleaveNumeral = new Cleave('.numeral12', {
+    numeral: true,
+    numeralThousandsGroupStyle: 'thousand'
+});
     </script>
 @endsection
